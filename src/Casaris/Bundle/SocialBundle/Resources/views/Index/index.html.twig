@@ -1,0 +1,163 @@
+{% extends '::base.html.twig' %}
+{% block container %}
+    <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+        <div class="row panel">
+            <div class="col-md-4 bg_blur ">
+                {#                <a href="#" class="follow_btn hidden-xs">Follow</a>#}
+            </div>
+            <div class="col-md-8  col-xs-12">
+                <div class="row">
+                    <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail picture hidden-xs" />
+                    <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail visible-xs picture_mob" />
+                    <div class="header">
+                        <h1>Lorem Ipsum</h1>
+                        <h4><p class="text-primary">Web Developer</p></h4>
+                        <span>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                            "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel" style="color: black">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="//placehold.it/75x75" class="img-responsive pull-left"> 
+                            </div>
+                            <div class="col-md-10">
+                                <h5><a href="#">Jaqueline Knoux</a> postou uma nova imagem na galeria.</h5>
+                                <h6><p class="text-muted">Compartilhou 17 maio de 2014</p></h6>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <img src="//placehold.it/600x600" class="img-thumbnail pull-left">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="page-header">
+                                    <h4><small class="pull-right">45 comentários</small> Comentários </h4>
+                                </div> 
+                                <div class="comments-list">
+                                    <div class="media">
+                                        <p class="pull-right"><small>5 dias atrás</small></p>
+                                        <a class="media-left" href="#">
+                                            <img src="http://lorempixel.com/40/40/people/1/"/>
+                                        </a>
+                                        <div class="media-body">
+
+                                            <p><a href="#">Baltej Singh</a></p>
+                                            Wow! this is really great.
+
+                                            {#                                                <p><a href="#"><i style="color: #d9230f" class="fa fa-thumbs-o-up fa-lg"></i></a></p>#}
+                                        </div>
+                                    </div>
+                                    <div class="media">
+                                        <p class="pull-right"><small>5 dias atrás</small></p>
+                                        <a class="media-left" href="#">
+                                            <img src="http://lorempixel.com/40/40/people/2/"/>
+                                        </a>
+                                        <div class="media-body">
+
+                                            <p><a href="#">Baltej Singh</a></p>
+                                            Wow! this is really great.                                                
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <hr>
+                        <form>
+                            <div class="input-group">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Add a comment..">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="bs-callout bs-callout-default">
+                    <p><a href="#">2014</a></p>
+                </div>
+                <div class="bs-callout bs-callout-default">
+                    <p><a href="#">Jan</a></p>
+                </div>
+                <div class="bs-callout bs-callout-danger">
+                    <p><a href="#">Fev</a></p>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                {#                <div class="panel panel-default" style="color: black">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-users"></i> Amigos
+                                    </div>
+                                    <div class="panel-body">
+                                    </div>
+                                </div>#}
+
+                {#                <div class="row">#}
+                {#                    <div class="col-xs-12 col-sm-offset-3 col-sm-6">#}
+                <div class="panel panel-default">
+                    <div class="panel-heading c-list">
+                        <span class="title"><a href="#">Amigos</a></span>
+                        <ul class="pull-right c-controls">
+                            {#                            <li><a href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="fa fa-plus fa-lg"></i></a></li>#}
+                            <li><a href="#" class="hide-search" data-command="toggle-search" ><i class="fa fa-ellipsis-v fa-lg"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="row" style="display: none;">
+                        <div class="col-xs-12">
+                            <div class="input-group c-search">
+                                <input type="text" class="form-control" id="contact-list-search">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="list-group" id="contact-list">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-responsive" />
+                                    <p class="text-center"><a href="#" class="text-muted"><span class="name">José Silva</span></a></p>
+                                </div>
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/men/90.jpg" alt="Scott Stevens" class="img-responsive img-responsive" />
+                                    <p class="text-center"><a href="#" class="text-muted"><span class="name">Adam Rosa</span></a></p>
+                                </div>
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/men/45.jpg" alt="Scott Stevens" class="img-responsive img-responsive" />
+                                    <p class="text-center"><a href="#" class="text-muted"><span class="name">Guilherme Santo</span></a></p>
+                                </div>
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="http://api.randomuser.me/portraits/men/12.jpg" alt="Scott Stevens" class="img-responsive img-responsive" />
+                                    <p class="text-center"><a href="#" class="text-muted"><span class="name">Gustavo Oliveira</span></a></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock container %}

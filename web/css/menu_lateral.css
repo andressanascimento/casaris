@@ -1,0 +1,24 @@
+.nav-pills {
+    background-color: #ffffff;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+color: #fff;
+background-color: #d9230f;
+}
+
+.margintop20 {
+    margin-top:20px;
+}
+
+.nav-pills>li>a {
+border-radius: 0px;
+}
+
+.nav-pills>li+li {
+margin-top: 0px;
+margin-left: 0;
+}
+
+.active2 {
+    border-right:4px solid #d9230f;
+}

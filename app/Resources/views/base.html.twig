@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Casaris{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('/css/menu_lateral.css') }}" rel="stylesheet" />
+            <link href="{{ asset('/css/timeline.css') }}" rel="stylesheet" />
+            <link href="{{ asset('/css/profile_page.css') }}" rel="stylesheet" />
+            <link href="{{ asset('/css/friends.css') }}" rel="stylesheet" />
+
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+            <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        {% endblock %}
+    </head>
+    <body style="padding-top: 80px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% block navbar %}
+                        <div class="navbar navbar-default navbar-fixed-top">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#" style="color: #d9230f">Casaris</a>
+                            </div>
+                            <div class="navbar-collapse collapse navbar-inverse-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#">Perfil</a></li>
+                                    <li><a href="#">Amigos</a></li>
+                                    <li><a href="#">Galeria</a></li>
+                                    <li><a href="#">Casamento</a></li>
+                                    <li><a href="#">Fornecedores</a></li>
+                                </ul>
+
+                                {#                                <form class="navbar-form navbar-left">
+                                                                    <div class="row">
+                                                                        <div class="input-group-sm">
+                                                                            <input type="text" style="margin-top: 3px" class="form-control" placeholder="Buscar">
+                                                                        </div>
+                                                                    </div>
+                                                                </form>#}
+
+                                <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
+                                    <p class="navbar-text">
+                                        <i class="fa fa-weixin fa-lg text-primary"></i> <a class="text-primary" href="#">13</a>
+                                    </p>
+                                   {# <p class="navbar-text">
+                                        <i  class="fa fa-thumbs-o-up fa-lg text-primary"></i> <a class="text-primary" href="#">1</a>
+                                    </p>#}
+                                    {#             <p class="navbar-text">
+                                                     <i style="color: #d9230f" class="fa fa-user fa-lg"></i> <a style="color: #d9230f" href="#">1</a>
+                                                 </p>#}
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="fa fa-user fa-lg text-primary"></i><span class="caret text-primary"></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">Perfil</a></li>
+                                            <li><a href="#">Alterar Senha</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Sair</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    {% endblock navbar %}
+                </div>
+            </div>
+        </div>
+
+        {% block container %}
+        {% endblock container %}
+        {% block javascripts %}
+            <script src="{{ asset('/js/jquery.min.js') }}"></script>
+            <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('/js/profile_page.js') }}"></script>
+            <script src="{{ asset('/js/friends.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

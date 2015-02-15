@@ -1,0 +1,192 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/social/css/gallery.css') }}" rel="stylesheet" />
+{% endblock stylesheets %}
+{% block container %}
+    {{ parent() }}
+    <div class="modal img-modal" style="display: none" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8 modal-image">
+                            <img id="image_central" class="img-responsive " src="http://www.pimart.eu/wp-content/uploads/2014/04/martin-schoeller-george-clooney-portrait-up-close-and-personal.jpeg">
+                            {#  <img class="img-responsive hidden" src="http://upload.wikimedia.org/wikipedia/commons/1/1a/Bachalpseeflowers.jpg" />
+                              <img class="img-responsive hidden" src="http://www.netflights.com/media/216535/hong%20kong_03_681x298.jpg" />
+
+                              <a href="" class="img-modal-btn left"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                              <a href="" class="img-modal-btn right"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                         #} </div>
+                        <div class="col-md-4 modal-meta">
+                            <div class="modal-meta-top">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <div class="img-poster clearfix">
+                                    <a href=""><img class="img-circle" src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png"/></a>
+                                    <strong><a href="">John Doe</a></strong>
+                                    <span>12 minutes ago</span>
+                                </div>
+
+                                <ul class="img-comment-list">
+                                    <li>
+                                        <div class="comment-img">
+                                            <img src="http://lorempixel.com/50/50/people/6">
+                                        </div>
+                                        <div class="comment-text">
+                                            <strong><a href="">Jane Doe</a></strong>
+                                            <p>Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-img">
+                                            <img src="http://lorempixel.com/50/50/people/7">
+                                        </div>
+                                        <div class="comment-text">
+                                            <strong><a href="">Jane Doe</a></strong>
+                                            <p>Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span>on March 5th, 2014</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="comment-img">
+                                            <img src="http://lorempixel.com/50/50/people/9">
+                                        </div>
+                                        <div class="comment-text">
+                                            <strong><a href="">Jane Doe</a></strong>
+                                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-meta-bottom">
+                                <input type="text" class="form-control" placeholder="Leave a commment.."/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog --> 
+    </div>
+    <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Nova imagem</h4>
+                </div>
+                <div class="modal-body">
+                    <br/>
+                    <form method="post" action="/">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-file-image-o"></i></span>
+                                <input type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                            <br/>
+                            <div class="btn-group">
+                                <button class="btn btn-info" type="button">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="trash" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Deletar</h4>
+                </div>
+                <div class="modal-body">
+                    <br/>
+                    <p>Deseja deletar a imagem?</p>
+                    <br/>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Sim</button>
+                    <button class="btn btn-default">Não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="panel" style="color: black">
+                <div class="panel-body">
+                    <div class="page-header">
+                        <h1>Galeria <button class="btn-sm btn-primary pull-right c-controls" data-toggle="modal" data-target="#new"><i class="fa fa-plus"></i></button></h1>
+
+                    </div>
+                    <div class='list-group gallery'>
+
+                        <!-- col-6 / end -->
+                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                <a class="fancybox">
+                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                </a>
+                                <div class='text-right'>
+                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
+                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
+                                </div> <!-- text-right / end -->
+                            </div>
+                        </div> <!-- col-6 / end -->
+                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                <a class="fancybox">
+                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                </a>
+                                <div class='text-right'>
+                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
+                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
+                                </div> <!-- text-right / end -->
+                            </div>
+                        </div> <!-- col-6 / end -->
+                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                <a class="fancybox">
+                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                </a>
+                                <div class='text-right'>
+                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
+                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
+                                </div> <!-- text-right / end -->
+                            </div>
+                        </div> <!-- col-6 / end -->
+                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                <a class="fancybox">
+                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                </a>
+                                <div class='text-right'>
+                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
+                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
+                                </div> <!-- text-right / end -->
+                            </div>
+                        </div> <!-- col-6 / end -->
+                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
+                                <a class="fancybox">
+                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
+                                </a>
+                                <div class='text-right'>
+                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
+                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
+                                </div> <!-- text-right / end -->
+                            </div>
+                        </div> <!-- col-6 / end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock container %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/social/js/gallery.js') }}"></script>
+{% endblock javascripts %}

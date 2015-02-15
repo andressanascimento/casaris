@@ -1,1 +1,112 @@
-{# empty Twig template #}
+{% extends '::login.base.html.twig' %}
+{% block container %}
+    <div class="container">
+        <div class="jumbotron row" style="background: #fff">
+            <div class="col-md-6">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#client" data-toggle="tab">Cliente</a></li>
+                    <li><a href="#supplier" data-toggle="tab">Empresa</a></li>
+                </ul>
+                <div id="register" class="tab-content">
+                    <div class="tab-pane fade active in" id="client">
+                        <br/>
+                        {#                                    <h4 class="dark-grey">Clientes</h4>#}
+                        <form action="/register/client" method="post">
+                            <div class="form-group col-lg-12">
+                                <label>Nome</label>
+                                <input type="" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Senha</label>
+                                <input type="password" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Repita a senha</label>
+                                <input type="password" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Email</label>
+                                <input type="" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>CPF</label>
+                                <input type="" name="" class="form-control" id="" value="">
+                            </div>			
+                            <div class="form-group col-lg-12">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="supplier">
+                        <br/>
+                        <form action="/register/client" method="post">
+                            <div class="form-group col-lg-12">
+                                <label>Nome da Empresa</label>
+                                <input type="" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Senha</label>
+                                <input type="password" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Repita a senha</label>
+                                <input type="password" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Email</label>
+                                <input type="" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Telefone</label>
+                                <input type="" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>CNPJ</label>
+                                <input type="" name="" class="form-control" id="" value="">
+                            </div>
+
+                            <div class="form-group col-lg-6">
+                                <label>Categoria</label>
+                                <select type="" name="" class="form-control" id="" value="">
+                                    <option>Escolha uma opção</option>
+                                </select>
+                            </div>	
+                            <div class="form-group col-lg-12">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <h3 class="dark-grey">Termos e Condições</h3>
+                <p class="text-justify">
+                <h5>By clicking on "Register" you agree to The Company's' Terms and Conditions</h5>
+                </p>
+                <p class="text-justify"><h5>
+                    While rare, prices are subject to change based on exchange rate fluctuations - 
+                    should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
+                </h5></p>
+                <p class="text-justify"><h5>
+                    Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)
+                </h5></p>
+                <p class="text-justify">
+                <h5>
+                    Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
+                </h5>
+                </p>
+            </div>
+
+        </div>
+    </div>
+{% endblock container %}

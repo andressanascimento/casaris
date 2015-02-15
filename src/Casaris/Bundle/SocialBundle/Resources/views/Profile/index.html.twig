@@ -1,0 +1,184 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />
+{% endblock stylesheets %}
+{% block container %}
+    {{ parent() }}
+    <style>
+        .form-control {
+            margin-bottom: 20px;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading c-list">
+                    <span class="title"><a href="#"> <i class="fa fa-user fa-fw"></i>&nbsp; Perfil</a></span> 
+                </div>
+
+
+                <div class="tabbable-panel" style="margin: 20px; border: none; padding: 0px;">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs ">
+                            <li class="active">
+                                <a href="#profile" data-toggle="tab">
+                                    Perfil </a>
+                            </li>
+                            <li>
+                                <a href="#password" data-toggle="tab">
+                                    Senha </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <img src="//placehold.it/200x200" class="img-thumbnail"/>
+                                        <div><a href=""><i class="fa fa-pencil-square-o"></i> Alterar Imagem</a></div>
+                                    </div>
+
+
+                                    <div class="col-md-8">
+                                        <form action="" method="post">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <label for="inputNome" class="col-lg-2 control-label">Nome</label>
+                                                    <div class="col-lg-10">
+                                                        <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label">Sexo</label>
+                                                    <div class="col-lg-10">
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                                                                Feminino
+                                                            </label>
+                                                        </div>
+                                                        <div class="radio">
+                                                            <label>
+                                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                                                Masculino
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputProfession" class="col-lg-2 control-label">Profissão</label>
+                                                    <div class="col-lg-10">
+                                                        <input type="text" class="form-control" id="inputProfession" placeholder="Profissão">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputCPF" class="col-lg-2 control-label">CPF</label>
+                                                    <div class="col-lg-10">
+                                                        <input type="text" class="form-control" id="inputCPF" placeholder="CPF">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                                    <div class="col-lg-10">
+                                                        <input type="text" class="form-control" id="inputCPF" placeholder="Email">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputEmail" class="col-lg-2 control-label">Telefone</label>
+                                                    <div class="col-lg-2">
+                                                        <input type="text" class="form-control" id="inputDDD" placeholder="DDD">
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" class="form-control" id="inputNumber" placeholder="Número">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputEmail" class="col-lg-2 control-label">Celular</label>
+                                                    <div class="col-lg-2">
+                                                        <input type="text" class="form-control" id="inputDDD" placeholder="DDD">
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" class="form-control" id="inputNumber" placeholder="Número">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputEmail" class="col-lg-2 control-label">Endereço</label>
+                                                    <div class="col-lg-8">
+                                                        <input type="text" class="form-control" id="inputAddress" placeholder="Logradouro">
+                                                    </div>
+                                                    <div class="col-lg-2">
+                                                        <input type="text" class="form-control" id="inputNumberAddress" placeholder="Número">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="inputEstado" class="col-lg-2 control-label">Estado/Cidade</label>
+                                                    <div class="col-lg-5">
+                                                        <input type="text" class="form-control" id="inputState" placeholder="Estado">
+                                                    </div>
+                                                    <div class="col-lg-5">
+                                                        <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-lg-10 col-lg-offset-2">
+                                                        <button type="reset" class="btn btn-default">Cancelar</button>
+                                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="password">
+                                <div class="row">
+                                    <form action="/" method="post">
+                                        <div class="form-group">
+                                            <label for="inputOld" class="col-lg-2 control-label">Senha Antiga</label>
+                                            <div class="col-lg-10">
+                                                <input type="password" class="form-control" id="inputOld" placeholder="Senha Antiga">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputNew" class="col-lg-2 control-label">Nova senha:</label>
+                                            <div class="col-lg-10">
+                                                <input type="password" class="form-control" id="inputOld" placeholder="Nova senha">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="inputConfer" class="col-lg-2 control-label">Repita a senha:</label>
+                                            <div class="col-lg-10">
+                                                <input type="password" class="form-control" id="inputConfer" placeholder="Repita">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-lg-10 col-lg-offset-2">
+                                                <button type="reset" class="btn btn-default">Cancelar</button>
+                                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock container %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
+{% endblock javascripts %}

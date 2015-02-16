@@ -1,0 +1,88 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/social/css/friends.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/social/css/search.css') }}" rel="stylesheet" />
+{% endblock stylesheets %}
+{% block container %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading c-list">
+                    <span class="title"><a href="#"> <i class="fa fa-search fa-fw"></i>&nbsp; Busca</a></span> 
+                    <ul class="pull-right c-controls">
+                        {#                            <li><a href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="fa fa-plus fa-lg"></i></a></li>#}
+                        <li><a href="#" class="hide-search" data-command="toggle-search" ><i class="fa fa-ellipsis-v fa-lg"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="row" style="display: none;">
+                    <div class="col-xs-12">
+                        <div class="input-group c-search">
+                            <input type="text" class="form-control" id="contact-list-search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12" style="padding: 30px">
+                        <hgroup class="mb20">
+                            <h1>Resultados da busca</h1>
+                            <h2 class="lead"><strong class="text-danger">2</strong> resultados foram encontrados para: <strong class="text-danger">Lorem</strong></h2>								
+                        </hgroup>
+
+                        <section class="col-xs-12 col-sm-6 col-md-12">
+                            <article class="search-result row">
+                                <div class="col-xs-12 col-sm-12 col-md-2">
+                                    <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://api.randomuser.me/portraits/men/50.jpg" alt="Lorem ipsum" /></a>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-2">
+                                    <ul class="meta-search">
+                                        <li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
+                                        <li><i class="glyphicon glyphicon-map-marker"></i> <span>São José dos Campos</span></li>
+{#                                        <li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>#}
+                                        <li><i class="glyphicon glyphicon-tags"></i> <span>Pessoas</span></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-8">
+                                    <h3><a href="#" title="">João Benedito Santos</a></h3>
+                                    <button class="btn btn-primary"><i class="fa fa-user fa-fw"></i> &nbsp;Adicionar aos amigos</button>
+                                </div>
+                                <span class="clearfix borda"></span>
+                            </article>
+
+                            <article class="search-result row">
+                                <div class="col-xs-12 col-sm-12 col-md-2">
+                                    <a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://api.randomuser.me/portraits/men/55.jpg" alt="Lorem ipsum" /></a>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-2">
+                                    <ul class="meta-search">
+                                        <li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
+                                        <li><i class="glyphicon glyphicon-map-marker"></i> <span>Jacareí</span></li>
+{#                                        <li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>#}
+                                        <li><i class="glyphicon glyphicon-tags"></i> <span>Pessoas</span></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-8">
+                                    <h3><a href="#" title="">Gabriel Galves</a></h3>
+                                    <button class="btn btn-primary"><i class="fa fa-user fa-fw"></i> &nbsp;Adicionar aos amigos</button>
+                                </div>
+                                <span class="clearfix borda"></span>
+                            </article>
+
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock container %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
+{% endblock javascripts %}

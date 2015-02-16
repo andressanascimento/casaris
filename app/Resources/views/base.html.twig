@@ -77,6 +77,7 @@
                         <div class="row">
                             <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail picture hidden-xs" />
                             <img src="http://lorempixel.com/output/people-q-c-100-100-1.jpg" class="img-thumbnail visible-xs picture_mob" />
+                            {% block profile %}
                             <div class="header">
                                 <h1>
                                     {% block name_user %}
@@ -91,7 +92,10 @@
                                     {% endblock description %}
                                 </span>
                             </div>
+                            {% endblock profile %}
                         </div>
+                        {% block contact %}
+                        {% endblock contact %}
                     </div>   
                 </div>
             </div>

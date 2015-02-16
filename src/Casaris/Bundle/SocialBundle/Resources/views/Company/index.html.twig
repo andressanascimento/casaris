@@ -1,0 +1,265 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/social/css/timeline.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/social/css/friends.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/social/css/comments.css') }}" rel="stylesheet" />
+{% endblock stylesheets %}
+{% block btn_add %}
+{% endblock btn_add %}
+{% block profile %}
+    <div class="header" style="margin-top: 30px; padding-left: 10px">
+
+        <h1 style="padding: 10px">
+            {% block name_user %}
+                Gourmand Buffet
+            {% endblock name_user %}
+        </h1>
+        <p style="margin-top:-10px; padding-left: 10px">
+            <i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i>
+        </p>
+        <span>
+            {% block description %}
+                <small style="padding: 10px">
+                    <i class="glyphicon glyphicon-map-marker"></i> &nbsp; SP, São José dos Campos <br/>
+                </small>
+                <small style="padding: 10px">
+                    <i class="glyphicon glyphicon-tags"></i> &nbsp;Buffet <br/>
+                </small>
+                <small style="padding: 10px">
+                    <i class="fa fa-envelope-o"></i> &nbsp; contato@gourmandbuffet.com.br <br/>
+                </small>
+                <small style="padding: 10px">
+                    <i class="fa fa-phone"></i> &nbsp; (12) 39345676<br/>
+                </small>
+                <small style="padding: 10px">
+                    <i class="fa fa-globe"></i> &nbsp; www.gourmandbuffet.com.br
+                </small>
+
+            {% endblock description %}
+        </span>
+    </div>
+{% endblock profile %}
+{% block contact %}
+    <div class="row" style="margin-top: 40px; margin-left: 10px;">
+        <button class="btn btn-primary"><i class="fa fa-plus"></i> &nbsp; Favoritos</button>
+        <button class="btn btn-primary"><i class="fa fa-envelope-o"></i> &nbsp; Enviar e-mail</button>
+    </div>
+{% endblock contact %}
+{% block container %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel" style="color: black">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <h4>Comente!</h4>
+                            <div class="form-group" style="padding:14px;">
+                                <textarea class="form-control" placeholder="Update your status"></textarea>
+                            </div>
+                            <button class="btn btn-primary pull-right" type="button">Post</button><ul class="list-inline"><li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li><li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li><li><a href=""><i class="glyphicon glyphicon-map-marker"></i></a></li></ul>
+                        </form>
+                    </div>
+                </div>
+
+                {% block timeline %}
+
+                    <div class="panel" style="color: black">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="//placehold.it/75x75" class="img-responsive pull-left"> 
+                                </div>
+                                <div class="col-md-10">
+                                    <h5><a href="#">Jaqueline Knoux</a> postou uma nova imagem na galeria.</h5>
+                                    <h6><p class="text-muted">Compartilhou 17 maio de 2014</p></h6>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img src="//placehold.it/600x600" class="img-thumbnail pull-left">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="page-header">
+                                        <h4><small class="pull-right">45 comentários</small> Comentários </h4>
+                                    </div> 
+                                    <div class="comments-list">
+                                        <div class="media">
+                                            <p class="pull-right"><small>5 dias atrás</small></p>
+                                            <a class="media-left" href="#">
+                                                <img src="http://lorempixel.com/40/40/people/1/"/>
+                                            </a>
+                                            <div class="media-body">
+
+                                                <p><a href="#">Baltej Singh</a></p>
+                                                Wow! this is really great.
+
+                                                {#                                                <p><a href="#"><i style="color: #d9230f" class="fa fa-thumbs-o-up fa-lg"></i></a></p>#}
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <p class="pull-right"><small>5 dias atrás</small></p>
+                                            <a class="media-left" href="#">
+                                                <img src="http://lorempixel.com/40/40/people/2/"/>
+                                            </a>
+                                            <div class="media-body">
+
+                                                <p><a href="#">Baltej Singh</a></p>
+                                                Wow! this is really great.                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                            <hr>
+                            <form>
+                                <div class="input-group">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Add a comment..">
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            {% endblock timeline %}
+            {% block control_timeline %}
+                <div class="col-sm-1">
+                    <div class="bs-callout bs-callout-default">
+                        <p><a href="#">2014</a></p>
+                    </div>
+                    <div class="bs-callout bs-callout-default">
+                        <p><a href="#">Jan</a></p>
+                    </div>
+                    <div class="bs-callout bs-callout-danger">
+                        <p><a href="#">Fev</a></p>
+                    </div>
+                </div>
+            {% endblock control_timeline %}
+
+            <div class="col-sm-5">
+                <div class="panel panel-default widget">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-comment text-primary"></span>
+                        <a href="">Comentários</a>
+                        <span class="label label-primary pull-right c-controls">22</span>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-3">
+                                        <img src="//placehold.it/600x600" class="img-responsive pull-left"><br/>
+                                    </div>
+                                    <div class="col-xs-10 col-md-9">
+                                        <div> <span class="label label-success"><i class="fa fa-plus"></i></span>
+                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                                Google Style Login Page Design Using Bootstrap</a>
+                                            <div class="mic-info">
+                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Awesome design
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-3 text-center">
+                                        <img src="//placehold.it/600x600" class="img-responsive pull-left"><br/>
+                                    </div>
+                                    <div class="col-xs-10 col-md-9">
+                                        <div><span class="label label-primary"><i class="fa fa-minus"></i></span>
+                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                                Google Style Login Page Design Using Bootstrap</a>
+                                            <div class="mic-info">
+                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Awesome design
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-xs-2 col-md-3">
+                                        <img src="//placehold.it/600x600" class="img-responsive pull-left"><br/>
+                                    </div>
+                                    <div class="col-xs-10 col-md-9">
+                                        <div><span class="label label-success"><i class="fa fa-plus"></i></span>
+                                            <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                                Google Style Login Page Design Using Bootstrap</a>
+                                            <div class="mic-info">
+                                                By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                            </div>
+                                        </div>
+                                        <div class="comment-text">
+                                            Awesome design
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% block products %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading c-list">
+                            <span class="title"><a href="#"> <i class="fa fa-picture-o fa-fw"></i>&nbsp; Produtos/Serviços</a></span>
+                        </div>
+                        <ul class="list-group" id="contact-list" style="margin: 1px">
+                            <li class="list-group-item" >
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/cats/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/city/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/sports/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" >
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/cats/5/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/city/3/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/sports/2/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                {% endblock products %}
+            </div>
+        </div>
+    </div>
+{% endblock container %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/social/js/profile_page.js') }}"></script>
+    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
+{% endblock %}

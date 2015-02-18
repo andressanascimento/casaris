@@ -1,26 +1,26 @@
 <?php
 
-namespace Casaris\Bundle\BusinessBundle\Entity;
+namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Product
+ * Service
  *
- * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="Casaris\Bundle\BusinessBundle\Repository\ProductRepository")
+ * @ORM\Table(name="service")
+ * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\ServiceRepository")
  */
-class Product
+class Service
 {
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_product", type="integer")
+     * @ORM\Column(name="id_service", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idProduct;
+    private $idService;
 
     /**
      * @var integer
@@ -72,47 +72,47 @@ class Product
     private $idCategory;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="dimensions", type="string", length=30)
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $dimensions;
+    private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="available", type="string", length=1)
+     * @ORM\Column(name="type", type="string", length=20)
      */
-    private $available;
+    private $type;
 
     /**
-     * Set idProduct
+     * Set idService
      *
-     * @param integer $idProduct
-     * @return Product
+     * @param integer $idService
+     * @return Service
      */
-    public function setIdProduct($idProduct)
+    public function setIdService($idService)
     {
-        $this->idProduct = $idProduct;
+        $this->idService = $idService;
 
         return $this;
     }
 
     /**
-     * Get idProduct
+     * Get idService
      *
      * @return integer 
      */
-    public function getIdProduct()
+    public function getIdService()
     {
-        return $this->idProduct;
+        return $this->idService;
     }
 
     /**
      * Set idCompany
      *
      * @param integer $idCompany
-     * @return Product
+     * @return Service
      */
     public function setIdCompany($idCompany)
     {
@@ -135,7 +135,7 @@ class Product
      * Set thumbnail
      *
      * @param string $thumbnail
-     * @return Product
+     * @return Service
      */
     public function setThumbnail($thumbnail)
     {
@@ -158,7 +158,7 @@ class Product
      * Set photo
      *
      * @param string $photo
-     * @return Product
+     * @return Service
      */
     public function setPhoto($photo)
     {
@@ -181,7 +181,7 @@ class Product
      * Set name
      *
      * @param string $name
-     * @return Product
+     * @return Service
      */
     public function setName($name)
     {
@@ -204,7 +204,7 @@ class Product
      * Set description
      *
      * @param string $description
-     * @return Product
+     * @return Service
      */
     public function setDescription($description)
     {
@@ -227,7 +227,7 @@ class Product
      * Set price
      *
      * @param string $price
-     * @return Product
+     * @return Service
      */
     public function setPrice($price)
     {
@@ -250,7 +250,7 @@ class Product
      * Set idCategory
      *
      * @param integer $idCategory
-     * @return Product
+     * @return Service
      */
     public function setIdCategory($idCategory)
     {
@@ -270,48 +270,48 @@ class Product
     }
 
     /**
-     * Set dimensions
+     * Set date
      *
-     * @param string $dimensions
-     * @return Product
+     * @param \DateTime $date
+     * @return Service
      */
-    public function setDimensions($dimensions)
+    public function setDate($date)
     {
-        $this->dimensions = $dimensions;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get dimensions
+     * Get date
      *
-     * @return string 
+     * @return \DateTime 
      */
-    public function getDimensions()
+    public function getDate()
     {
-        return $this->dimensions;
+        return $this->date;
     }
 
     /**
-     * Set available
+     * Set type
      *
-     * @param string $available
-     * @return Product
+     * @param string $type
+     * @return Service
      */
-    public function setAvailable($available)
+    public function setType($type)
     {
-        $this->available = $available;
+        $this->type = $type;
 
         return $this;
     }
 
     /**
-     * Get available
+     * Get type
      *
      * @return string 
      */
-    public function getAvailable()
+    public function getType()
     {
-        return $this->available;
+        return $this->type;
     }
 }

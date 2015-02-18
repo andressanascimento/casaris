@@ -1,6 +1,6 @@
 <?php
 
-namespace Casaris\Bundle\BusinessBundle\Entity;
+namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CompanyComment
  *
  * @ORM\Table(name="company_comment")
- * @ORM\Entity(repositoryClass="Casaris\Bundle\BusinessBundle\Repository\CompanyCommentRepository")
+ * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\CompanyCommentRepository")
  */
 class CompanyComment
 {

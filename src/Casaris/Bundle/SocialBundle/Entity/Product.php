@@ -1,26 +1,26 @@
 <?php
 
-namespace Casaris\Bundle\BusinessBundle\Entity;
+namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Service
+ * Product
  *
- * @ORM\Table(name="service")
- * @ORM\Entity(repositoryClass="Casaris\Bundle\BusinessBundle\Repository\ServiceRepository")
+ * @ORM\Table(name="product")
+ * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\ProductRepository")
  */
-class Service
+class Product
 {
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_service", type="integer")
+     * @ORM\Column(name="id_product", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idService;
+    private $idProduct;
 
     /**
      * @var integer
@@ -72,47 +72,47 @@ class Service
     private $idCategory;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="dimensions", type="string", length=30)
      */
-    private $date;
+    private $dimensions;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=20)
+     * @ORM\Column(name="available", type="string", length=1)
      */
-    private $type;
+    private $available;
 
     /**
-     * Set idService
+     * Set idProduct
      *
-     * @param integer $idService
-     * @return Service
+     * @param integer $idProduct
+     * @return Product
      */
-    public function setIdService($idService)
+    public function setIdProduct($idProduct)
     {
-        $this->idService = $idService;
+        $this->idProduct = $idProduct;
 
         return $this;
     }
 
     /**
-     * Get idService
+     * Get idProduct
      *
      * @return integer 
      */
-    public function getIdService()
+    public function getIdProduct()
     {
-        return $this->idService;
+        return $this->idProduct;
     }
 
     /**
      * Set idCompany
      *
      * @param integer $idCompany
-     * @return Service
+     * @return Product
      */
     public function setIdCompany($idCompany)
     {
@@ -135,7 +135,7 @@ class Service
      * Set thumbnail
      *
      * @param string $thumbnail
-     * @return Service
+     * @return Product
      */
     public function setThumbnail($thumbnail)
     {
@@ -158,7 +158,7 @@ class Service
      * Set photo
      *
      * @param string $photo
-     * @return Service
+     * @return Product
      */
     public function setPhoto($photo)
     {
@@ -181,7 +181,7 @@ class Service
      * Set name
      *
      * @param string $name
-     * @return Service
+     * @return Product
      */
     public function setName($name)
     {
@@ -204,7 +204,7 @@ class Service
      * Set description
      *
      * @param string $description
-     * @return Service
+     * @return Product
      */
     public function setDescription($description)
     {
@@ -227,7 +227,7 @@ class Service
      * Set price
      *
      * @param string $price
-     * @return Service
+     * @return Product
      */
     public function setPrice($price)
     {
@@ -250,7 +250,7 @@ class Service
      * Set idCategory
      *
      * @param integer $idCategory
-     * @return Service
+     * @return Product
      */
     public function setIdCategory($idCategory)
     {
@@ -270,48 +270,48 @@ class Service
     }
 
     /**
-     * Set date
+     * Set dimensions
      *
-     * @param \DateTime $date
-     * @return Service
+     * @param string $dimensions
+     * @return Product
      */
-    public function setDate($date)
+    public function setDimensions($dimensions)
     {
-        $this->date = $date;
+        $this->dimensions = $dimensions;
 
         return $this;
     }
 
     /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Service
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
+     * Get dimensions
      *
      * @return string 
      */
-    public function getType()
+    public function getDimensions()
     {
-        return $this->type;
+        return $this->dimensions;
+    }
+
+    /**
+     * Set available
+     *
+     * @param string $available
+     * @return Product
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return string 
+     */
+    public function getAvailable()
+    {
+        return $this->available;
     }
 }

@@ -1,14 +1,17 @@
 <?php
 
-namespace Casaris\Bundle\BusinessBundle\Entity;
+namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Casaris\Bundle\SocialBundle\Entity\User;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * Company
  *
  * @ORM\Table(name="company")
- * @ORM\Entity(repositoryClass="Casaris\Bundle\BusinessBundle\Repository\CompanyRepository")
+ * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\CompanyRepository")
  */
 class Company
 {
@@ -67,37 +70,10 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=60)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="score_total", type="decimal")
      */
     private $scoreTotal;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="store_time", type="integer")
-     */
-    private $storeTime;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="score_star", type="integer")
-     */
-    private $scoreStar;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="n_deals", type="integer")
-     */
-    private $nDeals;
 
     /**
      * @var \DateTime
@@ -109,6 +85,11 @@ class Company
     
     private $comments;
 
+    /**
+     * @ManyToOne(targetEntity="User", inversedBy="company")
+     * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false )
+     **/
+    private $user;
 
     /**
      * Get id

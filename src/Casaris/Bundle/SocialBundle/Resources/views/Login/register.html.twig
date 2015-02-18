@@ -1,92 +1,30 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% extends '::login.base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />
+{% endblock %}
 {% block container %}
     <div class="container">
         <div class="jumbotron row" style="background: #fff">
             <div class="col-md-6">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#client" data-toggle="tab">Cliente</a></li>
-                    <li><a href="#supplier" data-toggle="tab">Empresa</a></li>
-                </ul>
-                <div id="register" class="tab-content">
-                    <div class="tab-pane fade active in" id="client">
-                        <br/>
-                        {#                                    <h4 class="dark-grey">Clientes</h4>#}
-                        <form action="/register/client" method="post">
-                            <div class="form-group col-lg-12">
-                                <label>Nome</label>
-                                <input type="" name="" class="form-control" id="" value="">
-                            </div>
+                <div class="tabbable-panel" style="border: none; padding: 0px;">
+                    <div class="tabbable-line">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#client" data-toggle="tab">Registre-se</a></li>
+{#                            <li><a href="#supplier" data-toggle="tab">Empresa</a></li>#}
+                        </ul>
+                        <div id="register" class="tab-content">
+                            <div class="tab-pane fade active in" id="client">
 
-                            <div class="form-group col-lg-6">
-                                <label>Senha</label>
-                                <input type="password" name="" class="form-control" id="" value="">
-                            </div>
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                {{ form_end(form) }}
 
-                            <div class="form-group col-lg-6">
-                                <label>Repita a senha</label>
-                                <input type="password" name="" class="form-control" id="" value="">
                             </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>Email</label>
-                                <input type="" name="" class="form-control" id="" value="">
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>CPF</label>
-                                <input type="" name="" class="form-control" id="" value="">
-                            </div>			
-                            <div class="form-group col-lg-12">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tab-pane fade" id="supplier">
-                        <br/>
-                        <form action="/register/client" method="post">
-                            <div class="form-group col-lg-12">
-                                <label>Nome da Empresa</label>
-                                <input type="" name="" class="form-control" id="" value="">
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>Senha</label>
-                                <input type="password" name="" class="form-control" id="" value="">
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>Repita a senha</label>
-                                <input type="password" name="" class="form-control" id="" value="">
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>Email</label>
-                                <input type="" name="" class="form-control" id="" value="">
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>Telefone</label>
-                                <input type="" name="" class="form-control" id="" value="">
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>CNPJ</label>
-                                <input type="" name="" class="form-control" id="" value="">
-                            </div>
-
-                            <div class="form-group col-lg-6">
-                                <label>Categoria</label>
-                                <select type="" name="" class="form-control" id="" value="">
-                                    <option>Escolha uma opção</option>
-                                </select>
-                            </div>	
-                            <div class="form-group col-lg-12">
-                                <button type="submit" class="btn btn-primary">Register</button>
-                            </div>
-                        </form>
+                        </div>    
                     </div>
                 </div>
-
             </div>
             <div class="col-lg-6">
                 <h3 class="dark-grey">Termos e Condições</h3>

@@ -9,14 +9,14 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="well">
-                            <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+                            <form action="{{ path('login_check') }}" method="post">
                                 <div class="form-group">
                                     <label for="username" class="control-label">Login</label>
                                     <div class="input-group input-group-sm">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-envelope"></span>
                                         </span>
-                                        <input class="form-control" type="text" placeholder="Email address">
+                                        <input class="form-control" name="_username" type="text" placeholder="Email address">
                                     </div>
                                     <span class="help-block"></span>
                                 </div>
@@ -26,7 +26,7 @@
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-lock"></span>
                                         </span>
-                                        <input class="form-control" type="password" placeholder="Password">
+                                        <input name="_password" class="form-control" type="password" placeholder="Password">
                                     </div> 
                                     <span class="help-block"></span>
                                 </div>

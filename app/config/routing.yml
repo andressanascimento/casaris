@@ -3,14 +3,7 @@ core:
     type:     annotation
     prefix:   /
 
-business:
-    resource: "@BusinessBundle/Controller/"
-    type:     annotation
-    prefix:   /bussiness
-
 social:
     resource: "@SocialBundle/Controller/"
     type:     annotation
     prefix:   /
-
-    

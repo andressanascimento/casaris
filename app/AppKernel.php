@@ -17,7 +17,6 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Casaris\Bundle\SocialBundle\SocialBundle(),
-            new Casaris\Bundle\BusinessBundle\BusinessBundle(),
             new Casaris\Bundle\CoreBundle\CoreBundle(),
         );
 

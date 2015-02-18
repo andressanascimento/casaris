@@ -1,0 +1,2 @@
+not_blank: O campo não pode estar vazio
+unique_email: Esse e-mail já foi cadastrado

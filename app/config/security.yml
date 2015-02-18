@@ -11,8 +11,10 @@ security:
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
 
     providers:
-        administrators:
-            entity: { class: SocialBundle:User }
+        main:
+            entity:
+                class: Casaris\Bundle\SocialBundle\Entity\User
+                property: email
                 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
@@ -26,7 +28,6 @@ security:
                 check_path:  /login_check
                 username_parameter:       email
                 password_parameter:       password
-                default_target_path:            /
                 intention:            authenticate
             logout:
                 path:  /logout

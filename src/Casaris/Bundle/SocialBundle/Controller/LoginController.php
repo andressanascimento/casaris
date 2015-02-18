@@ -20,18 +20,18 @@ class LoginController extends Controller {
      * @Template()
      */
     public function loginAction(Request $request) {
-        $session = $request->getSession();
-        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-        } elseif (null !== $session && $session->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
-        } else {
-            $error = '';
-        }
-        $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
-        var_dump($error);
-        return array('last_username' => $lastUsername, 'error' => $error);
+//        $session = $request->getSession();
+//        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+//            $error = $request->attributes->get(SecurityContextInterface::AUTHENTICATION_ERROR);
+//        } elseif (null !== $session && $session->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
+//            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
+//            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
+//        } else {
+//            $error = '';
+//        }
+//        $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
+//        var_dump($error);
+//        return array('last_username' => $lastUsername, 'error' => $error);
     }
 
     /**
@@ -41,7 +41,6 @@ class LoginController extends Controller {
     public function loginCheck(Request $request) {
         $em = $this->getDoctrine();
         $repo = $em->getRepository("SocialBundle:User"); //Entity Repository
-        var_dump($request->get('_username')); die();
         $user = $repo->loadUserByUsername($request->get('_username'));
         if (!$user) {
             throw new UsernameNotFoundException("User not found");

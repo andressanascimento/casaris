@@ -109,7 +109,7 @@
                 {% block friends %}
                     <div class="panel panel-default">
                         <div class="panel-heading c-list">
-                            <span class="title"><a href="#"> <i class="fa fa-users fa-fw"></i>&nbsp; Amigos</a></span> 
+                            <span class="title"><a href="{{ path('_friends') }}"> <i class="fa fa-users fa-fw"></i>&nbsp; Amigos</a></span> 
                             <ul class="pull-right c-controls">
                                 {#                            <li><a href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="fa fa-plus fa-lg"></i></a></li>#}
                                 <li><a href="#" class="hide-search" data-command="toggle-search" ><i class="fa fa-ellipsis-v fa-lg"></i></a></li>
@@ -201,7 +201,7 @@
                 {% block gallery %}
                     <div class="panel panel-default">
                         <div class="panel-heading c-list">
-                            <span class="title"><a href="#"> <i class="fa fa-picture-o fa-fw"></i>&nbsp; Galeria</a></span>
+                            <span class="title"><a href="{{ path('_gallery') }}"> <i class="fa fa-picture-o fa-fw"></i>&nbsp; Galeria</a></span>
                         </div>
                         <ul class="list-group" id="contact-list" style="margin: 1px">
                             <li class="list-group-item" >

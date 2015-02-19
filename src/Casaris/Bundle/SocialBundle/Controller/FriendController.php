@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FriendController extends Controller {
     /**
-     * @Route("/friends")
+     * @Route("/friends", name="_friends")
      * @Template()
      */
     public function indexAction()

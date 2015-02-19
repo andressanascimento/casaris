@@ -7,7 +7,7 @@ security:
             cost: 12
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_COMPANY]
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
 
     providers:
@@ -18,41 +18,43 @@ security:
                 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
+    # the main part of the security, where you can set up firewalls
+    # for specific sections of your app
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
-        secured_area:
-            pattern: ^/
-            anonymous: ~
-            form_login:
-                login_path:  /login
-                check_path:  /login_check
-                username_parameter:       email
-                password_parameter:       password
-                intention:            authenticate
-            logout:
-                path:  /logout
-                target: /
-
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        # the login page has to be accessible for everybody
+        register:
+            pattern:  ^/register$
+            security: false
+        login:
+            pattern:  ^/login$
             security: false
 
-        default:
-            anonymous: ~
-            http_basic: ~
-            pattern: ^/
+        # secures part of the application
+        demo_secured_area:
+            pattern:    ^/
+            # it's important to notice that in this case _demo_security_check and _demo_login
+            # are route names and that they are specified in the AcmeDemoBundle
             form_login:
-                login_path: /login
-                check_path: /login_check
-
-        login_firewall:
-          pattern:    ^/login$
-          anonymous:  ~
+                check_path: _login_check
+                login_path: _login_route
+                username_parameter: _username
+                password_parameter: _password
+                failure_path:    _login_route
+            logout:
+                path:   _logout
+                target: _index
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
 
     # with these settings you can restrict or allow access for different parts
     # of your application based on roles, ip, host or methods
     # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/, roles: ROLE_ADMIN }
+    - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/, roles: [ROLE_USER, ROLE_COMPANY]}

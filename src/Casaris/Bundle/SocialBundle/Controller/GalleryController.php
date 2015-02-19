@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class GalleryController extends Controller
 {
     /**
-     * @Route("/gallery")
+     * @Route("/gallery", name="_gallery")
      * @Template()
      */
     public function indexAction()

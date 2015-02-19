@@ -62,7 +62,7 @@ class User implements UserInterface, \Serializable {
      */
     public function getUsername()
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
@@ -88,7 +88,13 @@ class User implements UserInterface, \Serializable {
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        $role = array('ROLE_USER');
+        if ($this->getType() == 'client') {
+            $role = array('ROLE_USER');
+        } else{
+             $role = array('ROLE_COMPANY');
+        }
+        return $role;
     }
 
     /**
@@ -105,7 +111,7 @@ class User implements UserInterface, \Serializable {
     {
         return serialize(array(
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt,
@@ -119,7 +125,7 @@ class User implements UserInterface, \Serializable {
     {
         list (
             $this->id,
-            $this->username,
+            $this->email,
             $this->password,
             // see section on salt below
             // $this->salt

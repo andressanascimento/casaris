@@ -2,61 +2,52 @@
 
 namespace Casaris\Bundle\SocialBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\SecurityContextInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Casaris\Bundle\SocialBundle\Entity\User;
 use Casaris\Bundle\SocialBundle\Form\UserType;
 
 class LoginController extends Controller {
 
     /**
-     * @Route("/login", name="login_route")
+     * @Route("/login", name="_login_route")
      * @Template()
      */
     public function loginAction(Request $request) {
-//        $session = $request->getSession();
-//        if ($request->attributes->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-//            $error = $request->attributes->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-//        } elseif (null !== $session && $session->has(SecurityContextInterface::AUTHENTICATION_ERROR)) {
-//            $error = $session->get(SecurityContextInterface::AUTHENTICATION_ERROR);
-//            $session->remove(SecurityContextInterface::AUTHENTICATION_ERROR);
-//        } else {
-//            $error = '';
-//        }
-//        $lastUsername = (null === $session) ? '' : $session->get(SecurityContextInterface::LAST_USERNAME);
-//        var_dump($error);
-//        return array('last_username' => $lastUsername, 'error' => $error);
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {
+            $error = $request->getSession()->get(SecurityContext::AUTHENTICATION_ERROR);
+        }
+
+        return array(
+            'last_username' => $request->getSession()->get(SecurityContext::LAST_USERNAME),
+            'error' => $error,
+        );
     }
 
     /**
-     * @Route("/login_check", name="login_check")
+     * @Route("/login_check", name="_login_check")
      * @Template()
      */
     public function loginCheck(Request $request) {
-        $em = $this->getDoctrine();
-        $repo = $em->getRepository("SocialBundle:User"); //Entity Repository
-        $user = $repo->loadUserByUsername($request->get('_username'));
-        if (!$user) {
-            throw new UsernameNotFoundException("User not found");
-        } else {
-            
-            $token = new UsernamePasswordToken($user, $request->get('_password') , "administrators", $user->getRoles());
-            $this->get("security.context")->setToken($token); //now the user is logged in
-            //now dispatch the login event
-            $request = $this->get("request");
-            $event = new InteractiveLoginEvent($request, $token);
-            $this->get("event_dispatcher")->dispatch("security.interactive_login", $event);
-        }
+        // The security layer will intercept this request
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/logout", name="_logout")
+     */
+    public function logoutAction()
+    {
+        // The security layer will intercept this request
+    }
+    
+    /**
+     * @Route("/register", name="_register")
      * @Template()
      */
     public function registerAction(Request $request) {
@@ -64,7 +55,7 @@ class LoginController extends Controller {
 
         $user = new User();
         $form = $this->createForm(new UserType(), $user, array(
-            'action' => $this->generateUrl('register'),
+            'action' => $this->generateUrl('_register'),
             'method' => 'post'));
 
         $form->handleRequest($request);
@@ -80,7 +71,7 @@ class LoginController extends Controller {
                 $em->persist($user);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('login_route'));
+                return $this->redirect($this->generateUrl('_login_route'));
             }
         }
 

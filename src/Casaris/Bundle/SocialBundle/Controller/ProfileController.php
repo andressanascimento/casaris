@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class ProfileController extends Controller
 {
     /**
-     * @Route("/profile")
+     * @Route("/profile", name="_profile")
      * @Template()
      */
     public function indexAction()

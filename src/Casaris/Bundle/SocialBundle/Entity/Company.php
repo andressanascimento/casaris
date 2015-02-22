@@ -5,7 +5,9 @@ namespace Casaris\Bundle\SocialBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Casaris\Bundle\SocialBundle\Entity\User;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
  * Company
@@ -24,13 +26,6 @@ class Company
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $idCompany;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=100)
-     */
-    private $name;
 
     /**
      * @var string
@@ -82,7 +77,9 @@ class Company
      */
     private $dateOpening;
     
-    
+     /**
+     * @OneToMany(targetEntity="CompanyComment", mappedBy="company")
+     **/
     private $comments;
 
     /**
@@ -90,6 +87,16 @@ class Company
      * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false )
      **/
     private $user;
+    
+    /**
+     * @ManyToMany(targetEntity="Client", mappedBy="companies")
+     **/
+    private $followers;
+    
+    public function __construct()
+    {
+        $this->followers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id

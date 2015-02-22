@@ -26,7 +26,7 @@ class IndexController extends Controller {
 
     /**
      * @Route("/newComment", name="_new_comment")
-     * @Template()
+     * @Template("CoreBundle:Blank:blank.html.twig")
      */
     public function newCommentAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
@@ -41,9 +41,8 @@ class IndexController extends Controller {
             if ($form->isValid()) {
                 $post->setIdUser($this->get('security.context')->getToken()->getUser()->getId());
                 $post->setDate(new \DateTime("now"));
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($post);
-                $em->flush();
+                
+                $this->getDoctrine()->getRepository('SocialBundle:Post')->insert($post);
                 
                 return $this->redirect($this->generateUrl('_index'));
             }

@@ -3,6 +3,8 @@
 namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -28,7 +30,14 @@ class User implements UserInterface, \Serializable {
     /**
      * @var string
      * @Assert\NotBlank(message = "not_blank")
-     *  @Assert\Email(message = "O e-mail '{{ value }}' não é valido")
+     * @ORM\Column(type="string", length=80)
+     */
+    private $name;
+
+    /**
+     * @var string
+     * @Assert\NotBlank(message = "not_blank")
+     * @Assert\Email(message = "O e-mail '{{ value }}' não é valido")
      * @ORM\Column(type="string", length=60, unique=true)
      */
     private $email;
@@ -57,19 +66,31 @@ class User implements UserInterface, \Serializable {
      * */
     private $company;
     
+    /**
+     * @ManyToOne(targetEntity="Document")
+     * @JoinColumn(name="photo_id", referencedColumnName="id"))
+     * */
+    private $photo;
+    
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
      /**
      * @inheritDoc
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->email;
     }
 
     /**
      * @inheritDoc
      */
-    public function getSalt()
-    {
+    public function getSalt() {
         // you *may* need a real salt depending on your encoder
         // see section on salt below
         return null;
@@ -78,21 +99,19 @@ class User implements UserInterface, \Serializable {
     /**
      * @inheritDoc
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
     /**
      * @inheritDoc
      */
-    public function getRoles()
-    {
+    public function getRoles() {
         $role = array('ROLE_USER');
         if ($this->getType() == 'client') {
             $role = array('ROLE_USER');
-        } else{
-             $role = array('ROLE_COMPANY');
+        } else {
+            $role = array('ROLE_COMPANY');
         }
         return $role;
     }
@@ -100,38 +119,36 @@ class User implements UserInterface, \Serializable {
     /**
      * @inheritDoc
      */
-    public function eraseCredentials()
-    {
+    public function eraseCredentials() {
+        
     }
 
     /**
      * @see \Serializable::serialize()
      */
-    public function serialize()
-    {
+    public function serialize() {
         return serialize(array(
             $this->id,
             $this->email,
             $this->password,
-            // see section on salt below
-            // $this->salt,
+                // see section on salt below
+                // $this->salt,
         ));
     }
 
     /**
      * @see \Serializable::unserialize()
      */
-    public function unserialize($serialized)
-    {
+    public function unserialize($serialized) {
         list (
-            $this->id,
-            $this->email,
-            $this->password,
-            // see section on salt below
-            // $this->salt
-        ) = unserialize($serialized);
+                $this->id,
+                $this->email,
+                $this->password,
+                // see section on salt below
+                // $this->salt
+                ) = unserialize($serialized);
     }
-    
+
     public function setPassword($password) {
         $this->password = $password;
     }

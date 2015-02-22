@@ -3,6 +3,8 @@
 namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * CompanyComment
@@ -14,19 +16,17 @@ class CompanyComment
 {
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_company", type="integer")
      * @ORM\Id
-     */
-    private $idCompany;
+     * @ManyToOne(targetEntity="Company", inversedBy="comments")
+     * @JoinColumn(name="company_id", referencedColumnName="id_company")
+     **/
+    private $company;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_user", type="integer")
      * @ORM\Id
-     */
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     **/
     private $idUser;
 
     /**

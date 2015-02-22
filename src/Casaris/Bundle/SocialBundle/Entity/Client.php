@@ -4,7 +4,9 @@ namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
 
 /**
  * User
@@ -22,12 +24,6 @@ class Client
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=80)
-     */
-    private $name;
 
     /**
      * @var datetime
@@ -71,14 +67,39 @@ class Client
      */
     private $phrase;
     
+    
+    /**
+     * @ManyToMany(targetEntity="Client")
+     * @JoinTable(name="friends",
+     *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
     private $friends;
-    private $company;
+    
+    
+    /**
+     * @ManyToMany(targetEntity="Company")
+     * @JoinTable(name="favorite_companies",
+     *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="company_id", referencedColumnName="id_company", unique=true)}
+     *      )
+     **/
+    private $companies;
 
     /**
      * @ManyToOne(targetEntity="User", inversedBy="client")
      * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      **/
     private $user;
+    
+    public function __construct()
+    {
+        $this->friends = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->companies = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    
 
     public function getBirthday() {
         return $this->birthday;

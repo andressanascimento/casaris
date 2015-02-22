@@ -31,13 +31,6 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=80)
-     */
-    private $title;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="content", type="text")
      */
     private $content;
@@ -47,7 +40,7 @@ class Post
      *
      * @ORM\Column(name="date", type="datetime")
      */
-    private $date;
+    private $date; 
 
     /**
      * Set idPost
@@ -95,28 +88,6 @@ class Post
         return $this->idUser;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     * @return Post
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
 
     /**
      * Set content
@@ -150,7 +121,6 @@ class Post
     public function setDate($date)
     {
         $this->date = $date;
-
         return $this;
     }
 

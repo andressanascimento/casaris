@@ -70,6 +70,7 @@ class Client
      * @ORM\Column(type="string", nullable=true, length=150)
      */
     private $phrase;
+    
     private $friends;
     private $company;
 

@@ -2,7 +2,6 @@
 
 namespace Casaris\Bundle\SocialBundle\Entity;
 
-use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
@@ -57,30 +56,18 @@ class User implements UserInterface, \Serializable {
     private $type;
 
     /**
-     * @OneToMany(targetEntity="Client", mappedBy="user")
-     * */
-    private $client;
-
-    /**
-     * @OneToMany(targetEntity="Company", mappedBy="user")
-     * */
-    private $company;
-    
-    /**
      * @ManyToOne(targetEntity="Document")
      * @JoinColumn(name="photo_id", referencedColumnName="id"))
      * */
     private $photo;
-    
-    public function getName() {
-        return $this->name;
-    }
 
-    public function setName($name) {
-        $this->name = $name;
-    }
+    /**
+     * @ManyToOne(targetEntity="Document")
+     * @JoinColumn(name="background_photo_id", referencedColumnName="id"))
+     * */
+    private $background;
 
-     /**
+    /**
      * @inheritDoc
      */
     public function getUsername() {
@@ -101,6 +88,10 @@ class User implements UserInterface, \Serializable {
      */
     public function getPassword() {
         return $this->password;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
     }
 
     /**
@@ -149,40 +140,52 @@ class User implements UserInterface, \Serializable {
                 ) = unserialize($serialized);
     }
 
-    public function setPassword($password) {
-        $this->password = $password;
-    }
-
     public function getId() {
         return $this->id;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getType() {
-        return $this->type;
-    }
-
-    public function getClient() {
-        return $this->client;
-    }
-
-    public function getCompany() {
-        return $this->company;
     }
 
     public function setId($id) {
         $this->id = $id;
     }
 
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
     public function setEmail($email) {
         $this->email = $email;
     }
 
+    public function getType() {
+        return $this->type;
+    }
+
     public function setType($type) {
         $this->type = $type;
+    }
+
+    public function getPhoto() {
+        return $this->photo;
+    }
+
+    public function getBackground() {
+        return $this->background;
+    }
+
+    public function setPhoto($photo) {
+        $this->photo = $photo;
+    }
+
+    public function setBackground_photo($background_photo) {
+        $this->background_photo = $background_photo;
     }
 
 }

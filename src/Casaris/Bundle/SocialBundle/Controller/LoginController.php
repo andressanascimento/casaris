@@ -67,9 +67,7 @@ class LoginController extends Controller {
                 $encoder = $factory->getEncoder($user);
                 $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());
                 $user->setPassword($password);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
+                $this->getDoctrine()->getRepository('SocialBundle:User')->insert($user);
 
                 return $this->redirect($this->generateUrl('_login_route'));
             }

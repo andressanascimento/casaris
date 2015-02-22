@@ -11,13 +11,15 @@ class GenericDAO extends EntityRepository {
         $em = $this->getEntityManager();
         $em->persist($object);
         $em->flush();
+        
+        return $object;
     }
     
     public function update($object) 
     {
         $em = $this->getEntityManager();
-        $em->merge($object);
-        $em->flush();        
+        $em->persist($object);
+        $em->flush();      
     }
     
     public function delete($object) {

@@ -43,9 +43,10 @@ background-color: #F1F1F1;
 
 .bg_blur
 {
-    background-image:url('http://intrigue.ie/media/2014/10/wedding.jpg');
+    /*background-image:url('http://intrigue.ie/media/2014/10/wedding.jpg');*/
     height: 300px;
     background-size: cover;
+    margin-left: -15px;
 }
 
 .follow_btn {

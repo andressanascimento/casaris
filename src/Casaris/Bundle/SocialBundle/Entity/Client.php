@@ -7,15 +7,15 @@ use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
- * @ORM\Table(name="client")
+ * @UniqueEntity("user")
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\ClientRepository")
  */
-class Client 
-{
+class Client {
 
     /**
      * @var integer
@@ -33,13 +33,13 @@ class Client
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=11)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $cpf;
 
     /**
      * @var integer
-     * @ORM\Column(type="integer", name="id_address", nullable=true,)
+     * @ORM\Column(type="integer", name="id_address", nullable=true)
      */
     private $address;
 
@@ -57,7 +57,7 @@ class Client
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=1)
+     * @ORM\Column(type="string", nullable=true, length=1)
      */
     private $gender;
 
@@ -66,40 +66,39 @@ class Client
      * @ORM\Column(type="string", nullable=true, length=150)
      */
     private $phrase;
-    
-    
+
     /**
      * @ManyToMany(targetEntity="Client")
      * @JoinTable(name="friends",
      *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id", unique=true)}
      *      )
-     **/
+     * */
     private $friends;
-    
-    
+
     /**
      * @ManyToMany(targetEntity="Company")
      * @JoinTable(name="favorite_companies",
      *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="company_id", referencedColumnName="id_company", unique=true)}
      *      )
-     **/
+     * */
     private $companies;
 
     /**
      * @ManyToOne(targetEntity="User", inversedBy="client")
      * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
-     **/
+     * */
     private $user;
-    
-    public function __construct()
-    {
+
+    public function __construct() {
         $this->friends = new \Doctrine\Common\Collections\ArrayCollection();
         $this->companies = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
-    
+
+    public function getId() {
+        return $this->id;
+    }
 
     public function getBirthday() {
         return $this->birthday;
@@ -132,6 +131,22 @@ class Client
     public function getPhrase() {
         return $this->phrase;
     }
+    
+    public function getFriends() {
+        return $this->friends;
+    }
+
+    public function getCompanies() {
+        return $this->companies;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
 
     public function setBirthday(datetime $birthday) {
         $this->birthday = $birthday;
@@ -163,6 +178,18 @@ class Client
 
     public function setPhrase($phrase) {
         $this->phrase = $phrase;
+    }
+
+    public function setFriends($friends) {
+        $this->friends = $friends;
+    }
+
+    public function setCompanies($companies) {
+        $this->companies = $companies;
+    }
+
+    public function setUser($user) {
+        $this->user = $user;
     }
 
 }

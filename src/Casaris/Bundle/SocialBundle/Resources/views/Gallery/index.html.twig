@@ -2,6 +2,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('bundles/social/css/gallery.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/social/css/jasny-bootstrap.css') }}" rel="stylesheet" />
 {% endblock stylesheets %}
 {% block container %}
     {{ parent() }}
@@ -12,12 +13,7 @@
                     <div class="row">
                         <div class="col-md-8 modal-image">
                             <img id="image_central" class="img-responsive " src="http://www.pimart.eu/wp-content/uploads/2014/04/martin-schoeller-george-clooney-portrait-up-close-and-personal.jpeg">
-                            {#  <img class="img-responsive hidden" src="http://upload.wikimedia.org/wikipedia/commons/1/1a/Bachalpseeflowers.jpg" />
-                              <img class="img-responsive hidden" src="http://www.netflights.com/media/216535/hong%20kong_03_681x298.jpg" />
-
-                              <a href="" class="img-modal-btn left"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                              <a href="" class="img-modal-btn right"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                         #} </div>
+                        </div>
                         <div class="col-md-4 modal-meta">
                             <div class="modal-meta-top">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -75,21 +71,21 @@
                 </div>
                 <div class="modal-body">
                     <br/>
-                    <form method="post" action="/">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-file-image-o"></i></span>
-                                <input type="text" class="form-control">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-info"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                            <br/>
-                            <div class="btn-group">
-                                <button class="btn btn-info" type="button">Salvar</button>
-                            </div>
+      {#              <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput">
+                            <i class="glyphicon glyphicon-file fileinput-exists"></i> 
+                            <span class="fileinput-filename"></span>
                         </div>
-                    </form>
+                        <span class="input-group-addon btn btn-primary btn-file">
+                            <span class="fileinput-new" style="color:white">Selecione o arquivo</span>
+                            <span class="fileinput-exists" style="color:white">Alterar</span>#}
+                            {{form(form_new_image)}}
+
+{#                        </span>
+                        <a href="#" class="input-group-addon btn btn-primary fileinput-exists" style="color:white" data-dismiss="fileinput">Remover</a>
+                    </div>#}
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                    <br/><br/>
                 </div>
             </div>
         </div>
@@ -105,7 +101,7 @@
                     <br/>
                     <p>Deseja deletar a imagem?</p>
                     <br/>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary">Sim</button>
@@ -189,4 +185,5 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('bundles/social/js/gallery.js') }}"></script>
+    <script src="{{ asset('bundles/social/js/jasny-bootstrap.js') }}"></script>
 {% endblock javascripts %}

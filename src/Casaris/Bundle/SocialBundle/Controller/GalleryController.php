@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Casaris\Bundle\SocialBundle\Entity\Gallery;
 use Casaris\Bundle\SocialBundle\Form\DocumentType;
 use Casaris\Bundle\SocialBundle\Entity\Document;
+use Symfony\Component\HttpFoundation\Request;
 
 class GalleryController extends Controller {
 
@@ -37,14 +38,15 @@ class GalleryController extends Controller {
 
         if ($form->isValid()) {
             $user = $this->get('security.context')->getToken()->getUser();
-            $client = $user_information = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
+            $client = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
             $document = $this->getDoctrine()->getRepository('SocialBundle:Document')->insert($document);
+            $gallery->setDate(new \Datetime("now"));
             $gallery->setDocument($document);
             $gallery->setClient($client);
             $this->getDoctrine()->getRepository('SocialBundle:Gallery')->insert($gallery);
         }
 
-        return array();
+        return $this->redirect($this->generateUrl('_gallery'));
     }
 
 }

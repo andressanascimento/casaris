@@ -32,7 +32,7 @@ class Gallery {
     /**
      *
      * @var date
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(type="datetime")
      */
     private $date;
     
@@ -56,7 +56,7 @@ class Gallery {
         $this->document = $document;
     }
 
-    public function setDate(date $date) {
+    public function setDate(\Datetime $date) {
         $this->date = $date;
     }
 

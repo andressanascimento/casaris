@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\HasLifecycleCallbacks
- * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Entity\DocumentRepository")
+ * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\DocumentRepository")
  */
 class Document {
 
@@ -123,7 +123,7 @@ class Document {
     protected function getUploadRootDir() {
         // the absolute directory path where uploaded
         // documents should be saved
-        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+        return __DIR__ . '/../../../../../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir() {

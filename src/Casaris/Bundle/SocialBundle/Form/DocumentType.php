@@ -16,6 +16,11 @@ class DocumentType extends AbstractType
     {
         $builder
             ->add('file','file',array('label' => false))
+            ->add('save', 'submit', array(
+                    'label' => 'Enviar',
+                    'attr' => array('class' => 'btn btn-primary')
+                        )
+                  )
         ;
     }
     

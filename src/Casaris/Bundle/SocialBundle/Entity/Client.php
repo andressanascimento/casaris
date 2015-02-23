@@ -4,6 +4,7 @@ namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
@@ -63,23 +64,14 @@ class Client {
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=true, length=150)
+     * @ORM\Column(type="text", nullable=true, length=150)
      */
     private $phrase;
 
     /**
-     * @ManyToMany(targetEntity="Client")
-     * @JoinTable(name="friends",
-     *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id", unique=true)}
-     *      )
-     * */
-    private $friends;
-
-    /**
      * @ManyToMany(targetEntity="Company")
      * @JoinTable(name="favorite_companies",
-     *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+     *      joinColumns={@JoinColumn(name="client_id", referencedColumnName="id")},
      *      inverseJoinColumns={@JoinColumn(name="company_id", referencedColumnName="id_company", unique=true)}
      *      )
      * */
@@ -90,6 +82,11 @@ class Client {
      * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      * */
     private $user;
+    
+    /**
+     * @OneToMany(targetEntity="Gallery", mappedBy="client")
+     * */
+    private $gallery;
 
     public function __construct() {
         $this->friends = new \Doctrine\Common\Collections\ArrayCollection();
@@ -130,10 +127,6 @@ class Client {
 
     public function getPhrase() {
         return $this->phrase;
-    }
-    
-    public function getFriends() {
-        return $this->friends;
     }
 
     public function getCompanies() {
@@ -178,10 +171,6 @@ class Client {
 
     public function setPhrase($phrase) {
         $this->phrase = $phrase;
-    }
-
-    public function setFriends($friends) {
-        $this->friends = $friends;
     }
 
     public function setCompanies($companies) {

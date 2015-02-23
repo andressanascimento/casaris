@@ -30,50 +30,42 @@ class Company
     /**
      * @var string
      *
-     * @ORM\Column(name="cnpj", type="string", length=14)
+     * @ORM\Column(name="cnpj", type="string", length=14, nullable=true)
      */
     private $cnpj;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_category", type="integer")
+     * @ORM\Column(name="id_category", type="integer", nullable=true)
      */
     private $idCategory;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_address", type="integer")
+     * @ORM\Column(name="id_address", type="integer", nullable=true)
      */
     private $idAddress;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=12)
+     * @ORM\Column(name="phone", type="string", length=12, nullable=true)
      */
     private $phone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cellphone", type="string", length=12)
+     * @ORM\Column(name="cellphone", type="string", length=12, nullable=true)
      */
     private $cellphone;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="score_total", type="decimal")
-     */
-    private $scoreTotal;
-
-
-    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_opening", type="datetime")
+     * @ORM\Column(name="date_opening", type="datetime", nullable=true)
      */
     private $dateOpening;
     
@@ -293,98 +285,6 @@ class Company
     }
 
     /**
-     * Set scoreTotal
-     *
-     * @param string $scoreTotal
-     * @return Company
-     */
-    public function setScoreTotal($scoreTotal)
-    {
-        $this->scoreTotal = $scoreTotal;
-
-        return $this;
-    }
-
-    /**
-     * Get scoreTotal
-     *
-     * @return string 
-     */
-    public function getScoreTotal()
-    {
-        return $this->scoreTotal;
-    }
-
-    /**
-     * Set storeTime
-     *
-     * @param integer $storeTime
-     * @return Company
-     */
-    public function setStoreTime($storeTime)
-    {
-        $this->storeTime = $storeTime;
-
-        return $this;
-    }
-
-    /**
-     * Get storeTime
-     *
-     * @return integer 
-     */
-    public function getStoreTime()
-    {
-        return $this->storeTime;
-    }
-
-    /**
-     * Set scoreStar
-     *
-     * @param integer $scoreStar
-     * @return Company
-     */
-    public function setScoreStar($scoreStar)
-    {
-        $this->scoreStar = $scoreStar;
-
-        return $this;
-    }
-
-    /**
-     * Get scoreStar
-     *
-     * @return integer 
-     */
-    public function getScoreStar()
-    {
-        return $this->scoreStar;
-    }
-
-    /**
-     * Set nDeals
-     *
-     * @param integer $nDeals
-     * @return Company
-     */
-    public function setNDeals($nDeals)
-    {
-        $this->nDeals = $nDeals;
-
-        return $this;
-    }
-
-    /**
-     * Get nDeals
-     *
-     * @return integer 
-     */
-    public function getNDeals()
-    {
-        return $this->nDeals;
-    }
-
-    /**
      * Set dateOpening
      *
      * @param \DateTime $dateOpening
@@ -406,4 +306,30 @@ class Company
     {
         return $this->dateOpening;
     }
+    
+    public function getComments() {
+        return $this->comments;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function getFollowers() {
+        return $this->followers;
+    }
+
+    public function setComments($comments) {
+        $this->comments = $comments;
+    }
+
+    public function setUser($user) {
+        $this->user = $user;
+    }
+
+    public function setFollowers($followers) {
+        $this->followers = $followers;
+    }
+
+
 }

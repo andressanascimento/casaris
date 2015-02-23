@@ -1,4 +1,24 @@
 {% extends '::base.html.twig' %}
+{% block name_user %}
+    <p id="name" data-pk="1" data-type="text" data-url="/name" data-title="Nome">{{ app.user.name }}</p>
+{% endblock name_user %}
+
+{% block profession %} 
+    {% if user_information.profession is not empty %}
+       <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ user_information.profession }}</p></h3>
+    {% else %}
+       <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
+    {% endif %}
+{% endblock %}
+
+{% block description %}
+    {% if user_information.phrase is not empty %}
+       <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ user_information.phrase }}</p>
+    {% else %}
+       <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
+    {% endif %}
+    
+{% endblock description %}
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />

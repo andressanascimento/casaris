@@ -91,5 +91,31 @@ class Document {
         // when displaying uploaded doc/image in the view.
         return 'uploads/images';
     }
+    
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function getPath() {
+        return $this->path;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function setPath($path) {
+        $this->path = $path;
+    }
+
+
 
 }

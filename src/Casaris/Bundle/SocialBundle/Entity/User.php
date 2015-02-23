@@ -3,7 +3,9 @@
 namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -66,6 +68,15 @@ class User implements UserInterface, \Serializable {
      * @JoinColumn(name="background_photo_id", referencedColumnName="id"))
      * */
     private $background;
+
+    /**
+     * @ManyToMany(targetEntity="User")
+     * @JoinTable(name="friends",
+     *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id", unique=true)}
+     *      )
+     * */
+    private $friends;
 
     /**
      * @inheritDoc
@@ -138,6 +149,13 @@ class User implements UserInterface, \Serializable {
                 // see section on salt below
                 // $this->salt
                 ) = unserialize($serialized);
+    }
+    public function getFriends() {
+        return $this->friends;
+    }
+
+    public function setFriends($friends) {
+        $this->friends = $friends;
     }
 
     public function getId() {

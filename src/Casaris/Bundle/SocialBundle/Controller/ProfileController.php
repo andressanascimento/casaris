@@ -14,6 +14,7 @@ class ProfileController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $user_information = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
+        return array('user_information' => $user_information);
     }
 }

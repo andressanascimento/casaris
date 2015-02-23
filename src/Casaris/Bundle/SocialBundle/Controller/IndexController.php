@@ -22,7 +22,7 @@ class IndexController extends Controller {
             'method' => 'post'));
         $user = $this->get('security.context')->getToken()->getUser();
         $user_information = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
-        
+
         return array(
             'form_comment' => $form->createView(),
             'user_information' => $user_information
@@ -52,7 +52,7 @@ class IndexController extends Controller {
             }
         }
     }
-    
+
     /**
      * @Route("/name", name="_name")
      * @Template("CoreBundle:Blank:blank.html.twig")
@@ -62,10 +62,10 @@ class IndexController extends Controller {
         $user = $this->get('security.context')->getToken()->getUser();
         $user->setName($name);
         $this->getDoctrine()->getRepository('SocialBundle:User')->update($user);
-        
+
         return array();
     }
-    
+
     /**
      * @Route("/profession", name="_profession")
      * @Template("CoreBundle:Blank:blank.html.twig")
@@ -78,8 +78,8 @@ class IndexController extends Controller {
         $this->getDoctrine()->getRepository('SocialBundle:Client')->update($client);
         return array();
     }
-    
-     /**
+
+    /**
      * @Route("/phrase", name="_phrase")
      * @Template("CoreBundle:Blank:blank.html.twig")
      */

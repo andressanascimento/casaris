@@ -2,6 +2,8 @@
 
 namespace Casaris\Bundle\SocialBundle\Entity;
 
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,18 +17,17 @@ class Post
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_post", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idPost;
+    private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_user", type="integer")
-     */
-    private $idUser;
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
+     * */
+    private $user;
 
     /**
      * @var string
@@ -42,95 +43,37 @@ class Post
      */
     private $date; 
 
-    /**
-     * Set idPost
-     *
-     * @param integer $idPost
-     * @return Post
-     */
-    public function setIdPost($idPost)
-    {
-        $this->idPost = $idPost;
-
-        return $this;
+    public function getId() {
+        return $this->id;
     }
 
-    /**
-     * Get idPost
-     *
-     * @return integer 
-     */
-    public function getIdPost()
-    {
-        return $this->idPost;
+    public function getUser() {
+        return $this->user;
     }
 
-    /**
-     * Set idUser
-     *
-     * @param integer $idUser
-     * @return Post
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return integer 
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
-
-
-    /**
-     * Set content
-     *
-     * @param string $content
-     * @return Post
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string 
-     */
-    public function getContent()
-    {
+    public function getContent() {
         return $this->content;
     }
 
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Post
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
+    public function getDate() {
         return $this->date;
     }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setUser($user) {
+        $this->user = $user;
+    }
+
+    public function setContent($content) {
+        $this->content = $content;
+    }
+
+    public function setDate(\DateTime $date) {
+        $this->date = $date;
+    }
+
+
 }

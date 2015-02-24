@@ -25,8 +25,8 @@ class Activity {
      * */
     private $user;
 
-    /*
-     * @ORM\Column(type="integer" name="id_source")
+    /**
+     * @ORM\Column(type="integer", name="id_source")
      */
     private $source;
 
@@ -36,15 +36,59 @@ class Activity {
      * */
     private $activity;
 
-    /**
-     * @ManyToOne(targetEntity="Comment")
-     * @JoinColumn(name="comment_id", referencedColumnName="id")
-     * */
-    private $comment;
-
     /*
      * @ORM\Column(type="datetime", name="date")
      */
     private $datetime;
 
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getUser() {
+        return $this->user;
+    }
+
+    public function getSource() {
+        return $this->source;
+    }
+
+    public function getActivity() {
+        return $this->activity;
+    }
+
+    public function getComment() {
+        return $this->comment;
+    }
+
+    public function getDatetime() {
+        return $this->datetime;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setUser($user) {
+        $this->user = $user;
+    }
+
+    public function setSource($source) {
+        $this->source = $source;
+    }
+
+    public function setActivity($activity) {
+        $this->activity = $activity;
+    }
+
+    public function setComment($comment) {
+        $this->comment = $comment;
+    }
+
+    public function setDatetime($datetime) {
+        $this->datetime = $datetime;
+    }
+
+
+    
 }

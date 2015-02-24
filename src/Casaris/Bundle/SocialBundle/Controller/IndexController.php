@@ -43,7 +43,7 @@ class IndexController extends Controller {
         if ($request->getMethod() == 'POST') {
 
             if ($form->isValid()) {
-                $post->setIdUser($this->get('security.context')->getToken()->getUser()->getId());
+                $post->setUser($this->get('security.context')->getToken()->getUser());
                 $post->setDate(new \DateTime("now"));
 
                 $this->getDoctrine()->getRepository('SocialBundle:Post')->insert($post);

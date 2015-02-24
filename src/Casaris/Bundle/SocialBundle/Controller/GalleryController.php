@@ -18,11 +18,18 @@ class GalleryController extends Controller {
      */
     public function indexAction() {
         $document = new Document();
+        
         $form = $this->createForm(new DocumentType(), $document, array(
             'action' => $this->generateUrl('_addImage'),
             'method' => 'post')
         );
-        return array('form_new_image' => $form->createView());
+        
+        $user = $this->get('security.context')->getToken()->getUser();
+        $client = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
+        
+        $gallery = $this->getDoctrine()->getRepository('SocialBundle:Gallery')->findBy(array('client' => $client));
+        
+        return array('form_new_image' => $form->createView(), 'gallery' => $gallery );
     }
 
     /**

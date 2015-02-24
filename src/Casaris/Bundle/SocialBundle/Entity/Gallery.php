@@ -16,18 +16,30 @@ use Doctrine\ORM\Mapping\JoinColumn;
 class Gallery {
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @ManyToOne(targetEntity="Client")
      * @JoinColumn(name="client_id", referencedColumnName="id")
      * */
     private $client;
 
     /**
-     * @ORM\Id
      * @ManyToOne(targetEntity="Document")
      * @JoinColumn(name="document_id", referencedColumnName="id")
      * */
     private $document;
+
+    /**
+     * @OneToMany(targetEntity="Activity")
+     * */
+    private $gallery_activity;
 
     /**
      *
@@ -35,7 +47,7 @@ class Gallery {
      * @ORM\Column(type="datetime")
      */
     private $date;
-    
+
     public function getClient() {
         return $this->client;
     }
@@ -60,7 +72,12 @@ class Gallery {
         $this->date = $date;
     }
 
+    public function getId() {
+        return $this->id;
+    }
 
-
+    public function setId($id) {
+        $this->id = $id;
+    }
 
 }

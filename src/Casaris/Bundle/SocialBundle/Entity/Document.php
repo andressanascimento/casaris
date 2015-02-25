@@ -17,17 +17,17 @@ class Document {
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $name;
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    public $path;
+    private $path;
 
     /**
      * @Assert\File(maxSize="6000000")
@@ -102,7 +102,7 @@ class Document {
     }
 
     /**
-     * @ORM\PostRemove()
+     * @ORM\PreRemove()
      */
     public function removeUpload()
     {
@@ -113,11 +113,11 @@ class Document {
     }
 
     public function getAbsolutePath() {
-        return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->path;
+        return null === $this->path ? null : $this->getUploadRootDir() . '/' . $this->getPath();
     }
 
     public function getWebPath() {
-        return null === $this->path ? null : $this->getUploadDir() . '/' . $this->path;
+        return null === $this->path ? null : $this->getUploadDir() . '/' . $this->getPath();
     }
 
     protected function getUploadRootDir() {

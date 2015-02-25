@@ -71,7 +71,7 @@
                 </div>
                 <div class="modal-body">
                     <br/>
-                            {{form(form_new_image)}}
+                    {{form(form_new_image)}}
 
                     <br/><br/>
                 </div>
@@ -92,7 +92,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary">Sim</button>
+                    <button class="btn btn-primary" id="btn_deletar">Sim</button>
                     <button class="btn btn-default">Não</button>
                 </div>
             </div>
@@ -106,65 +106,21 @@
                         <h1>Galeria <button class="btn-sm btn-primary pull-right c-controls" data-toggle="modal" data-target="#new"><i class="fa fa-plus"></i></button></h1>
 
                     </div>
-                    
-                    <div class='list-group gallery'>
 
-                        <!-- col-6 / end -->
-                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
-                                <a class="fancybox">
-                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
-                                </a>
-                                <div class='text-right'>
-                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
-                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
-                                </div> <!-- text-right / end -->
-                            </div>
-                        </div> <!-- col-6 / end -->
-                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
-                                <a class="fancybox">
-                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
-                                </a>
-                                <div class='text-right'>
-                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
-                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
-                                </div> <!-- text-right / end -->
-                            </div>
-                        </div> <!-- col-6 / end -->
-                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
-                                <a class="fancybox">
-                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
-                                </a>
-                                <div class='text-right'>
-                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
-                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
-                                </div> <!-- text-right / end -->
-                            </div>
-                        </div> <!-- col-6 / end -->
-                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
-                                <a class="fancybox">
-                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
-                                </a>
-                                <div class='text-right'>
-                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
-                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
-                                </div> <!-- text-right / end -->
-                            </div>
-                        </div> <!-- col-6 / end -->
-                        <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
-                            <div class="thumbnail" rel="ligthbox" href="http://placehold.it/300x320.png">
-                                <a class="fancybox">
-                                    <img class="img-responsive" alt="" src="http://placehold.it/320x320" />
-                                </a>
-                                <div class='text-right'>
-                                    <i class="fa fa-trash-o pull-left text-muted trash" style="padding-top: 4px;"></i>
-                                    <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
-                                </div> <!-- text-right / end -->
-                            </div>
-                        </div> <!-- col-6 / end -->
+                    <div class='list-group gallery'>
+                        {% for image in gallery %}
+                            <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
+                                <div class="thumbnail" rel="ligthbox" href="{{ asset('/uploads/images/') ~ image.document.path }}">
+                                    <a class="fancybox">
+                                        <img class="img-responsive" height="100px" alt="" src="{{ asset('/uploads/images/') ~ image.document.path }}" />
+                                    </a>
+                                    <div class='text-right'>
+                                        <i class="fa fa-trash-o pull-left text-muted trash" alt="{{image.id}}" style="padding-top: 4px;"></i>
+                                        <i class="fa fa-comments pull-right text-muted" style="padding-top: 4px;"></i><small class="text-muted" style="padding-top: 5px;font-size: 11px;">2</small> 
+                                    </div> 
+                                </div>
+                            </div> 
+                        {% endfor %}
                     </div>
                 </div>
             </div>

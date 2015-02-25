@@ -141,7 +141,7 @@ class Client {
         $this->id = $id;
     }
 
-    public function setBirthday(datetime $birthday) {
+    public function setBirthday(\Datetime $birthday) {
         $this->birthday = $birthday;
     }
 

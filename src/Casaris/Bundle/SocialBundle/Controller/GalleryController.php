@@ -20,7 +20,7 @@ class GalleryController extends Controller {
         $document = new Document();
         
         $form = $this->createForm(new DocumentType(), $document, array(
-            'action' => $this->generateUrl('_addImage'),
+            'action' => $this->generateUrl('_addGallery'),
             'method' => 'post')
         );
         
@@ -33,10 +33,10 @@ class GalleryController extends Controller {
     }
 
     /**
-     * @Route("/addImage", name="_addImage")
+     * @Route("/galery/add", name="_addGallery")
      * @Template("CoreBundle:Blank:blank.html.twig")
      */
-    public function addImage(Request $request) {
+    public function galleryAddAction(Request $request) {
         $gallery = new Gallery();
         $document = new Document();
         $form = $this->createForm(new DocumentType(), $document);
@@ -54,6 +54,17 @@ class GalleryController extends Controller {
         }
 
         return $this->redirect($this->generateUrl('_gallery'));
+    }
+    
+     /**
+     * @Route("/gallery/delete", name="_delGallery")
+     * @Template("CoreBundle:Blank:blank.html.twig")
+     */
+    public function galleryDelAction(Request $request) {
+        $id = $request->get('id');
+        $gallery = $this->getDoctrine()->getRepository('SocialBundle:Gallery');
+        $item = $gallery->find($id);
+        $gallery->delete($item);
     }
 
 }

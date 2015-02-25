@@ -31,15 +31,10 @@ class Gallery {
     private $client;
 
     /**
-     * @ManyToOne(targetEntity="Document")
+     * @ManyToOne(targetEntity="Document", cascade={"remove"})
      * @JoinColumn(name="document_id", referencedColumnName="id")
      * */
     private $document;
-
-    /**
-     * @OneToMany(targetEntity="Activity")
-     * */
-    private $gallery_activity;
 
     /**
      *

@@ -11,12 +11,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+
 /**
- * User
- *
- * @ORM\Table(name="user")
- * @UniqueEntity("email", message = "unique_email")
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"client" = "Client", "company" = "Company"})
+ * @UniqueEntity("email", message = "unique_email")
  */
 class User implements UserInterface, \Serializable {
 
@@ -26,14 +28,14 @@ class User implements UserInterface, \Serializable {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      * @Assert\NotBlank(message = "not_blank")
      * @ORM\Column(type="string", length=80)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -41,33 +43,26 @@ class User implements UserInterface, \Serializable {
      * @Assert\Email(message = "O e-mail '{{ value }}' não é valido")
      * @ORM\Column(type="string", length=60, unique=true)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      * @Assert\NotBlank(message = "not_blank")
      * @ORM\Column(type="string")
      */
-    private $password;
-
-    /**
-     * @var string
-     * @Assert\NotBlank()
-     * @ORM\Column(type="string")
-     */
-    private $type;
+    protected $password;
 
     /**
      * @ManyToOne(targetEntity="Document")
      * @JoinColumn(name="photo_id", referencedColumnName="id"))
      * */
-    private $photo;
+    protected $photo;
 
     /**
      * @ManyToOne(targetEntity="Document")
      * @JoinColumn(name="background_photo_id", referencedColumnName="id"))
      * */
-    private $background;
+    protected $background;
 
     /**
      * @ManyToMany(targetEntity="User")
@@ -76,7 +71,7 @@ class User implements UserInterface, \Serializable {
      *      inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id", unique=true)}
      *      )
      * */
-    private $friends;
+    protected $friends;
 
     /**
      * @inheritDoc
@@ -180,14 +175,6 @@ class User implements UserInterface, \Serializable {
 
     public function setEmail($email) {
         $this->email = $email;
-    }
-
-    public function getType() {
-        return $this->type;
-    }
-
-    public function setType($type) {
-        $this->type = $type;
     }
 
     public function getPhoto() {

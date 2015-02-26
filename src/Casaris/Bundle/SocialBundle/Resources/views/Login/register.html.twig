@@ -1,4 +1,3 @@
-{% form_theme form 'bootstrap_3_layout.html.twig' %}
 {% extends '::login.base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
@@ -10,19 +9,27 @@
             <div class="col-md-6">
                 <div class="tabbable-panel" style="border: none; padding: 0px;">
                     <div class="tabbable-line">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#client" data-toggle="tab">Registre-se</a></li>
-{#                            <li><a href="#supplier" data-toggle="tab">Empresa</a></li>#}
+                        <ul class="nav nav-tabs ">
+                            <li class="active">
+                                <a href="#tab_default_1" data-toggle="tab">Cliente</a>
+                            </li>
+                            <li>
+                                <a href="#tab_default_2" data-toggle="tab">Empresa</a>
+                            </li>
+
                         </ul>
-                        <div id="register" class="tab-content">
-                            <div class="tab-pane fade active in" id="client">
-
-                                {{ form_start(form) }}
-                                {{ form_widget(form) }}
-                                {{ form_end(form) }}
-
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_default_1">
+                                {{ form_start(form_client) }}
+                                {{ form_widget(form_client) }}
+                                {{ form_end(form_client) }}
                             </div>
-                        </div>    
+                            <div class="tab-pane" id="tab_default_2">
+                                {{ form_start(form_company) }}
+                                {{ form_widget(form_company) }}
+                                {{ form_end(form_company) }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

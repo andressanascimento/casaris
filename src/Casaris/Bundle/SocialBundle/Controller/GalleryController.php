@@ -25,9 +25,8 @@ class GalleryController extends Controller {
         );
         
         $user = $this->get('security.context')->getToken()->getUser();
-        $client = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
         
-        $gallery = $this->getDoctrine()->getRepository('SocialBundle:Gallery')->findBy(array('client' => $client));
+        $gallery = $this->getDoctrine()->getRepository('SocialBundle:Gallery')->findBy(array('client'=>$user->getId()));
         
         return array('form_new_image' => $form->createView(), 'gallery' => $gallery );
     }
@@ -45,11 +44,10 @@ class GalleryController extends Controller {
 
         if ($form->isValid()) {
             $user = $this->get('security.context')->getToken()->getUser();
-            $client = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
             $document = $this->getDoctrine()->getRepository('SocialBundle:Document')->insert($document);
             $gallery->setDate(new \Datetime("now"));
             $gallery->setDocument($document);
-            $gallery->setClient($client);
+            $gallery->setClient($user);
             $this->getDoctrine()->getRepository('SocialBundle:Gallery')->insert($gallery);
         }
 

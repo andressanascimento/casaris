@@ -3,29 +3,20 @@
 namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\ManyToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\JoinTable;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
  *
- * @UniqueEntity("user")
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\ClientRepository")
  */
-class Client {
+class Client extends User {
 
-    /**
-     * @var integer
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
+    protected $type = 'client';
     /**
      * @var datetime
      * @ORM\Column(type="datetime", nullable=true)
@@ -58,6 +49,7 @@ class Client {
 
     /**
      * @var string
+     * @Assert\NotBlank(message = "not_blank")
      * @ORM\Column(type="string", nullable=true, length=1)
      */
     private $gender;
@@ -72,16 +64,10 @@ class Client {
      * @ManyToMany(targetEntity="Company")
      * @JoinTable(name="favorite_companies",
      *      joinColumns={@JoinColumn(name="client_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="company_id", referencedColumnName="id_company", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="company_id", referencedColumnName="id", unique=true)}
      *      )
      * */
     private $companies;
-
-    /**
-     * @ManyToOne(targetEntity="User", inversedBy="client")
-     * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
-     * */
-    private $user;
     
     /**
      * @OneToMany(targetEntity="Gallery", mappedBy="client")
@@ -93,8 +79,8 @@ class Client {
         $this->companies = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function getId() {
-        return $this->id;
+    public function getType() {
+        return $this->type;
     }
 
     public function getBirthday() {
@@ -107,10 +93,6 @@ class Client {
 
     public function getAddress() {
         return $this->address;
-    }
-
-    public function getPhone() {
-        return $this->phone;
     }
 
     public function getCellphone() {
@@ -133,15 +115,15 @@ class Client {
         return $this->companies;
     }
 
-    public function getUser() {
-        return $this->user;
+    public function getGallery() {
+        return $this->gallery;
     }
 
-    public function setId($id) {
-        $this->id = $id;
+    public function setType($type) {
+        $this->type = $type;
     }
 
-    public function setBirthday(\Datetime $birthday) {
+    public function setBirthday(datetime $birthday) {
         $this->birthday = $birthday;
     }
 
@@ -151,10 +133,6 @@ class Client {
 
     public function setAddress($address) {
         $this->address = $address;
-    }
-
-    public function setPhone($phone) {
-        $this->phone = $phone;
     }
 
     public function setCellphone($cellphone) {
@@ -177,8 +155,8 @@ class Client {
         $this->companies = $companies;
     }
 
-    public function setUser($user) {
-        $this->user = $user;
+    public function setGallery($gallery) {
+        $this->gallery = $gallery;
     }
 
 }

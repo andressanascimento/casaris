@@ -27,7 +27,7 @@ security:
             security: false
         # the login page has to be accessible for everybody
         register:
-            pattern:  ^/register$
+            pattern:  ^/register
             security: false
         login:
             pattern:  ^/login$
@@ -56,5 +56,5 @@ security:
     # http://symfony.com/doc/current/book/security.html#security-book-access-control-matching-options
     access_control:
     - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/, roles: [ROLE_USER, ROLE_COMPANY]}

@@ -14,8 +14,6 @@ class ProfileController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->get('security.context')->getToken()->getUser();
-        $user_information = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
-        return array('user_information' => $user_information);
+        return array();
     }
 }

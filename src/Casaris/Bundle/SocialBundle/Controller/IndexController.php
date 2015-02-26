@@ -21,14 +21,11 @@ class IndexController extends Controller {
             'action' => $this->generateUrl('_new_comment'),
             'method' => 'post'));
         $user = $this->get('security.context')->getToken()->getUser();
-        $user_information = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
-        
         
         $activities = $this->getDoctrine()->getRepository('SocialBundle:Activity')->getActivities(0,20,$user);
 
         return array(
             'form_comment' => $form->createView(),
-            'user_information' => $user_information,
             'activities' => $activities
         );
     }

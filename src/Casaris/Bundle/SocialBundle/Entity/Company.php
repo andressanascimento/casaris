@@ -15,17 +15,9 @@ use Doctrine\ORM\Mapping\ManyToMany;
  * @ORM\Table(name="company")
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\CompanyRepository")
  */
-class Company
+class Company extends User
 {
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_company", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $idCompany;
+    protected $type = 'client';
 
     /**
      * @var string
@@ -73,12 +65,6 @@ class Company
      * @OneToMany(targetEntity="CompanyComment", mappedBy="company")
      **/
     private $comments;
-
-    /**
-     * @ManyToOne(targetEntity="User", inversedBy="company")
-     * @JoinColumn(name="user_id", referencedColumnName="id", nullable=false )
-     **/
-    private $user;
     
     /**
      * @ManyToMany(targetEntity="Client", mappedBy="companies")
@@ -90,241 +76,72 @@ class Company
         $this->followers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
+    public function getType() {
+        return $this->type;
     }
 
-    /**
-     * Set idCompany
-     *
-     * @param integer $idCompany
-     * @return Company
-     */
-    public function setIdCompany($idCompany)
-    {
-        $this->idCompany = $idCompany;
-
-        return $this;
-    }
-
-    /**
-     * Get idCompany
-     *
-     * @return integer 
-     */
-    public function getIdCompany()
-    {
-        return $this->idCompany;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Company
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set cnpj
-     *
-     * @param string $cnpj
-     * @return Company
-     */
-    public function setCnpj($cnpj)
-    {
-        $this->cnpj = $cnpj;
-
-        return $this;
-    }
-
-    /**
-     * Get cnpj
-     *
-     * @return string 
-     */
-    public function getCnpj()
-    {
+    public function getCnpj() {
         return $this->cnpj;
     }
 
-    /**
-     * Set idCategory
-     *
-     * @param integer $idCategory
-     * @return Company
-     */
-    public function setIdCategory($idCategory)
-    {
-        $this->idCategory = $idCategory;
-
-        return $this;
-    }
-
-    /**
-     * Get idCategory
-     *
-     * @return integer 
-     */
-    public function getIdCategory()
-    {
+    public function getIdCategory() {
         return $this->idCategory;
     }
 
-    /**
-     * Set idAddress
-     *
-     * @param integer $idAddress
-     * @return Company
-     */
-    public function setIdAddress($idAddress)
-    {
-        $this->idAddress = $idAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get idAddress
-     *
-     * @return integer 
-     */
-    public function getIdAddress()
-    {
+    public function getIdAddress() {
         return $this->idAddress;
     }
 
-    /**
-     * Set phone
-     *
-     * @param string $phone
-     * @return Company
-     */
-    public function setPhone($phone)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return string 
-     */
-    public function getPhone()
-    {
+    public function getPhone() {
         return $this->phone;
     }
 
-    /**
-     * Set cellphone
-     *
-     * @param string $cellphone
-     * @return Company
-     */
-    public function setCellphone($cellphone)
-    {
-        $this->cellphone = $cellphone;
-
-        return $this;
-    }
-
-    /**
-     * Get cellphone
-     *
-     * @return string 
-     */
-    public function getCellphone()
-    {
+    public function getCellphone() {
         return $this->cellphone;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Company
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set dateOpening
-     *
-     * @param \DateTime $dateOpening
-     * @return Company
-     */
-    public function setDateOpening($dateOpening)
-    {
-        $this->dateOpening = $dateOpening;
-
-        return $this;
-    }
-
-    /**
-     * Get dateOpening
-     *
-     * @return \DateTime 
-     */
-    public function getDateOpening()
-    {
+    public function getDateOpening() {
         return $this->dateOpening;
     }
-    
+
     public function getComments() {
         return $this->comments;
-    }
-
-    public function getUser() {
-        return $this->user;
     }
 
     public function getFollowers() {
         return $this->followers;
     }
 
-    public function setComments($comments) {
-        $this->comments = $comments;
+    public function setType($type) {
+        $this->type = $type;
     }
 
-    public function setUser($user) {
-        $this->user = $user;
+    public function setCnpj($cnpj) {
+        $this->cnpj = $cnpj;
+    }
+
+    public function setIdCategory($idCategory) {
+        $this->idCategory = $idCategory;
+    }
+
+    public function setIdAddress($idAddress) {
+        $this->idAddress = $idAddress;
+    }
+
+    public function setPhone($phone) {
+        $this->phone = $phone;
+    }
+
+    public function setCellphone($cellphone) {
+        $this->cellphone = $cellphone;
+    }
+
+    public function setDateOpening(\DateTime $dateOpening) {
+        $this->dateOpening = $dateOpening;
+    }
+
+    public function setComments($comments) {
+        $this->comments = $comments;
     }
 
     public function setFollowers($followers) {

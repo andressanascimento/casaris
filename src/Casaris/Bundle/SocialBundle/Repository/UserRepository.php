@@ -50,31 +50,4 @@ class UserRepository extends GenericDAO implements UserProviderInterface {
         return $this->getEntityName() === $class || is_subclass_of($class, $this->getEntityName());
     }
 
-    public function getUserInformation($user) {
-        $em = $this->getEntityManager();
-        $query = $em->createQuery('SELECT u FROM SocialBundle:Client u WHERE u.user = :user');
-        if ($user->getType() == 'company') {
-            $$query = $em->createQuery('SELECT u FROM SocialBundle:Company u WHERE u.user = :user');
-        }
-        $query->setParameter('user', $user->getId());
-        $user = $query->getSingleResult();
-        return $user;
-    }
-
-    public function insert($object) {
-        
-        $user = parent::insert($object);
-       
-        $profile = new Client();
-        
-        if ($user->getType() == 'company') {
-            $profile = new Company();
-        }
-        
-        $profile->setUser($user);
-        
-        $em = $this->getEntityManager();
-        $em->persist($profile);
-        $em->flush();
-    }
 }

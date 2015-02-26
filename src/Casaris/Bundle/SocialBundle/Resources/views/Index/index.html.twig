@@ -10,16 +10,16 @@
 {% endblock name_user %}
 
 {% block profession %} 
-    {% if user_information.profession is not empty %}
-        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ user_information.profession }}</p></h3>
+    {% if app.user.profession is not empty %}
+        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
         {% else %}
         <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
     {% endif %}
 {% endblock %}
 
 {% block description %}
-    {% if user_information.phrase is not empty %}
-        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ user_information.phrase }}</p>
+    {% if app.user.phrase is not empty %}
+        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
     {% else %}
         <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
     {% endif %}
@@ -120,7 +120,7 @@
                             </div>
 
                             <ul class="list-group" id="contact-list">
-                                {% set companies = user_information.companies %}
+                                {% set companies = app.user.companies %}
                                 {% for company in companies %}
                                     {% if (loop.index0 == 0) or (loop.index0%4 == 0) %}
                                         <li class="list-group-item">

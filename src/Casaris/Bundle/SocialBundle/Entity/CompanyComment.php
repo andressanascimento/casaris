@@ -18,7 +18,7 @@ class CompanyComment
     /**
      * @ORM\Id
      * @ManyToOne(targetEntity="Company", inversedBy="comments")
-     * @JoinColumn(name="company_id", referencedColumnName="id_company")
+     * @JoinColumn(name="company_id", referencedColumnName="id")
      **/
     private $company;
 

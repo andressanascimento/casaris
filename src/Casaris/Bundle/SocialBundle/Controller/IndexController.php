@@ -31,13 +31,13 @@ class IndexController extends Controller {
     }
 
     /**
-     * @Route("/newComment", name="_new_comment")
+     * @Route("/newComment", name="_new_post")
      * @Template("CoreBundle:Blank:blank.html.twig")
      */
     public function newCommentAction(Request $request) {
         $post = new Post();
         $form = $this->createForm(new PostType(), $post, array(
-            'action' => $this->generateUrl('_new_comment'),
+            'action' => $this->generateUrl('_new_post'),
             'method' => 'post'));
         $form->handleRequest($request);
 
@@ -74,9 +74,8 @@ class IndexController extends Controller {
     public function profession(Request $request) {
         $profession = $request->get('value');
         $user = $this->get('security.context')->getToken()->getUser();
-        $client = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
-        $client->setProfession($profession);
-        $this->getDoctrine()->getRepository('SocialBundle:Client')->update($client);
+        $user->setProfession($profession);
+        $this->getDoctrine()->getRepository('SocialBundle:Client')->update($user);
         return array();
     }
 
@@ -87,9 +86,8 @@ class IndexController extends Controller {
     public function phrase(Request $request) {
         $phrase = $request->get('value');
         $user = $this->get('security.context')->getToken()->getUser();
-        $client = $this->getDoctrine()->getRepository('SocialBundle:User')->getUserInformation($user);
-        $client->setPhrase($phrase);
-        $this->getDoctrine()->getRepository('SocialBundle:Client')->update($client);
+        $user->setPhrase($phrase);
+        $this->getDoctrine()->getRepository('SocialBundle:Client')->update($user);
         return array();
     }
 

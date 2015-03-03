@@ -5,7 +5,6 @@ namespace Casaris\Bundle\SocialBundle\Entity;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Post
  *
@@ -13,16 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\PostRepository")
  */
 class Post
-{
+{   
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer", name="id")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
      * @ManyToOne(targetEntity="User")
      * @JoinColumn(name="user_id", referencedColumnName="id")
@@ -74,6 +71,5 @@ class Post
     public function setDate(\DateTime $date) {
         $this->date = $date;
     }
-
 
 }

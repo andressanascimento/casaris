@@ -6,17 +6,17 @@ use Casaris\Bundle\SocialBundle\Entity\Activity;
 
 class GalleryRepository extends GenericDAO {
     
-    public function insert($gallery) {
+    public function insert($object) {
         
-        $gallery = parent::insert($gallery);
+        $gallery = parent::insert($object);
         $activity_type = $this->getEntityManager()->getRepository('SocialBundle:ActivityType');
-        $type = $activity_type->find(1);
+        $type = $activity_type->findOneBy(array('name'=>'gallery'));
         
         $activity = new Activity();
-        $activity->setSource($gallery->getId());
         $activity->setUser($gallery->getClient());
-        $activity->getDatetime(new \Datetime("now"));
-        $activity->setActivity($type);
+        $activity->setDatetime(new \Datetime("now"));
+        $activity->setActivityType($type);
+        $activity->setDocument($gallery->getDocument());
         
         $em = $this->getEntityManager();
         $em->persist($activity);

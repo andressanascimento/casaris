@@ -4,7 +4,6 @@ namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
-use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
@@ -14,16 +13,16 @@ use Doctrine\ORM\Mapping\JoinColumn;
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\GalleryRepository")
  */
 class Gallery {
-
+    
     /**
      * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
+     * 
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="id", type="integer")
      */
     private $id;
-
+    
     /**
      * @ManyToOne(targetEntity="Client")
      * @JoinColumn(name="client_id", referencedColumnName="id")
@@ -38,10 +37,14 @@ class Gallery {
 
     /**
      *
-     * @var date
+     * @var \DateTime
      * @ORM\Column(type="datetime")
      */
     private $date;
+
+    public function getId() {
+        return $this->id;
+    }
 
     public function getClient() {
         return $this->client;
@@ -55,6 +58,10 @@ class Gallery {
         return $this->date;
     }
 
+    public function setId($id) {
+        $this->id = $id;
+    }
+
     public function setClient($client) {
         $this->client = $client;
     }
@@ -63,16 +70,9 @@ class Gallery {
         $this->document = $document;
     }
 
-    public function setDate(\Datetime $date) {
+    public function setDate(\DateTime $date) {
         $this->date = $date;
     }
 
-    public function getId() {
-        return $this->id;
-    }
-
-    public function setId($id) {
-        $this->id = $id;
-    }
 
 }

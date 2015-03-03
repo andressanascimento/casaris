@@ -13,18 +13,16 @@ use Doctrine\ORM\Mapping\JoinColumn;
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\CommentRepository")
  */
 class Comment
-{
+{    
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\Column(type="integer", name="id")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
     /**
-     * @ManyToOne(targetEntity="Activity")
+     * @ManyToOne(targetEntity="Activity", inversedBy="comments")
      * @JoinColumn(name="activity_id", referencedColumnName="id")
      * */
     private $activity;
@@ -43,9 +41,7 @@ class Comment
     private $content;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="datetime", type="datetime")
+     * @ORM\Column(type="datetime", name="date")
      */
     private $datetime;
 
@@ -65,10 +61,6 @@ class Comment
         return $this->content;
     }
 
-    public function getDatetime() {
-        return $this->datetime;
-    }
-
     public function setId($id) {
         $this->id = $id;
     }
@@ -85,10 +77,11 @@ class Comment
         $this->content = $content;
     }
 
-    public function setDatetime(\DateTime $datetime) {
-        $this->datetime = $datetime;
+    public function getDatetime() {
+        return $this->datetime;
     }
 
-
-    
+    public function setDatetime($datetime) {
+        $this->datetime = $datetime;
+    }
 }

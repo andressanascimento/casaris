@@ -18,61 +18,69 @@
                     {% endif %}
                 </div>
                 <div class="col-md-10">
-                    <h5><a href="#">{{activity.user.name}}</a> {{activity.activity.description}}</h5>
+                    <h5><a href="#">{{activity.user.name}}</a> {{activity.activityType.description}}</h5>
                     <h6><p class="text-muted">Compartilhou {{activity.datetime|date("d M Y h:i")}}</p></h6>
                 </div>
             </div>
             <br/>
             <div class="row">
                 <div class="col-md-12">
-                    {% if activity.activity.name == 'post' %}
+                    {% if activity.activityType.name == 'post' %}
+                        <span class="text-muted"> <dd>{{activity.content}} </span>
                     {% endif %}
-                    <img src="//placehold.it/600x600" class="img-thumbnail pull-left">
+
+                    {% if activity.activityType.name == 'gallery' %}
+                        {{activity.content}}
+                        <img src="{{ asset('/uploads/images/') ~ activity.document.path}}" class="img-responsive pull-left" />    
+                    {% endif %}
+
                 </div>
             </div>
-            {#        <div class="row">
-                        <div class="col-md-12">
-                            <div class="page-header">
-                                <h4><small class="pull-right">45 comentários</small> Comentários </h4>
-                            </div> 
+            {% if activity.comments.count > 0 %}
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h4><label class="label label-primary pull-right">{{activity.comments.count}}</label> Comentários </h4>
+                        </div> 
+                        {% for comment in activity.comments %}
                             <div class="comments-list">
                                 <div class="media">
                                     <p class="pull-right"><small>5 dias atrás</small></p>
                                     <a class="media-left" href="#">
-                                        <img src="http://lorempixel.com/40/40/people/1/"/>
+                                        {% if comment.user.photo is empty %}
+
+                                            <img src="{{ asset('bundles/social/images/default_avatar.jpg') }}" width="50px"/>
+                                        {% else %}
+                                            teste
+                                            <img src="{{ asset('/uploads/images/') ~ comment.user.document.path}}"/>
+                                        {% endif %}
                                     </a>
                                     <div class="media-body">
-            
-                                        <p><a href="#">Baltej Singh</a></p>
-                                        Wow! this is really great.
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <p class="pull-right"><small>5 dias atrás</small></p>
-                                    <a class="media-left" href="#">
-                                        <img src="http://lorempixel.com/40/40/people/2/"/>
-                                    </a>
-                                    <div class="media-body">
-            
-                                        <p><a href="#">Baltej Singh</a></p>
-                                        Wow! this is really great.                                                
+
+                                        <p><a href="#">{{comment.user.name}}</a></p>
+                                            {{comment.content}}
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
-                    <div class="clearfix"></div>
-            
-                    <hr>
-                    <form>
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Add a comment..">
-                        </div>
-                    </form>
-            #}
+
+                </div>
+            {% endif %}                   
+            <div class="clearfix"></div>
+
+            <hr>
+            <form action="/comment" method="post">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+                    </div>
+                    <input type="text" name="comment" class="form-control" placeholder="Comente...">
+                </div>
+                <input type="hidden" name="activity" value="{{activity.id}}">
+            </form>
+
         </div>
     </div>
 {% endfor %}

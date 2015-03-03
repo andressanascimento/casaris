@@ -11,14 +11,13 @@ class PostRepository extends GenericDAO
         
         $post = parent::insert($object);
         $activity_type = $this->getEntityManager()->getRepository('SocialBundle:ActivityType');
-        $type = $activity_type->find(2);
+        $type = $activity_type->findOneBy(array('name'=>'post'));
         
         $activity = new Activity();
-        $activity->setSource($post->getId());
         $activity->setUser($post->getUser());
-        $activity->getDatetime(new \Datetime("now"));
-        $activity->setActivity($type);
-        
+        $activity->setDatetime(new \Datetime("now"));
+        $activity->setActivityType($type);
+        $activity->setContent($post->getContent());
         $em = $this->getEntityManager();
         $em->persist($activity);
         $em->flush();

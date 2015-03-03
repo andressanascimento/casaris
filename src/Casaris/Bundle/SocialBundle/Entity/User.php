@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-
 /**
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\UserRepository")
  * @ORM\Table(name="user")
@@ -21,7 +20,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @UniqueEntity("email", message = "unique_email")
  */
 class User implements UserInterface, \Serializable {
-
     /**
      * @var integer
      * @ORM\Column(type="integer")

@@ -17,23 +17,30 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Client extends User {
 
     protected $type = 'client';
+
     /**
-     * @var datetime
+     * @var string
+     * @ORM\Column(type="string", nullable=true, length=80)
+     */
+    private $city;
+    
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true, length=2)
+     */
+    private $state;
+
+    /**
+     * @var \Datetime
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $birthday;
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=true, length=11)
      */
     private $cpf;
-
-    /**
-     * @var integer
-     * @ORM\Column(type="integer", name="id_address", nullable=true)
-     */
-    private $address;
 
     /**
      * @var integer
@@ -68,7 +75,7 @@ class Client extends User {
      *      )
      * */
     private $companies;
-    
+
     /**
      * @OneToMany(targetEntity="Gallery", mappedBy="client")
      * */
@@ -83,16 +90,20 @@ class Client extends User {
         return $this->type;
     }
 
+    public function getCity() {
+        return $this->city;
+    }
+
+    public function getState() {
+        return $this->state;
+    }
+
     public function getBirthday() {
         return $this->birthday;
     }
 
     public function getCpf() {
         return $this->cpf;
-    }
-
-    public function getAddress() {
-        return $this->address;
     }
 
     public function getCellphone() {
@@ -123,16 +134,20 @@ class Client extends User {
         $this->type = $type;
     }
 
-    public function setBirthday(datetime $birthday) {
+    public function setCity($city) {
+        $this->city = $city;
+    }
+
+    public function setState($state) {
+        $this->state = $state;
+    }
+
+    public function setBirthday(\Datetime $birthday) {
         $this->birthday = $birthday;
     }
 
     public function setCpf($cpf) {
         $this->cpf = $cpf;
-    }
-
-    public function setAddress($address) {
-        $this->address = $address;
     }
 
     public function setCellphone($cellphone) {
@@ -157,6 +172,11 @@ class Client extends User {
 
     public function setGallery($gallery) {
         $this->gallery = $gallery;
+    }
+
+            
+    public function __toString() {
+        return $this->getName();
     }
 
 }

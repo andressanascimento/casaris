@@ -46,7 +46,7 @@ class LoginClientType extends AbstractType
                         'attr' => array('class' => 'btn btn-primary')
                         )
                 );
-        ;
+        
     }
     
     /**

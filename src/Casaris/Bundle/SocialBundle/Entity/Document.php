@@ -156,6 +156,7 @@ class Document {
         $this->path = $path;
     }
 
-
-
+    public function __toString() {
+        return 'document';
+    }
 }

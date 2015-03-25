@@ -5,19 +5,19 @@
 
 {% block profession %} 
     {% if app.user.profession is not empty %}
-       <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
-    {% else %}
-       <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
+        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
+        {% else %}
+        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
     {% endif %}
 {% endblock %}
 
 {% block description %}
     {% if app.user.phrase is not empty %}
-       <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
+        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
     {% else %}
-       <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
+        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
     {% endif %}
-    
+
 {% endblock description %}
 {% block stylesheets %}
     {{ parent() }}
@@ -30,6 +30,22 @@
             margin-bottom: 20px;
         }
     </style>
+    <div class="modal fade modal_change_photo" id="new" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Nova imagem</h4>
+                </div>
+                <div class="modal-body">
+                    <br/>
+                    {{form(form_document)}}
+
+                    <br/><br/>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="panel panel-default">
@@ -54,107 +70,18 @@
                             <div class="tab-pane active" id="profile">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <img src="//placehold.it/200x200" class="img-thumbnail"/>
-                                        <div><a href=""><i class="fa fa-pencil-square-o"></i> Alterar Imagem</a></div>
+                                        {% if app.user.photo is empty %}
+                                            <img src="{{ asset('bundles/social/images/default_avatar.jpg') }}" id="change_photo" class="img-thumbnail" />
+                                        {% else %}
+                                            <img src="{{ asset('/uploads/images/') ~ app.user.photo.path}}" id="change_photo" class="img-thumbnail change_photo" />    
+                                        {% endif %}
                                     </div>
 
 
                                     <div class="col-md-8">
-                                        <form action="" method="post">
-                                            <fieldset>
-                                                <div class="form-group">
-                                                    <label for="inputNome" class="col-lg-2 control-label">Nome</label>
-                                                    <div class="col-lg-10">
-                                                        <input type="text" class="form-control" id="inputNome" placeholder="Nome">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label">Sexo</label>
-                                                    <div class="col-lg-10">
-                                                        <div class="radio">
-                                                            <label>
-                                                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                                                Feminino
-                                                            </label>
-                                                        </div>
-                                                        <div class="radio">
-                                                            <label>
-                                                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                                                                Masculino
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputProfession" class="col-lg-2 control-label">Profissão</label>
-                                                    <div class="col-lg-10">
-                                                        <input type="text" class="form-control" id="inputProfession" placeholder="Profissão">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputCPF" class="col-lg-2 control-label">CPF</label>
-                                                    <div class="col-lg-10">
-                                                        <input type="text" class="form-control" id="inputCPF" placeholder="CPF">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                                                    <div class="col-lg-10">
-                                                        <input type="text" class="form-control" id="inputCPF" placeholder="Email">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputEmail" class="col-lg-2 control-label">Telefone</label>
-                                                    <div class="col-lg-2">
-                                                        <input type="text" class="form-control" id="inputDDD" placeholder="DDD">
-                                                    </div>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" class="form-control" id="inputNumber" placeholder="Número">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputEmail" class="col-lg-2 control-label">Celular</label>
-                                                    <div class="col-lg-2">
-                                                        <input type="text" class="form-control" id="inputDDD" placeholder="DDD">
-                                                    </div>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" class="form-control" id="inputNumber" placeholder="Número">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputEmail" class="col-lg-2 control-label">Endereço</label>
-                                                    <div class="col-lg-8">
-                                                        <input type="text" class="form-control" id="inputAddress" placeholder="Logradouro">
-                                                    </div>
-                                                    <div class="col-lg-2">
-                                                        <input type="text" class="form-control" id="inputNumberAddress" placeholder="Número">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="inputEstado" class="col-lg-2 control-label">Estado/Cidade</label>
-                                                    <div class="col-lg-5">
-                                                        <input type="text" class="form-control" id="inputState" placeholder="Estado">
-                                                    </div>
-                                                    <div class="col-lg-5">
-                                                        <input type="text" class="form-control" id="inputCity" placeholder="Cidade">
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <div class="col-lg-10 col-lg-offset-2">
-                                                        <button type="reset" class="btn btn-default">Cancelar</button>
-                                                        <button type="submit" class="btn btn-primary">Enviar</button>
-                                                    </div>
-                                                </div>
-                                            </fieldset>
-                                        </form>
+                                        {{ form_start(form) }}
+                                        {{ form_widget(form) }}
+                                        {{ form_end(form) }}  
                                     </div>
                                 </div>
                             </div>
@@ -200,5 +127,6 @@
 {% endblock container %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
+{#    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>#}
+    <script src="{{ asset('bundles/social/js/global.js') }}"></script>
 {% endblock javascripts %}

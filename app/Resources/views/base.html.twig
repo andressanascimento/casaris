@@ -5,6 +5,7 @@
         <title>{% block title %}Casaris{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('/css/bootstrap-editable.css') }}" rel="stylesheet" />
+            <link href="{{ asset('/css/bootstrap-file.css') }}" rel="stylesheet" />
             <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" />
             <link href="{{ asset('bundles/social/css/profile_page.css') }}" rel="stylesheet" />
             <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -107,6 +108,7 @@
         {% block javascripts %}
             <script src="{{ asset('/js/jquery.min.js') }}"></script>
             <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('/js/bootstrap-file.js') }}"></script>
             <script src="{{ asset('/js/bootstrap-editable.js') }}"></script>
         {% endblock %}
     </body>

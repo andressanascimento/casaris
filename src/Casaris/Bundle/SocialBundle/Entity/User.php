@@ -51,12 +51,14 @@ class User implements UserInterface, \Serializable {
     protected $password;
 
     /**
+     * @var Document $photo
      * @ManyToOne(targetEntity="Document")
      * @JoinColumn(name="photo_id", referencedColumnName="id"))
      * */
     protected $photo;
 
     /**
+     * @var Document $background
      * @ManyToOne(targetEntity="Document")
      * @JoinColumn(name="background_photo_id", referencedColumnName="id"))
      * */

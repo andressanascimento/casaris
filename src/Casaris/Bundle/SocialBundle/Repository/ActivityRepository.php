@@ -15,9 +15,13 @@ class ActivityRepository extends GenericDAO {
         return $query->getResult();
     }
 
-    public function getActivities($offset= null, $limit = null, $user) {
+    public function getActivities($offset = null, $limit = null, $user) {
 
         $em = $this->getEntityManager();
+        $friends = $em->createQuery('SELECT u FROM SocialBundle:User f JOIN u.friends f where a.user = :user');
+        $friends->setParameter('user', $user->getId());
+        $friends->getResult();
+
         $q = $em->createQuery('SELECT a FROM SocialBundle:Activity a where a.user = :user');
         $q->setParameter('user', $user->getId());
         $q->setFirstResult($offset);

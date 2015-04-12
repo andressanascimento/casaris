@@ -2,16 +2,18 @@
 
 namespace Casaris\Bundle\SocialBundle\Entity;
 
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Recomendation
  *
  * @ORM\Table(name="recomendation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\RecomendationRepository")
  */
-class Recomendation
-{
+class Recomendation {
+
     /**
      * @var integer
      *
@@ -22,38 +24,35 @@ class Recomendation
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="user", type="integer")
-     */
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="user", referencedColumnName="id")
+     * */
     private $user;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="supplier", type="integer")
-     */
+     * @ManyToOne(targetEntity="Company")
+     * @JoinColumn(name="supplier", referencedColumnName="id")
+     * */
     private $supplier;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="user_locale", type="integer")
+     * @ORM\Column(name="user_locale", type="integer", nullable=true)
      */
     private $userLocale;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="supplier_locale", type="integer")
+     * @ORM\Column(name="supplier_locale", type="integer", nullable=true)
      */
     private $supplierLocale;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="category", type="integer")
-     */
+     /**
+     * @ManyToOne(targetEntity="Category")
+     * @JoinColumn(name="category", referencedColumnName="id")
+     * */
     private $category;
 
     /**
@@ -63,14 +62,12 @@ class Recomendation
      */
     private $datetime;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -80,8 +77,7 @@ class Recomendation
      * @param integer $user
      * @return Recomendation
      */
-    public function setUser($user)
-    {
+    public function setUser($user) {
         $this->user = $user;
 
         return $this;
@@ -92,8 +88,7 @@ class Recomendation
      *
      * @return integer 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
 
@@ -103,8 +98,7 @@ class Recomendation
      * @param integer $supplier
      * @return Recomendation
      */
-    public function setSupplier($supplier)
-    {
+    public function setSupplier($supplier) {
         $this->supplier = $supplier;
 
         return $this;
@@ -115,8 +109,7 @@ class Recomendation
      *
      * @return integer 
      */
-    public function getSupplier()
-    {
+    public function getSupplier() {
         return $this->supplier;
     }
 
@@ -126,8 +119,7 @@ class Recomendation
      * @param integer $userLocale
      * @return Recomendation
      */
-    public function setUserLocale($userLocale)
-    {
+    public function setUserLocale($userLocale) {
         $this->userLocale = $userLocale;
 
         return $this;
@@ -138,8 +130,7 @@ class Recomendation
      *
      * @return integer 
      */
-    public function getUserLocale()
-    {
+    public function getUserLocale() {
         return $this->userLocale;
     }
 
@@ -149,8 +140,7 @@ class Recomendation
      * @param integer $supplierLocale
      * @return Recomendation
      */
-    public function setSupplierLocale($supplierLocale)
-    {
+    public function setSupplierLocale($supplierLocale) {
         $this->supplierLocale = $supplierLocale;
 
         return $this;
@@ -161,8 +151,7 @@ class Recomendation
      *
      * @return integer 
      */
-    public function getSupplierLocale()
-    {
+    public function getSupplierLocale() {
         return $this->supplierLocale;
     }
 
@@ -172,8 +161,7 @@ class Recomendation
      * @param integer $category
      * @return Recomendation
      */
-    public function setCategory($category)
-    {
+    public function setCategory($category) {
         $this->category = $category;
 
         return $this;
@@ -184,8 +172,7 @@ class Recomendation
      *
      * @return integer 
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
 
@@ -195,8 +182,7 @@ class Recomendation
      * @param \DateTime $datetime
      * @return Recomendation
      */
-    public function setDatetime($datetime)
-    {
+    public function setDatetime($datetime) {
         $this->datetime = $datetime;
 
         return $this;
@@ -207,8 +193,8 @@ class Recomendation
      *
      * @return \DateTime 
      */
-    public function getDatetime()
-    {
+    public function getDatetime() {
         return $this->datetime;
     }
+
 }

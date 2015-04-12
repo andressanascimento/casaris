@@ -72,6 +72,12 @@ class User implements UserInterface, \Serializable {
      *      )
      * */
     protected $friends;
+    
+    /**
+     * @ManyToOne(targetEntity="City")
+     * @JoinColumn(name="city", referencedColumnName="id")
+     * */
+    protected $city;
 
     /**
      * @inheritDoc
@@ -191,6 +197,14 @@ class User implements UserInterface, \Serializable {
 
     public function setBackground_photo($background_photo) {
         $this->background_photo = $background_photo;
+    }
+
+    public function getCity() {
+        return $this->city;
+    }
+
+    public function setCity($city) {
+        $this->city = $city;
     }
 
 }

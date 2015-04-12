@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Casaris{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" />
+
+            <link href="{{ asset('bundles/social/css/login.css') }}" rel="stylesheet" />
+
+        {% endblock %}
+    </head>
+    <body style="padding-top: 80px;" class="fundo">
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron">
+                    <h1>Ops! Algo aconteceu algo errado..</h1>
+                    <br/>
+                    <p>{{error}}</p>
+                    <br/>
+                    <p><a class="btn btn-primary btn-lg" href="/" role="button">Voltar</a></p>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+

@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping\ManyToMany;
  */
 class Company extends User
 {
-    protected $type = 'client';
+    protected $type = 'company';
 
     /**
      * @var string
@@ -27,18 +27,10 @@ class Company extends User
     private $cnpj;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_category", type="integer", nullable=true)
-     */
-    private $idCategory;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_address", type="integer", nullable=true)
-     */
-    private $idAddress;
+     * @ManyToOne(targetEntity="Category")
+     * @JoinColumn(name="category", referencedColumnName="id")
+     * */
+    private $category;
 
     /**
      * @var string
@@ -75,7 +67,7 @@ class Company extends User
     {
         $this->followers = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+    
     public function getType() {
         return $this->type;
     }
@@ -84,12 +76,8 @@ class Company extends User
         return $this->cnpj;
     }
 
-    public function getIdCategory() {
-        return $this->idCategory;
-    }
-
-    public function getIdAddress() {
-        return $this->idAddress;
+    public function getCategory() {
+        return $this->category;
     }
 
     public function getPhone() {
@@ -120,12 +108,8 @@ class Company extends User
         $this->cnpj = $cnpj;
     }
 
-    public function setIdCategory($idCategory) {
-        $this->idCategory = $idCategory;
-    }
-
-    public function setIdAddress($idAddress) {
-        $this->idAddress = $idAddress;
+    public function setCategory($category) {
+        $this->category = $category;
     }
 
     public function setPhone($phone) {
@@ -147,6 +131,7 @@ class Company extends User
     public function setFollowers($followers) {
         $this->followers = $followers;
     }
+
 
 
 }

@@ -19,18 +19,6 @@ class Client extends User {
     protected $type = 'client';
 
     /**
-     * @var string
-     * @ORM\Column(type="string", nullable=true, length=80)
-     */
-    private $city;
-    
-    /**
-     * @var string
-     * @ORM\Column(type="string", nullable=true, length=2)
-     */
-    private $state;
-
-    /**
      * @var \Datetime
      * @ORM\Column(type="datetime", nullable=true)
      */

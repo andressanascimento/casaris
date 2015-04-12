@@ -32,6 +32,7 @@ class LoginCompanyType extends AbstractType {
                     'first_options' => array('label' => 'Senha'),
                     'second_options' => array('label' => 'Repita a senha'),
                 ))
+                ->add('category')
                 ->add('cnpj')
                 ->add('save', 'submit', array(
                     'label' => 'Enviar',

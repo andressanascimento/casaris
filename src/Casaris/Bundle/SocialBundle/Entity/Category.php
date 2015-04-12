@@ -16,11 +16,11 @@ class Category
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_category", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $idCategory;
+    private $id;
 
     /**
      * @var string
@@ -73,6 +73,10 @@ class Category
      */
     public function getName()
     {
+        return $this->name;
+    }
+    
+    public function __toString() {
         return $this->name;
     }
 }

@@ -9,11 +9,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/hello/{name}")
+     * @Route("/kmeans")
      * @Template()
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return array('name' => $name);
+        $means = $this->get('kmeans')->initialize();
+        echo "<pre>";
+        print_r($means);
+        echo "</pre>";
+        return array('kmeans' => $means);
     }
 }

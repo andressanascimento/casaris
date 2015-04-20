@@ -36,26 +36,6 @@ class Recomendation {
     private $supplier;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="user_locale", type="integer", nullable=true)
-     */
-    private $userLocale;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="supplier_locale", type="integer", nullable=true)
-     */
-    private $supplierLocale;
-
-     /**
-     * @ManyToOne(targetEntity="Category")
-     * @JoinColumn(name="category", referencedColumnName="id")
-     * */
-    private $category;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="datetime", type="datetime")

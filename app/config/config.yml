@@ -83,3 +83,5 @@ services:
         arguments: [@security.context, @request_stack, @doctrine.orm.entity_manager]
         public: true
         scope: request
+    kmeans:
+        class: Casaris\Bundle\CoreBundle\Service\Recomendation\KMeansImplementation

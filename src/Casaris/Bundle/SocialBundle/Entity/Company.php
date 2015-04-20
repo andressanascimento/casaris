@@ -4,10 +4,10 @@ namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Casaris\Bundle\SocialBundle\Entity\User;
-use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\ManyToMany;
+use Doctrine\ORM\Mapping\JoinTable;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\ORM\Mapping\JoinColumn;
-use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
  * Company
@@ -25,12 +25,6 @@ class Company extends User
      * @ORM\Column(name="cnpj", type="string", length=14, nullable=true)
      */
     private $cnpj;
-
-    /**
-     * @ManyToOne(targetEntity="Category")
-     * @JoinColumn(name="category", referencedColumnName="id")
-     * */
-    private $category;
 
     /**
      * @var string
@@ -62,6 +56,15 @@ class Company extends User
      * @ManyToMany(targetEntity="Client", mappedBy="companies")
      **/
     private $followers;
+    
+    /**
+     * @ManyToMany(targetEntity="Category")
+     * @JoinTable(name="company_category",
+     *      joinColumns={@JoinColumn(name="company_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id", unique=true)}
+     *      )
+     * */
+    private $category;
     
     public function __construct()
     {

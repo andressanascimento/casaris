@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\DiscriminatorMap({"client" = "Client", "company" = "Company"})
  * @UniqueEntity("email", message = "unique_email")
  */
-class User implements UserInterface, \Serializable {
+abstract class User implements UserInterface, \Serializable {
     /**
      * @var integer
      * @ORM\Column(type="integer")

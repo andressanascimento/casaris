@@ -77,7 +77,7 @@ services:
             
     recomendation:
         class: Casaris\Bundle\CoreBundle\Service\Recomendation\Recomendation
-        arguments: [@security.context]
+        arguments: [@security.context, @doctrine.orm.entity_manager, @database_connection]
     recomendation_common:
         class: Casaris\Bundle\CoreBundle\Service\Recomendation\Common
         arguments: [@security.context, @request_stack, @doctrine.orm.entity_manager]

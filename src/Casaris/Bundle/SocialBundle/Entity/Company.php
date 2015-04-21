@@ -61,7 +61,7 @@ class Company extends User
      * @ManyToMany(targetEntity="Category")
      * @JoinTable(name="company_category",
      *      joinColumns={@JoinColumn(name="company_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="category_id", referencedColumnName="id")}
      *      )
      * */
     private $category;

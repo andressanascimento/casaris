@@ -11,39 +11,55 @@ use \NlpTools\FeatureFactories\DataAsFeatures;
 
 class KMeansImplementation {
 
-    private $tset;
+    private $_tset;
+    private $_user_order;
     
-    public function __contruct() {
-        
-    }
 
-    public function initialize() {
-        $this->tset = new TrainingSet();
-        $this->tset->addDocument(
+    public function initialize($data) {
+
+        $this->_tset = new TrainingSet();
+        $user_order = array();
+        
+        foreach($data as $k => $v) {
+            $this->_tset->addDocument(
                 '', //class is not used so it can be empty
-                new TokensDocument(array( 'linux' => 13, 'oss' => 10, 'cloud' => 6, 'java' => 0, 'agile' => 0))
-        );
-        $this->tset->addDocument(
-                '', //class is not used so it can be empty
-                new TokensDocument(array('linux' => 3, 'oss' => 0, 'cloud' => 1, 'java' => 6, 'agile' => 7))
-        );
-        $this->tset->addDocument(
-                '', //class is not used so it can be empty
-                new TokensDocument(array('linux' => 11, 'oss' => 0, 'cloud' => 9, 'java' => 0, 'agile' => 1))
-        );
-        $this->tset->addDocument(
-                '', //class is not used so it can be empty
-                new TokensDocument(array('linux' => 0, 'oss' => 3, 'cloud' => 0, 'java' => 9, 'agile' => 8))
-        );
+                new TokensDocument($v)
+            );
+            $user_order[] = $k;
+           
+        }
+        $this->set_user_order($user_order);
+        return $this;
+    }
+    
+    public function retrieveGroups() {
         
         $clust = new KMeans(
                 2, // two clusters
                 new Euclidean(), new EuclideanCF()
         );
+         
+        $result = $clust->cluster($this->_tset, new DataAsFeatures());
+        
+        $rf = array();
+        $user_order = $this->get_user_order();
 
-
-        return $clust->cluster($this->tset, new DataAsFeatures());
-
+        foreach ($result[0] as $cluster => $v) {
+            foreach($v as $user) {
+                $rf[$cluster][] = $user_order[$user];
+            }
+        }
+        
+        return $rf;
     }
+
+    public function get_user_order() {
+        return $this->_user_order;
+    }
+
+    public function set_user_order($_user_order) {
+        $this->_user_order = $_user_order;
+    }
+
 
 }

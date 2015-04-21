@@ -14,10 +14,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $means = $this->get('kmeans')->initialize();
-        echo "<pre>";
-        print_r($means);
-        echo "</pre>";
-        return array('kmeans' => $means);
+        $means = $this->get('recomendation')->recomendationData();
+
+        return array();
     }
 }

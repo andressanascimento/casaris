@@ -42,139 +42,37 @@ class Recomendation {
      */
     private $datetime;
 
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
     public function getId() {
         return $this->id;
     }
 
-    /**
-     * Set user
-     *
-     * @param integer $user
-     * @return Recomendation
-     */
-    public function setUser($user) {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return integer 
-     */
     public function getUser() {
         return $this->user;
     }
 
-    /**
-     * Set supplier
-     *
-     * @param integer $supplier
-     * @return Recomendation
-     */
-    public function setSupplier($supplier) {
-        $this->supplier = $supplier;
-
-        return $this;
-    }
-
-    /**
-     * Get supplier
-     *
-     * @return integer 
-     */
     public function getSupplier() {
         return $this->supplier;
     }
 
-    /**
-     * Set userLocale
-     *
-     * @param integer $userLocale
-     * @return Recomendation
-     */
-    public function setUserLocale($userLocale) {
-        $this->userLocale = $userLocale;
-
-        return $this;
-    }
-
-    /**
-     * Get userLocale
-     *
-     * @return integer 
-     */
-    public function getUserLocale() {
-        return $this->userLocale;
-    }
-
-    /**
-     * Set supplierLocale
-     *
-     * @param integer $supplierLocale
-     * @return Recomendation
-     */
-    public function setSupplierLocale($supplierLocale) {
-        $this->supplierLocale = $supplierLocale;
-
-        return $this;
-    }
-
-    /**
-     * Get supplierLocale
-     *
-     * @return integer 
-     */
-    public function getSupplierLocale() {
-        return $this->supplierLocale;
-    }
-
-    /**
-     * Set category
-     *
-     * @param integer $category
-     * @return Recomendation
-     */
-    public function setCategory($category) {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * Get category
-     *
-     * @return integer 
-     */
-    public function getCategory() {
-        return $this->category;
-    }
-
-    /**
-     * Set datetime
-     *
-     * @param \DateTime $datetime
-     * @return Recomendation
-     */
-    public function setDatetime($datetime) {
-        $this->datetime = $datetime;
-
-        return $this;
-    }
-
-    /**
-     * Get datetime
-     *
-     * @return \DateTime 
-     */
     public function getDatetime() {
         return $this->datetime;
     }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setUser($user) {
+        $this->user = $user;
+    }
+
+    public function setSupplier($supplier) {
+        $this->supplier = $supplier;
+    }
+
+    public function setDatetime(\DateTime $datetime) {
+        $this->datetime = $datetime;
+    }
+
 
 }

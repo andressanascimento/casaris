@@ -39,9 +39,6 @@ class Common {
         $recomendation->setDatetime(new \DateTime("now"));
         $recomendation->setUser($user);
         $recomendation->setSupplier($company);
-        $recomendation->setSupplierLocale($company->getCity());
-        $recomendation->setUserLocale($user->getCity());
-        $recomendation->setCategory($company->getCategory());
         
         $this->em->persist($recomendation);
         $this->em->flush();

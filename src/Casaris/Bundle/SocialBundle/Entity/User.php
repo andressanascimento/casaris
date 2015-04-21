@@ -68,7 +68,7 @@ abstract class User implements UserInterface, \Serializable {
      * @ManyToMany(targetEntity="User")
      * @JoinTable(name="friends",
      *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@JoinColumn(name="friend_id", referencedColumnName="id")}
      *      )
      * */
     protected $friends;

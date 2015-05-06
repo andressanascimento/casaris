@@ -83,5 +83,6 @@ services:
         arguments: [@security.context, @request_stack, @doctrine.orm.entity_manager]
         public: true
         scope: request
-    kmeans:
-        class: Casaris\Bundle\CoreBundle\Service\Recomendation\KMeansImplementation
+    collaborative_filter:
+        class: Casaris\Bundle\CoreBundle\Service\Recomendation\CollaborativeFilter
+        arguments: [@security.context, @doctrine.orm.entity_manager, @database_connection]

@@ -14,8 +14,10 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $means = $this->get('recomendation')->recomendationData();
-
+        $means = $this->get('collaborative_filter')->getData();
+        echo "<pre>";
+        print_r($means);
+        echo "</pre>";
         return array();
     }
 }

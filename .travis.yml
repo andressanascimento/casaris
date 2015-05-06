@@ -1,2 +1,8 @@
-## YAML Template.
----
+language: php
+php:
+    - 5.3
+    - 5.5
+script: phpunit -c app/
+before_script:
+    - cp app/config/parameters.yml.dist app/config/parameters.yml
+    - composer install

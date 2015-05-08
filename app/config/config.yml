@@ -76,7 +76,7 @@ swiftmailer:
 services:
             
     recomendation:
-        class: Casaris\Bundle\CoreBundle\Service\Recomendation\Recomendation
+        class: Casaris\Bundle\CoreBundle\Service\Recomendation\DataMining
         arguments: [@security.context, @doctrine.orm.entity_manager, @database_connection]
     recomendation_common:
         class: Casaris\Bundle\CoreBundle\Service\Recomendation\Common

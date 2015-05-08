@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\DBAL\Connection;
 use Casaris\Bundle\SocialBundle\Entity\Group;
 
-class Recomendation {
+class DataMining {
 
     private $context;
     private $em;

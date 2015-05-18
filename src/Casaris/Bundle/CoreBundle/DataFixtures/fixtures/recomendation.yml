@@ -1,0 +1,92 @@
+Recomendation:
+    recomendation1:
+        user: user1
+        supplier: company14
+    recomendation2:
+        user: user19
+        supplier: company14
+    recomendation3:
+        user: user22
+        supplier: company14
+    recomendation4:
+        user: user100
+        supplier: company14
+    recomendation5:
+        user: user90
+        supplier: company14
+    recomendation6:
+        user: user33
+        supplier: company14
+    recomendation7:
+        user: user29
+        supplier: company14
+    recomendation8:
+        user: user32
+        supplier: company14
+    recomendation9:
+        user: user12
+        supplier: company14
+    recomendation:
+        user: user23
+        supplier: company56
+    recomendation10:
+        user: user42
+        supplier: company56
+    recomendation11:
+        user: user60
+        supplier: company56
+    recomendation12:
+        user: user70
+        supplier: company56
+    recomendation13:
+        user: user83
+        supplier: company56
+    recomendation14:
+        user: user81
+        supplier: company60
+    recomendation15:
+        user: user59
+        supplier: company60
+    recomendation16:
+        user: user2
+        supplier: company60
+    recomendation17:
+        user: user7
+        supplier: company60
+    recomendation18:
+        user: user9
+        supplier: company35
+    recomendation19:
+        user: user22
+        supplier: company35
+    recomendation20:
+        user: user89
+        supplier: company35
+    recomendation21:
+        user: user57
+        supplier: company35
+    recomendation22:
+        user: user3
+        supplier: company48
+    recomendation23:
+        user: user36
+        supplier: company48
+    recomendation24:
+        user: user27
+        supplier: company48
+    recomendation25:
+        user: user18
+        supplier: company39
+    recomendation26:
+        user: user99
+        supplier: company39
+    recomendation27:
+        user: user100
+        supplier: company50
+    recomendation28:
+        user: user88
+        supplier: company41
+    recomendation29:
+        user: user48
+        supplier: company31
+   

@@ -8,6 +8,7 @@ use \NlpTools\Clustering\CentroidFactories\Euclidean as EuclideanCF;
 use \NlpTools\Documents\TrainingSet;
 use \NlpTools\Documents\TokensDocument;
 use \NlpTools\FeatureFactories\DataAsFeatures;
+//use \NlpTools\Clustering\ClusteringTestBase;
 
 class KMeansImplementation {
 
@@ -35,12 +36,12 @@ class KMeansImplementation {
     public function retrieveGroups() {
         
         $clust = new KMeans(
-                2, // two clusters
+                5, // two clusters
                 new Euclidean(), new EuclideanCF()
         );
          
         $result = $clust->cluster($this->_tset, new DataAsFeatures());
-        
+               
         $rf = array();
         $user_order = $this->get_user_order();
 
@@ -60,6 +61,5 @@ class KMeansImplementation {
     public function set_user_order($_user_order) {
         $this->_user_order = $_user_order;
     }
-
 
 }

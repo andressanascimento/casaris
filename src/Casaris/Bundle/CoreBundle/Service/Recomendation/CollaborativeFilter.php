@@ -27,11 +27,14 @@ class CollaborativeFilter {
         
         $user = $this->getUser()->getId();
 
-        $sql = 'SELECT distinct r.supplier, (select count(*) from recommended_supplier rs where rs.supplier = r.supplier) 
-                as qtd_recommend FROM recomendation r
-                WHERE r.user in  
-                ( SELECT c.user_id FROM cluster c WHERE c.cluster = (SELECT cluster from cluster g WHERE g.user_id = :user1) and c.user_id <> :user2)
-                order by qtd_recommend DESC limit 5';
+        $sql = "SELECT c.id, u.name, "
+                . "(SELECT count(*) FROM recomendation r where r.supplier = c.id) as qtde_recommended "
+                . "FROM company c "
+                . "JOIN user u ON u.id = c.id "
+                . "WHERE c.id in "
+                    . "( SELECT distinct supplier FROM recommended_supplier WHERE user in "
+                        . "( SELECT c.user_id FROM cluster c WHERE c.cluster = (SELECT cluster from cluster g WHERE g.user_id = :user1) and c.user_id <> :user2 ) "
+                    . ") order by qtde_recommended DESC limit 5";
         $query = $this->connection->prepare($sql);
         $query->bindParam(':user1', $user);
         $query->bindParam(':user2', $user);

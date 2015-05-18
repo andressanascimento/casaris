@@ -16,10 +16,25 @@ class PrepareData {
 
     public function clean() {
 
-        $sql = 'SELECT u.user, c.category_id, count(c.category_id) as qtde
-                FROM (SELECT distinct r.user, r.supplier FROM recomendation r) u
-                JOIN company_category c ON c.company_id = u.supplier
-                GROUP BY u.user, c.category_id';
+        /**
+         * SELECT u.id as user, 
+         * c.id as category, 
+         * (SELECT count(cc.category_id) as qtde 
+         * FROM recommended_supplier r 
+         * JOIN company_category cc ON cc.company_id = r.supplier 
+         * where r.user = u.id and cc.category_id = c.id) qtde 
+         * FROM category c, user u 
+         * WHERE u.type = 'client'
+         */
+        
+        $sql = "SELECT u.id as user, "
+                . "c.id as category_id, "
+                . "(SELECT count(cc.category_id) as qtde "
+                    . "FROM recommended_supplier r "
+                    . "JOIN company_category cc ON cc.company_id = r.supplier "
+                    . "WHERE r.user = u.id and cc.category_id = c.id) qtde "
+             . "FROM category c, user u "
+             . "WHERE u.type = 'client'";
         $query = $this->connection->prepare($sql);
         $query->execute();
         $this->data = $query->fetchAll();

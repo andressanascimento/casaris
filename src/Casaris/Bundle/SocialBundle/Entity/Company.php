@@ -69,6 +69,11 @@ class Company extends User
     public function __construct()
     {
         $this->followers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    public function addCategory(Category $category) {
+        $this->category[] = $category;
     }
     
     public function getType() {
@@ -77,10 +82,6 @@ class Company extends User
 
     public function getCnpj() {
         return $this->cnpj;
-    }
-
-    public function getCategory() {
-        return $this->category;
     }
 
     public function getPhone() {
@@ -95,24 +96,12 @@ class Company extends User
         return $this->dateOpening;
     }
 
-    public function getComments() {
-        return $this->comments;
-    }
-
-    public function getFollowers() {
-        return $this->followers;
-    }
-
     public function setType($type) {
         $this->type = $type;
     }
 
     public function setCnpj($cnpj) {
         $this->cnpj = $cnpj;
-    }
-
-    public function setCategory($category) {
-        $this->category = $category;
     }
 
     public function setPhone($phone) {
@@ -127,14 +116,6 @@ class Company extends User
         $this->dateOpening = $dateOpening;
     }
 
-    public function setComments($comments) {
-        $this->comments = $comments;
-    }
-
-    public function setFollowers($followers) {
-        $this->followers = $followers;
-    }
-
-
+ 
 
 }

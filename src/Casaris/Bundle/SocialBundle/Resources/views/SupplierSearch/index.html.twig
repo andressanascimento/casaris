@@ -4,6 +4,28 @@
     <link href="{{ asset('bundles/social/css/friends.css') }}" rel="stylesheet" />
     <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />
 {% endblock stylesheets %}
+
+{% block name_user %}
+    <p id="name" data-pk="1" data-type="text" data-url="/name" data-title="Nome">{{ app.user.name }}</p>
+{% endblock name_user %}
+
+{% block profession %} 
+    {% if app.user.profession is not empty %}
+        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
+        {% else %}
+        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
+    {% endif %}
+{% endblock %}
+
+{% block description %}
+    {% if app.user.phrase is not empty %}
+        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
+    {% else %}
+        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
+    {% endif %}
+
+{% endblock description %}
+
 {% block container %}
     {{ parent() }}
     <div class="container">

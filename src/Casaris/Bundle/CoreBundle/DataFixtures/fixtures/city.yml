@@ -1,0 +1,26 @@
+City:
+    city1:
+        name: São José dos Campos
+        state: SP
+        uf: SP
+    city2:
+        name: Jacareí
+        state: SP
+        uf: SP
+    city3:
+        name: Taubaté
+        state: SP
+        uf: SP
+    city4:
+        name: Caçapava
+        state: SP
+        uf: SP
+    city5:
+        name: Pindamonhangaba
+        state: SP
+        uf: SP
+    city6:
+        name: Santa Branca
+        state: SP
+        uf: SP
+        

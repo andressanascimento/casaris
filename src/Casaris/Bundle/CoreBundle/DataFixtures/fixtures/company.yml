@@ -1,0 +1,379 @@
+Company:
+    company1:
+        name: Jurandy do Sax
+        password: jurandy
+        email: jurandy@gmail.com
+        category: musica
+        city: city1
+    company2:
+        name: Delux Produções
+        password: delux
+        email: delux@gmail.com
+        category: fotografia
+        city: city1
+    company3:
+        name: Johana Ortega - Decorações e Eventos
+        password: johana
+        email: johanaortega@gmail.com
+        category: decoracao
+        city: city1
+    company4:
+        name: Intermezzo - Orquestra de Câmara
+        password: intermezzo
+        email: intermezzo@gmail.com
+        category: musica
+        city: city1
+    company5:
+        name: LOVE Films
+        password: love
+        email: love@gmail.com
+        category: fotografia
+        city: city2
+    company6:
+        name: Target Cerimonial e Eventos
+        password: target
+        email: target@gmail.com
+        category: cerimonial
+        city: city2
+    company7:
+        name: Top Vídeo
+        password: top
+        email: top@gmail.com
+        category: fotografia
+        city: city1
+    company8:
+        name: Estúdio Foco
+        password: foco
+        email: foco@gmail.com
+        category: fotografia
+        city: city1
+    company9:
+        name: Imagem Sonora
+        password: sonora
+        email: sonora@gmail.com
+        category: fotografia
+        city: city1
+    company10:
+        name: Bena Eventos Iluminação
+        password: bena
+        email: bena@gmail.com
+        category: iluminacao
+        city: city2
+    company11:
+        name: Cerimonialista Sibela Medeiros
+        password: sibela
+        email: sibela@gmail.com
+        category: cerimonial
+        city: city2
+    company12:
+        name: Adriana Piegas Assessoria
+        password: adriana
+        email: adrianapiegas@gmail.com
+        category: cerimonial
+        city: city1
+    company13:
+        name: MSK Soluções Musicais
+        password: msk
+        email: msk@gmail.com
+        category: musica
+        city: city1
+    company14:
+        name: Exclusive Car
+        password: exclusivecar
+        email: exclusivecar@gmail.com
+        category: carro
+        city: city1
+    company15:
+        name: MM Cerimonial
+        password: mmcerimonial
+        email: mmcerimonial@gmail.com
+        category: cerimonial
+        city: city1
+    company16:
+        name: CORES Produções
+        password: cores
+        email: cores@gmail.com
+        category: decoracao
+        city: city2
+    company17:
+        name: Lu Flores Eventos
+        password: luflores
+        email: luflores@gmail.com
+        category: decoracao
+        city: city2
+    company18:
+        name: Talento Arte e Decoração
+        password: talento
+        email: talento@gmail.com
+        category: decoracao
+        city: city3
+    company19:
+        name: Ildete Crauz Decoração
+        password: ildete
+        email: ildete@gmail.com
+        category: decoracao
+        city: city3
+    company20:
+        name: Cher Parti by Laís Medeiros
+        password: cher
+        email: cher@gmail.com
+        category: decoracao
+        city: city1
+    company21:
+        name: Imaginare Eventos e Decorações
+        password: imaginare
+        email: imaginare@gmail.com
+        category: decoracao
+        city: city1
+    company22:
+        name: Sublime Flores e Decorações
+        password: sublime
+        email: sublime@gmail.com
+        category: decoracao
+        city: city1
+    company23:
+        name: Buffet Ribeiro Eventos
+        password: ribeiro
+        email: ribeiro@gmail.com
+        category: buffet
+        city: city4
+    company24:
+        name: La Cuisine Buffet Búzios
+        password: lacuisine
+        email: lacuisine@gmail.com
+        category: buffet
+        city: city1
+    company25:
+        name: Buffet Serv Bem
+        password: servbem
+        email: servbem@gmail.com
+        category: buffet
+        city: city5
+    company26:
+        name: Lumas Buffet
+        password: lumas
+        email: lumas@gmail.com
+        category: buffet
+        city: city4
+    company27:
+        name: Maximus Buffet
+        password: maximus
+        email: maximus@gmail.com
+        category: buffet
+        city: city4
+    company28:
+        name: Banda Showbiss
+        password: showbiss
+        email: showbiss@gmail.com
+        category: musica
+        city: city5
+    company29:
+        name: Combinasons
+        password: combinasons
+        email: combinasons@gmail.com
+        category: musica
+        city: city1
+    company30:
+        name: Buffet Adriano Guedes
+        password: adrianoguedes
+        email: adrianoguedes@gmail.com
+        category: buffet
+        city: city5
+    company31:
+        name: The House Eventos e Buffet
+        password: thehouse
+        email: thehouse@gmail.com
+        category: buffet
+        city: city6
+    company32:
+        name: Ana Maria Buffet Festas e Eventos
+        password: anamaria
+        email: anamaria@gmail.com
+        category: buffet
+        city: city6
+    company33:
+        name: Luz Tropical Festas e Eventos
+        password: luztropical
+        email: luztropical@gmail.com
+        category: buffet
+        city: city1
+    company34:
+        name: Amanda Brasil Gastronomia
+        password: amandabrasil
+        email: amandabrasil@gmail.com
+        category: buffet
+        city: city1
+    company35:
+        name: Buffet Paradise
+        password: paradise
+        email: paradise@gmail.com
+        category: buffet
+        city: city5
+    company36:
+        name: Espaço Real
+        password: espacoreal
+        email: espacoreal@gmail.com
+        category: salao
+        city: city4
+    company36:
+        name: Espaço Villa Royal
+        password: villaroyal
+        email: villaroyal@gmail.com
+        category: salao
+        city: city2
+    company36:
+        name: Espaco de Eventos Kozumel
+        password: kozumel
+        email: kozumel@gmail.com
+        category: salao
+        city: city1
+    company37:
+        name: Lagoa Park Show
+        password: lagoapark
+        email: lagoapark@gmail.com
+        category: salao
+        city: city1
+    company38:
+        name: Santo Graal Eventos
+        password: santograal
+        email: santograal@gmail.com
+        category: salao
+        city: city1
+    company39:
+        name: Glamour Recepções
+        password: glamour
+        email: glamour@gmail.com
+        category: salao
+        city: city1
+    company40:
+        name: Oasis Recepções
+        password: oasis
+        email: oasis@gmail.com
+        category: salao
+        city: city1
+    company41:
+        name: Charqueada Boa Vista
+        password: boavista
+        email: boavista@gmail.com
+        category: salao
+        city: city2
+    company42:
+        name: Fortaleza Praia Hotel
+        password: praiahotel
+        email: praiahotel@gmail.com
+        category: salao
+        city: city3
+    company43:
+        name: Salão de Festas Estillos
+        password: estillos
+        email: estillos@gmail.com
+        category: salao
+        city: city1
+    company43:
+        name: Luis Chaves Fotografia
+        password: luischaves
+        email: luischaves@gmail.com
+        category: fotografia
+        city: city1
+    company44:
+        name: Fernando Longen Fotografia
+        password: fernandolongen
+        email: fernandolongen@gmail.com
+        category: fotografia
+        city: city1
+    company45:
+        name: Estudio JK
+        password: estudiojk
+        email: estudiojk@gmail.com
+        category: fotografia
+        city: city1
+    company46:
+        name: Tree Fotografia e Eventos
+        password: tree
+        email: tree@gmail.com
+        category: fotografia
+        city: city3
+    company47:
+        name: d'Amelie
+        password: amelie
+        email: amelie@gmail.com
+        category: fotografia
+        city: city4
+    company48:
+        name: Ricco Design e Imagens
+        password: ricco
+        email: ricco@gmail.com
+        category: fotografia
+        city: city1
+    company49:
+        name: Collors Fotos - Foto e Vídeo
+        password: collors
+        email: collors@gmail.com
+        category: fotografia
+        city: city1
+    company50:
+        name: Michel Lambstein Foto-Studio
+        password: michellambstein
+        email: michellambstein@gmail.com
+        category: fotografia
+        city: city1
+    company51:
+        name: Bahia Transportes
+        password: bahia
+        email: bahia@gmail.com
+        category: carro
+        city: city1
+    company52:
+        name: Andritur Locação de Veículos
+        password: andritur
+        email: andritur@gmail.com
+        category: carro
+        city: city2
+    company53:
+        name: MX31 Premium Rent a Car
+        password: MX31
+        email: mx31@gmail.com
+        category: carro
+        city: city1
+    company54:
+        name: Tuareg Transportes & Locação de Vans LTDA
+        password: tuareg
+        email: tuareg@gmail.com
+        category: carro
+        city: city3
+    company55:
+        name: We Tour Executive
+        password: wetour
+        email: wetour@gmail.com
+        category: carro
+        city: city1
+    company56:
+        name: My Wedding Car
+        password: myweddingcar
+        email: myweddingcar@gmail.com
+        category: carro
+        city: city1
+    company57:
+        name: Cerimonial Vanessa Rezende
+        password: vanessarezende
+        email: vanessarezende@gmail.com
+        category: cerimonial
+        city: city1
+    company58:
+        name: T4 Transporte e Locações de Veículos
+        password: t4transport
+        email: t4transport@gmail.com
+        category: carro
+        city: city1
+    company59:
+        name: Estilo e Classe Carros
+        password: estiloeclasse
+        email: estiloeclasse@gmail.com
+        category: carro
+        city: city1
+    company60:
+        name: JR Auto Clássicos
+        password: jrauto
+        email: jrauto@gmail.com
+        category: carro
+        city: city1

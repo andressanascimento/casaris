@@ -17,7 +17,7 @@ use Casaris\Bundle\SocialBundle\Entity\Company;
  * repository methods below.
  */
 class UserRepository extends GenericDAO implements UserProviderInterface {
-
+    
     public function loadUserByUsername($username) {
         $q = $this
                 ->createQueryBuilder('u')

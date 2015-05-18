@@ -33,6 +33,8 @@ class DataMining {
         $prepare_groups = $groups->initialize($data)->retrieveGroups();
 
         $this->saveGroups($prepare_groups);
+        
+        return $prepare_groups;
     }
 
     public function saveGroups($data) {

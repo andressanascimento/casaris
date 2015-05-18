@@ -1,0 +1,17 @@
+Category:
+    buffet:
+        name: Buffet
+    decoracao:
+        name: Decoração
+    fotografia:
+        name: Fotografia
+    musica:
+        name: Musica
+    salao:
+        name: Salão
+    iluminacao:
+        name: Iluminação
+    cerimonial:
+        name: Cerimonial
+    carro:
+        name: Aluguel de carros

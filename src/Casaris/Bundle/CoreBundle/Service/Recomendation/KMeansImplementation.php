@@ -13,8 +13,10 @@ use \NlpTools\FeatureFactories\DataAsFeatures;
 class KMeansImplementation {
 
     private $_tset;
-    private $_user_order;
     
+    private $_userOrder;
+    
+    private $_clusters;
 
     public function initialize($data) {
 
@@ -29,21 +31,21 @@ class KMeansImplementation {
             $user_order[] = $k;
            
         }
-        $this->set_user_order($user_order);
+        $this->setUserOrder($user_order);
         return $this;
     }
     
     public function retrieveGroups() {
         
         $clust = new KMeans(
-                5, // two clusters
+                $this->getClusters(), 
                 new Euclidean(), new EuclideanCF()
         );
          
         $result = $clust->cluster($this->_tset, new DataAsFeatures());
                
         $rf = array();
-        $user_order = $this->get_user_order();
+        $user_order = $this->getUserOrder();
 
         foreach ($result[0] as $cluster => $v) {
             foreach($v as $user) {
@@ -54,12 +56,28 @@ class KMeansImplementation {
         return $rf;
     }
 
-    public function get_user_order() {
-        return $this->_user_order;
+    public function getTset() {
+        return $this->_tset;
     }
 
-    public function set_user_order($_user_order) {
-        $this->_user_order = $_user_order;
+    public function getUserOrder() {
+        return $this->_userOrder;
+    }
+
+    public function getClusters() {
+        return $this->_clusters;
+    }
+
+    public function setTset($tset) {
+        $this->_tset = $tset;
+    }
+
+    public function setUserOrder($userOrder) {
+        $this->_userOrder = $userOrder;
+    }
+
+    public function setClusters($clusters) {
+        $this->_clusters = $clusters;
     }
 
 }

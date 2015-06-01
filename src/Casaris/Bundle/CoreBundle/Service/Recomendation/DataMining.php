@@ -23,13 +23,13 @@ class DataMining {
         return $this->context->getToken()->getUser();
     }
 
-    public function recomendationData() {
+    public function recomendationData($clusters) {
 
         $prepare = new PrepareData($this->connection);
         $data = $prepare->clean()->integration();
 
         $groups = new KMeansImplementation();
-
+        $groups->setClusters($clusters);
         $prepare_groups = $groups->initialize($data)->retrieveGroups();
 
         $this->saveGroups($prepare_groups);

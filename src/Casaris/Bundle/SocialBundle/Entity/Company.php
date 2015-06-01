@@ -116,6 +116,14 @@ class Company extends User
         $this->dateOpening = $dateOpening;
     }
 
- 
+    public function getCategory() {
+        return $this->category;
+    }
+
+    public function setCategory($category) {
+        $this->category = $category;
+    }
+
+
 
 }

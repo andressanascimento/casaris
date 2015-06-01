@@ -49,113 +49,91 @@
                             <input type="text" class="form-control" placeholder="palavra-chave" style="width: 230px">
                         </div>
                     </div>
-                    <span href="#" class="list-group-item">
-                        <span class="text-primary">
-                            Estado
-                        </span>
-                        <ul style="list-style-type: none; margin-left: -40px">
-                            <li class="radio">
-                                <label>
-                                    <input type="radio" name="states" id="states" value="AC">
-                                    AC
-                                </label>
-                            </li>
-                            <li class="radio">
-                                <label>
-                                    <input type="radio" name="states" id="states" value="AL">
-                                    AL
-                                </label>
-                            </li>
-                        </ul>
-                    </span>
-                    <span href="#" class="list-group-item">
-                        <span class="text-primary">
-                            Cidade
-                        </span>
-                        <ul style="list-style-type: none; margin-left: -40px">
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> São José dos Campos
-                                </label>
-                            </li>
-                        </ul>
-                    </span>
-                    <span href="#" class="list-group-item">
+                    {#                    <span href="#" class="list-group-item">
+                                            <span class="text-primary">
+                                                Estado
+                                            </span>
+                                            <ul style="list-style-type: none; margin-left: -40px">
+                                                <li class="radio">
+                                                    <label>
+                                                        <input type="radio" name="states" id="states" value="AC">
+                                                        AC
+                                                    </label>
+                                                </li>
+                                                <li class="radio">
+                                                    <label>
+                                                        <input type="radio" name="states" id="states" value="AL">
+                                                        AL
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </span>
+                                        <span href="#" class="list-group-item">
+                                            <span class="text-primary">
+                                                Cidade
+                                            </span>
+                                            <ul style="list-style-type: none; margin-left: -40px">
+                                                <li class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> São José dos Campos
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </span>
+                    #}                    <span href="#" class="list-group-item">
                         <span class="text-primary">
                             Categoria
                         </span>
                         <ul style="list-style-type: none; margin-left: -40px">
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Aluguel de mesas
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Buffet
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Cabelo e Maquiagem
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Fotografia
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Igrejas
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Salão
-                                </label>
-                            </li>
-                        </ul>
-                    </span>
-                    <span href="#" class="list-group-item">
-                        <span class="text-primary">
-                            Avaliação
-                        </span>
-                        <ul style="list-style-type: none; margin-left: -40px">
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Todos
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
-                                </label>
-                            </li>
-                            <li class="checkbox">
-                                <label>
-                                    <input type="checkbox"> <i class="fa fa-star text-primary"></i>
-                                </label>
-                            </li>
-                        </ul>
+                            {% for category in categories %}
+                                <li class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> {{category.name}}
+                                    </label>
+                                </li>
+                            {% endfor %}
 
+                        </ul>
                     </span>
-                </div>        
+                    {#                    <span href="#" class="list-group-item">
+                                            <span class="text-primary">
+                                                Avaliação
+                                            </span>
+                                            <ul style="list-style-type: none; margin-left: -40px">
+                                                <li class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> Todos
+                                                    </label>
+                                                </li>
+                                                <li class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
+                                                    </label>
+                                                </li>
+                                                <li class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
+                                                    </label>
+                                                </li>
+                                                <li class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
+                                                    </label>
+                                                </li>
+                                                <li class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> <i class="fa fa-star text-primary"></i><i class="fa fa-star text-primary"></i>
+                                                    </label>
+                                                </li>
+                                                <li class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox"> <i class="fa fa-star text-primary"></i>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                    
+                                        </span>
+                    #}                </div>        
             </div>
 
 
@@ -163,72 +141,77 @@
             <div class="col-sm-9 col-md-9">
                 <div class="panel panel-default">
                     <div class="panel-heading c-list">
-                        <span class="title"><a href="#"> <i class="fa fa-truck"></i></i>&nbsp; Fornecedores</a></span> 
+                        <span class="title"><a href="#">Recomendados</a></span> 
                     </div>
                     <div class="row" style="padding: 20px;">
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
-                                <div class="caption">
-                                    <small>
-                                        <a href="#">
+                        {% for r in recomendation %}
+                            <div class="col-sm-3 col-md-3">
+                                <div class="thumbnail">
+                                    <img data-src="holder.js/100%x100" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
+                                    <div class="caption">
+                                        <small>
+                                            <a href="#"><p>{{r[0].name}}</a>
                                             <p>
-                                                Gourmand Buffet<br/>
-                                                <i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></p></a>
-                                        <p>
+                                                <i class="fa fa-thumbs-o-up"> {{r[1]}}</i><br/>
+                                                <i class="glyphicon glyphicon-map-marker"></i> {{r[0].city.uf}}, {{r[0].city.name}} <br>
+                                                {% for c in r[0].category %}
+                                                    <i class="glyphicon glyphicon-tags"></i>&nbsp; {{c.name}} <br/>
+                                                {% endfor %}
 
-                                            <i class="glyphicon glyphicon-map-marker"></i> SP, São José dos Campos <br>
-                                            <i class="fa fa-comments"></i> &nbsp; 22<br/>
-                                            <i class="glyphicon glyphicon-tags"></i> &nbsp;Buffet
-                                        </p>
-                                    </small>
+                                            </p>
+                                        </small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
-                                <div class="caption">
-                                    <small>
-                                        <a href="#">
-                                            <p>
-                                                Gourmand Buffet<br/>
-                                                <i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></p></a>
-                                        <p>
-
-                                            <i class="glyphicon glyphicon-map-marker"></i> SP, São José dos Campos <br>
-                                            <i class="fa fa-comments"></i> &nbsp; 22<br/>
-                                            <i class="glyphicon glyphicon-tags"></i> &nbsp;Buffet
-                                        </p>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img data-src="holder.js/100%x200" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
-                                <div class="caption">
-                                    <small>
-                                        <a href="#">
-                                            <p>
-                                                Gourmand Buffet<br/>
-                                                <i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i></p></a>
-                                        <p>
-
-                                            <i class="glyphicon glyphicon-map-marker"></i> SP, São José dos Campos <br>
-                                            <i class="fa fa-comments"></i> &nbsp; 22<br/>
-                                            <i class="glyphicon glyphicon-tags"></i> &nbsp;Buffet
-                                        </p>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-        {% endblock container %}
-        {% block javascripts %}
-            {{ parent() }}
-            <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
-        {% endblock javascripts %}
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+            </div>
+            <div class="col-sm-9 col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading c-list">
+                        <span class="title"><a href="#">Fornecedores</a></span> 
+                    </div>
+{#                    <div class="row" style="padding: 20px;">#}
+                        {% for company in companies %}
+                            {% if (loop.index == 1) or (loop.index%4 == 0) %}
+{#                                <li class="list-group-item">#}
+                                    <div class="row" style="padding: 10px;">
+                                    {% endif %}
+                                    <div class="col-sm-3 col-md-3">
+                                        <div class="thumbnail">
+                                            <img data-src="holder.js/100%x100" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
+                                            <div class="caption">
+                                                <small>
+                                                    <a href="#"><p>{{company.name}}</a>
+                                                    <p>
+                                                        {#                                                <i class="fa fa-thumbs-o-up"> {{r[1]}}</i><br/>#}
+                                                        <i class="glyphicon glyphicon-map-marker"></i> {{company.city.uf}}, {{company.city.name}} <br>
+                                                        {% for category in company.category %}
+                                                            <i class="glyphicon glyphicon-tags"></i>&nbsp; {{category.name}} <br/>
+                                                        {% endfor %}
+
+                                                    </p>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if loop.index > 0 and loop.index%4 == 0 %}
+                                    </div>
+                                    <div class="clearfix"></div>
+{#                                </li>#}
+                            {% endif %}
+                        {% endfor %}
+{#                    </div>#}
+                </div>
+            </div>
+        </div>
+    {% endblock container %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
+    {% endblock javascripts %}

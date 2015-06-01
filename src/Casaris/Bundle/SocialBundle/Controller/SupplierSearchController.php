@@ -14,9 +14,15 @@ class SupplierSearchController extends Controller {
      */
     public function indexAction() {
         $recomendation = $this->get('collaborative_filter')->getData();
+        $recomendations = array();
+        foreach($recomendation as $r) {
+            $recomendations[$r['id']][] = $this->getDoctrine()->getRepository('SocialBundle:Company')->find($r['id']);
+            $recomendations[$r['id']][] = $r['qtde_recommended'];
+        }
+
         $companies = $this->getDoctrine()->getRepository('SocialBundle:Company')->getCompaniesMostRecommended();
         $categories = $this->getDoctrine()->getRepository('SocialBundle:Category')->findAll();
-        return array('recomendation' => $recomendation,'companies'=>$companies,'categories'=>$categories);
+        return array('recomendation' => $recomendations,'companies'=>$companies,'categories'=>$categories);
     }
 
 }

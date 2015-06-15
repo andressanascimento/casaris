@@ -377,3 +377,375 @@ Company:
         email: jrauto@gmail.com
         category: carro
         city: city1
+    company62:
+        name: Luciane Matos Buffet
+        password: lucianematos
+        email: lucianematos@gmail.com
+        category: buffet
+        city: city1
+    company63:
+        name: Buffet Fatima Mello
+        password: fatimamello
+        email: fatimamello@gmail.com
+        category: buffet
+        city: city1
+    company64:
+        name: Sonia Jendiroba Buffet
+        password: soniajendiroba
+        email: soniajendiroba@gmail.com
+        category: buffet
+        city: city1
+    company65:
+        name: Coffee and Cake Buffet
+        password: coffeeandcake
+        email: coffeeandcake@gmail.com
+        category: buffet
+        city: city1
+    company66:
+        name: Buffet a Varanda
+        password: avaranda
+        email: avaranda@gmail.com
+        category: buffet
+        city: city1
+    company67:
+        name: Stillus Eventos Buffet
+        password: stillus
+        email: stillus@gmail.com
+        category: buffet
+        city: city1
+    company68:
+        name: Restaurante e Catering Cigalon
+        password: cigalon
+        email: cigalon@gmail.com
+        category: buffet
+        city: city1
+    company69:
+        name: Higienopolis Gastronomia
+        password: higienopolis
+        email: higienopolis@gmail.com
+        category: buffet
+        city: city1
+    company70:
+        name: Buffet Fest
+        password: fest
+        email: fest@gmail.com
+        category: buffet
+        city: city1
+    company71:
+        name: Áurea Buffet
+        password: aurea
+        email: aurea@gmail.com
+        category: buffet
+        city: city1
+    company72:
+        name: Buffet Detalhes Eventos
+        password: detalhes
+        email: detalhes@gmail.com
+        category: buffet
+        city: city1
+    company73:
+        name: Dos Anjos Buffet
+        password: dosanjos
+        email: dosanjos@gmail.com
+        category: buffet
+        city: city1
+    company74:
+        name: KI Sabor Buffet
+        password: kisabor
+        email: kisabor@gmail.com
+        category: buffet
+        city: city1
+    company75:
+        name: Villas Buffet
+        password: villas
+        email: villas@gmail.com
+        category: buffet
+        city: city1
+    company76:
+        name: Manzoli Buffet
+        password: manzoli
+        email: manzoli@gmail.com
+        category: buffet
+        city: city1
+    company77:
+        name: Estações Buffet
+        password: estacoes
+        email: estacoes@gmail.com
+        category: buffet
+        city: city1
+    company78:
+        name: Oge Buffet
+        password: oge
+        email: oge@gmail.com
+        category: buffet
+        city: city1
+    company79:
+        name: Amanhã Buffet
+        password: amanha
+        email: amanha@gmail.com
+        category: buffet
+        city: city1
+    company80:
+        name: Eternize Buffet
+        password: eternize
+        email: eternize@gmail.com
+        category: buffet
+        city: city1
+    company81:
+        name: Tudo de bom Buffet
+        password: tudodebom
+        email: tudodebom@gmail.com
+        category: buffet
+        city: city1
+    company82:
+        name: Guloseimas Buffet
+        password: guloseimas
+        email: guloseimas@gmail.com
+        category: buffet
+        city: city1
+    company83:
+        name: Gourmand Buffet
+        password: gourmand
+        email: gourmand@gmail.com
+        category: buffet
+        city: city1
+    company84:
+        name: Avalanche Buffet
+        password: avalanche
+        email: Avalanche@gmail.com
+        category: buffet
+        city: city1
+    company84:
+        name: Arte a la carte Buffet
+        password: artealacarte
+        email: artealacarte@gmail.com
+        category: buffet
+        city: city1
+    company85:
+        name: Molho a la pimenta Buffet
+        password: molhoalapimenta
+        email: molhoalapimenta@gmail.com
+        category: buffet
+        city: city1
+    company86:
+        name: La cucaracha Buffet
+        password: lacucaracha
+        email: lacucaracha@gmail.com
+        category: buffet
+        city: city1
+    company87:
+        name: A moda do chefe Buffet
+        password: amodadochefe
+        email: amodadochefe@gmail.com
+        category: buffet
+        city: city1
+    company88:
+        name: Taste Buffet
+        password: taste
+        email: taste@gmail.com
+        category: buffet
+        city: city1
+    company89:
+        name: Criative Buffet
+        password: criative
+        email: criative@gmail.com
+        category: buffet
+        city: city1
+    company90:
+        name: Saramago Buffet
+        password: saramago
+        email: saramago@gmail.com
+        category: buffet
+        city: city1
+    company91:
+        name: Meloge Buffet
+        password: meloge
+        email: meloge@gmail.com
+        category: buffet
+        city: city1
+    company92:
+        name: Mexican Food Buffet
+        password: mexicanfood
+        email: mexicanfood@gmail.com
+        category: buffet
+        city: city1
+    company93:
+        name: Italian Food Express Buffet
+        password: italianfoodexpress
+        email: italianfoodexpress@gmail.com
+        category: buffet
+        city: city1
+    company94:
+        name: Desejo do dia Buffet
+        password: desejododia
+        email: desejododia@gmail.com
+        category: buffet
+        city: city1
+    company95:
+        name: Elegancia Buffet
+        password: elegancia
+        email: elegancia@gmail.com
+        category: buffet
+        city: city1
+    company96:
+        name: Caseiro Buffet
+        password: caseiro
+        email: caseiro@gmail.com
+        category: buffet
+        city: city1
+    company97:
+        name: Astral Buffet
+        password: astral
+        email: astral@gmail.com
+        category: buffet
+        city: city1
+    company97:
+        name: Buffet dos deuses
+        password: dosdeuses
+        email: dosdeuses@gmail.com
+        category: buffet
+        city: city1
+    company98:
+        name: Divino Buffet
+        password: divino
+        email: divino@gmail.com
+        category: buffet
+        city: city1
+    company98:
+        name: O melhor da região Buffet
+        password: omelhordaregiao
+        email: omelhordaregiao@gmail.com
+        category: buffet
+        city: city1
+    company99:
+        name: Angelical Buffet
+        password: angelical
+        email: angelical@gmail.com
+        category: buffet
+        city: city1
+    company100:
+        name: Animado Buffet
+        password: animado
+        email: animado@gmail.com
+        category: buffet
+        city: city1
+    company101:
+        name: Gourmet da Serra Buffet
+        password: gourmetdaserra
+        email: gourmetdaserra@gmail.com
+        category: buffet
+        city: city1
+    company102:
+        name: Serrano Buffet
+        password: serrano
+        email: serrano@gmail.com
+        category: buffet
+        city: city1
+    company103:
+        name: Feito em casa Buffet
+        password: feitoemcasa
+        email: feitoemcasa@gmail.com
+        category: buffet
+        city: city1
+    company104:
+        name: Vivente Buffet
+        password: vivente
+        email: vivente@gmail.com
+        category: buffet
+        city: city1
+    company105:
+        name: Cusco Buffet
+        password: cusco
+        email: cusco@gmail.com
+        category: buffet
+        city: city1
+    company106:
+        name: Mineirinha Buffet
+        password: mineirinha
+        email: mineirinha@gmail.com
+        category: buffet
+        city: city1
+    company107:
+        name: Sol Nascente Buffet
+        password: solnascente
+        email: solnascente@gmail.com
+        category: buffet
+        city: city1
+    company108:
+        name: Vegan Buffet
+        password: vegan
+        email: vegan@gmail.com
+        category: buffet
+        city: city1
+    company109:
+        name: Vegetal Buffet
+        password: vegetal
+        email: vegetal@gmail.com
+        category: buffet
+        city: city1
+    company110:
+        name: Time Buffet
+        password: time
+        email: time@gmail.com
+        category: buffet
+        city: city1
+    company111:
+        name: Legaloso Buffet
+        password: legaloso
+        email: legaloso@gmail.com
+        category: buffet
+        city: city1
+    company112:
+        name: Coelho Pardo Buffet
+        password: coelhopardo
+        email: coelhopardo@gmail.com
+        category: buffet
+        city: city1
+    company113:
+        name: Vincentinos Buffet
+        password: vicentinos
+        email: vicentinos@gmail.com
+        category: buffet
+        city: city1
+    company114:
+        name: Mestre Cuca Buffet
+        password: mestrecuca
+        email: mestrecuca@gmail.com
+        category: buffet
+        city: city1
+    company115:
+        name: Le cuisine Buffet
+        password: lecuisine
+        email: lecuisine@gmail.com
+        category: buffet
+        city: city1
+    company116:
+        name: Patrimonio Buffet
+        password: patrimonio
+        email: patrimonio@gmail.com
+        category: buffet
+        city: city1
+    company117:
+        name: A Portuguesa Buffet
+        password: aportuguesa
+        email: aportuguesa@gmail.com
+        category: buffet
+        city: city1
+    company118:
+        name: Ancestral Buffet
+        password: ancestral
+        email: ancestral@gmail.com
+        category: buffet
+        city: city1
+    company119:
+        name: Histórico Buffet
+        password: historico
+        email: historico@gmail.com
+        category: buffet
+        city: city1
+    company120:
+        name: Pangea Buffet
+        password: pangea
+        email: pangea@gmail.com
+        category: buffet
+        city: city1

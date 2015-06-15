@@ -58,6 +58,13 @@ class Company extends User
     private $followers;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="site", type="string", length=35, nullable=true)
+     */
+    private $site;
+    
+    /**
      * @ManyToMany(targetEntity="Category")
      * @JoinTable(name="company_category",
      *      joinColumns={@JoinColumn(name="company_id", referencedColumnName="id")},
@@ -122,6 +129,14 @@ class Company extends User
 
     public function setCategory($category) {
         $this->category = $category;
+    }
+
+    public function getSite() {
+        return $this->site;
+    }
+
+    public function setSite($site) {
+        $this->site = $site;
     }
 
 

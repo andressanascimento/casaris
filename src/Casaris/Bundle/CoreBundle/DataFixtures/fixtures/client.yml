@@ -28,9 +28,9 @@ Client:
         password: claudinei
         email: claudinei@gmail.com
     user7:
-        name: Andrey
-        password: andrey
-        email: andrey@gmail.com
+        name: Ludmila
+        password: ludmila
+        email: ludmila@gmail.com
     user8:
         name: Nicolas
         password: nicolas
@@ -116,9 +116,9 @@ Client:
         password: sandra
         email: sandra@gmail.com
     user29:
-        name: Renato
-        password: renato
-        email: renato@gmail.com
+        name: Renata
+        password: renata
+        email: renata@gmail.com
     user30:
         name: Elana
         password: elana

@@ -44,149 +44,104 @@
                     {{ include('CoreBundle:Component:timeline.html.twig', {'activities' : activities}) }}
                 {% endblock timeline %}
             </div>
-                {% block control_timeline %}
-                    <div class="col-sm-1">
-                        <div class="bs-callout bs-callout-default">
-                            <p><a href="#">2014</a></p>
-                        </div>
-                        <div class="bs-callout bs-callout-default">
-                            <p><a href="#">Jan</a></p>
-                        </div>
-                        <div class="bs-callout bs-callout-danger">
-                            <p><a href="#">Fev</a></p>
-                        </div>
-                    </div>
-                {% endblock control_timeline %}
+            {% block control_timeline %}
+                <div class="col-sm-1">
+                    {#                        <div class="bs-callout bs-callout-default">
+                                                <p><a href="#">2014</a></p>
+                                            </div>
+                                            <div class="bs-callout bs-callout-default">
+                                                <p><a href="#">Jan</a></p>
+                                            </div>
+                                            <div class="bs-callout bs-callout-danger">
+                                                <p><a href="#">Fev</a></p>
+                                            </div>#}
+                </div>
+            {% endblock control_timeline %}
 
-                <div class="col-sm-5">
-                    {% block friends %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading c-list">
-                                <span class="title"><a href="{{ path('_friends') }}"> <i class="fa fa-users fa-fw"></i>&nbsp; Amigos</a></span> 
-                                <ul class="pull-right c-controls">
-                                    {#                            <li><a href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="fa fa-plus fa-lg"></i></a></li>#}
-                                    <li><a href="#" class="hide-search" data-command="toggle-search" ><i class="fa fa-ellipsis-v fa-lg"></i></a></li>
-                                </ul>
-                            </div>
+            <div class="col-sm-5">
+                {% block friends %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading c-list">
+                            <span class="title"><a href="{{ path('_friends') }}"> <i class="fa fa-users fa-fw"></i>&nbsp; Amigos</a></span> 
+                            <ul class="pull-right c-controls">
+                                {#                            <li><a href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="fa fa-plus fa-lg"></i></a></li>#}
+                                <li><a href="#" class="hide-search" data-command="toggle-search" ><i class="fa fa-ellipsis-v fa-lg"></i></a></li>
+                            </ul>
+                        </div>
 
-                            <div class="row" style="display: none;">
-                                <div class="col-xs-12">
-                                    <div class="input-group c-search">
-                                        <input type="text" class="form-control" id="contact-list-search">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                                        </span>
-                                    </div>
+                        <div class="row" style="display: none;">
+                            <div class="col-xs-12">
+                                <div class="input-group c-search">
+                                    <input type="text" class="form-control" id="contact-list-search">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                                    </span>
                                 </div>
                             </div>
+                        </div>
 
-                            <ul class="list-group" id="contact-list">
-
+                        <ul class="list-group" id="contact-list">
+                            <div class="row">
                                 {% set friends = app.user.friends %}
                                 {% for users in friends %}
-                                    {% if (loop.index0 == 0) or (loop.index0%4 == 0) %}
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                            {% endif %}
-
-                                            <div class="col-xs-12 col-sm-3">
-                                                {% if users.photo is empty %}
-                                                    <img src="{{ asset('bundles/social/images/default_avatar.jpg') }}" alt="{{users.name}}" class="img-responsive img-responsive" />
-                                                {% else %}
-                                                    <img src="{{ asset('/uploads/images/') ~ users.photo.name}}" alt="{{users.name}}" class="img-responsive img-responsive" />    
-                                                {% endif %}
-                                                <p class="text-center"><a href="#" class="text-muted"><span class="name">{{users.name}}</span></a></p>
-                                            </div>
-
-
-                                            {% if loop.index0 > 0 and loop.index0%4 == 0 %}
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-
-                    {% endblock friends %}
-                    {% block company %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading c-list">
-                                <span class="title"><a href="#"> <i class="fa fa-truck fa-fw"></i>&nbsp; Empresas favoritas</a></span> 
-                                <ul class="pull-right c-controls">
-                                    {#                            <li><a href="#cant-do-all-the-work-for-you" data-toggle="tooltip" data-placement="top" title="Add Contact"><i class="fa fa-plus fa-lg"></i></a></li>#}
-                                    <li><a href="#" class="hide-search" data-command="toggle-search" ><i class="fa fa-ellipsis-v fa-lg"></i></a></li>
-                                </ul>
-                            </div>
-
-                            <ul class="list-group" id="contact-list">
-                                {% set companies = app.user.companies %}
-                                {% for company in companies %}
-                                    {% if (loop.index0 == 0) or (loop.index0%4 == 0) %}
-                                        <li class="list-group-item">
-                                            <div class="row">
-                                            {% endif %}
-
-                                            <div class="col-xs-12 col-sm-3">
-                                                {% if company.user.photo is empty %}
-                                                    <img src="{{ asset('bundles/social/images/default_avatar.jpg') }}" alt="{{company.user.name}}" class="img-responsive img-responsive" />
-                                                {% else %}
-                                                    <img src="{{ asset('/uploads/images/') ~ company.user.photo.name}}" alt="{{company.user.name}}" class="img-responsive img-responsive" />    
-                                                {% endif %}
-                                                <p class="text-center"><a href="#" class="text-muted"><span class="name">{{company.user.name}}</span></a></p>
-                                            </div>
-
-
-                                            {% if loop.index0 > 0 and loop.index0%4 == 0 %}
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endblock company %}
-                    {% block gallery %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading c-list">
-                                <span class="title"><a href="{{ path('_gallery') }}"> <i class="fa fa-picture-o fa-fw"></i>&nbsp; Galeria</a></span>
-                            </div>
-                            <ul class="list-group" id="contact-list" style="margin: 1px">
-                                <li class="list-group-item" >
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                            <img src="http://lorempixel.com/800/800/cats/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                            <img src="http://lorempixel.com/800/800/city/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                            <img src="http://lorempixel.com/800/800/sports/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                        </div>
+                                    <div class="col-xs-12 col-sm-3">
+                                        {% if users.photo is empty %}
+                                            <img src="{{ asset('bundles/social/images/default_avatar.jpg') }}" alt="{{users.name}}" class="img-responsive img-responsive" />
+                                        {% else %}
+                                            <img src="{{ asset('/uploads/images/') ~ users.photo.name}}" alt="{{users.name}}" class="img-responsive img-responsive" />    
+                                        {% endif %}
+                                        <p class="text-center"><a href="#" class="text-muted"><span class="name">{{users.name}}</span></a></p>
                                     </div>
-                                </li>
-                                <li class="list-group-item" >
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                            <img src="http://lorempixel.com/800/800/cats/5/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                            <img src="http://lorempixel.com/800/800/city/3/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                        </div>
-                                        <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                            <img src="http://lorempixel.com/800/800/sports/2/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+
+                                {% endfor %}
+                            </div>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+
+                {% endblock friends %}
+
+                {% block gallery %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading c-list">
+                            <span class="title"><a href="{{ path('_gallery') }}"> <i class="fa fa-picture-o fa-fw"></i>&nbsp; Galeria</a></span>
                         </div>
-                    {% endblock gallery %}
-                </div>
+                        <ul class="list-group" id="contact-list" style="margin: 1px">
+                            <li class="list-group-item" >
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/cats/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/city/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/sports/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item" >
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/cats/5/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/city/3/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
+                                        <img src="http://lorempixel.com/800/800/sports/2/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                {% endblock gallery %}
             </div>
         </div>
-    {% endblock container %}
-    {% block javascripts %}
-        {{ parent() }}
-        <script src="{{ asset('bundles/social/js/profile_page.js') }}"></script>
-        <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
-    {% endblock %}
+    </div>
+{% endblock container %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/social/js/profile_page.js') }}"></script>
+    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>
+{% endblock %}

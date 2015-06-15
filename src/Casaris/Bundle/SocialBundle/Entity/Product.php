@@ -23,10 +23,9 @@ class Product
     private $idProduct;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_company", type="integer")
-     */
+     * @ManyToOne(targetEntity="Company")
+     * @JoinColumn(name="company_id", referencedColumnName="id")
+     * */
     private $idCompany;
 
     /**

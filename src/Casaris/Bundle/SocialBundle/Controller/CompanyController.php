@@ -19,13 +19,19 @@ class CompanyController extends Controller {
         $this->get('recomendation_common')->prepareData();
         $company = $this->getDoctrine()->getRepository('SocialBundle:Company')->find($id);
         
+        $recomendation = $this->get('collaborative_filter')->getData();
+        $recomendations = array();
+        foreach($recomendation as $r) {
+            $recomendations[] = $this->getDoctrine()->getRepository('SocialBundle:Company')->find($r['id']);
+        }
+        
         if ($company == null) {
             return $this->render(
                             'error.html.twig', array('error' => 'Essa empresa não existe!')
             );
         }
 
-        return array();
+        return array('company' => $company, 'recomendations' => $recomendations);
     }
 
 }

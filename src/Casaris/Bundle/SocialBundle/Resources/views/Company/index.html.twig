@@ -6,6 +6,12 @@
     <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />
     <link href="{{ asset('bundles/social/css/comments.css') }}" rel="stylesheet" />
 {% endblock stylesheets %}
+{% block background_photo %}
+    <img src="http://www.internovias.com.br/site2013/wp-content/uploads/2015/06/31.jpg" height="300px" width="460px">
+{% endblock background_photo %}
+{% block profile_photo %}
+    <img src="http://www.myecommerce.biz/images/samples/logo_190/mm_food_topia.gif" class="img-thumbnail picture hidden-xs" />
+{% endblock profile_photo %}
 {% block btn_add %}
 {% endblock btn_add %}
 {% block profile %}
@@ -13,28 +19,32 @@
 
         <h1 style="padding: 10px">
             {% block name_user %}
-                Gourmand Buffet
+                {{company.name}}
             {% endblock name_user %}
         </h1>
-        <p style="margin-top:-10px; padding-left: 10px">
-            <i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i><i class="fa fa-star text-muted"></i>
-        </p>
+
         <span>
             {% block description %}
                 <small style="padding: 10px">
-                    <i class="glyphicon glyphicon-map-marker"></i> &nbsp; SP, São José dos Campos <br/>
+                    <i class="fa fa-thumbs-o-up"> 3</i><br/>
                 </small>
                 <small style="padding: 10px">
-                    <i class="glyphicon glyphicon-tags"></i> &nbsp;Buffet <br/>
+                    <i class="glyphicon glyphicon-map-marker"></i> &nbsp; {{company.city.uf}}, {{company.city.name}} <br/>
                 </small>
                 <small style="padding: 10px">
-                    <i class="fa fa-envelope-o"></i> &nbsp; contato@gourmandbuffet.com.br <br/>
+                    {% for category in company.category %}
+                        <i class="glyphicon glyphicon-tags"></i> &nbsp;{{category.name}}<br/>
+
+                    {% endfor %}
                 </small>
                 <small style="padding: 10px">
-                    <i class="fa fa-phone"></i> &nbsp; (12) 39345676<br/>
+                    <i class="fa fa-envelope-o"></i> &nbsp; {{company.email}} <br/>
                 </small>
                 <small style="padding: 10px">
-                    <i class="fa fa-globe"></i> &nbsp; www.gourmandbuffet.com.br
+                    <i class="fa fa-phone"></i> &nbsp; {{company.phone}}<br/>
+                </small>
+                <small style="padding: 10px">
+                    <i class="fa fa-globe"></i> &nbsp; {{company.site}}
                 </small>
 
             {% endblock description %}
@@ -43,317 +53,94 @@
 {% endblock profile %}
 {% block contact %}
     <div class="row" style="margin-top: 40px; margin-left: 10px;">
-        <button class="btn btn-primary"><i class="fa fa-plus"></i> &nbsp; Favoritos</button>
-        <button class="btn btn-primary"><i class="fa fa-envelope-o"></i> &nbsp; Enviar e-mail</button>
+        <button class="btn btn-primary"><i class="fa fa-plus"></i> &nbsp; Recomendar</button>
     </div>
 {% endblock contact %}
 {% block container %}
     {{ parent() }}
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="panel" style="color: black">
-                    <div class="panel-body">
-                        <form class="form-horizontal" role="form">
-                            <h4>Comente!</h4>
-                            <div class="form-group" style="padding:14px;">
-                                <textarea class="form-control" placeholder="Deixe aqui seu comentário"></textarea>
-                            </div>
-                            <div class="form-group" style="padding:14px;">
-                                <select class="form-control input-sm">
-                                    <option>Positivo</option>
-                                    <option>Negativo</option>
-                                </select>
-                            </div>
-                            <button class="btn btn-primary pull-right" type="button">Post</button>
-                        </form>
-                    </div>
-                </div>
+        <div class="row" style="background: #fff; padding: 20px">
 
-                {% block timeline %}
+            <div class="tabbable-panel" style="border: none; padding: 0px;">
+                <div class="tabbable-line">
+                    <ul class="nav nav-tabs ">
+                        <li class="active">
+                            <a href="#tab_default_1" data-toggle="tab">Empresa</a>
+                        </li>
+                        <li>
+                            <a href="#tab_default_2" data-toggle="tab">Produtos</a>
+                        </li>
 
-                    <div class="panel" style="color: black">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img src="//placehold.it/75x75" class="img-responsive pull-left"> 
-                                </div>
-                                <div class="col-md-10">
-                                    <h5><a href="#">Jaqueline Knoux</a> postou uma nova imagem na galeria.</h5>
-                                    <h6><p class="text-muted">Compartilhou 17 maio de 2014</p></h6>
-                                </div>
-                            </div>
-                            <br/>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <img src="//placehold.it/600x600" class="img-thumbnail pull-left">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="page-header">
-                                        <h4><small class="pull-right">45 comentários</small> Comentários </h4>
-                                    </div> 
-                                    <div class="comments-list">
-                                        <div class="media">
-                                            <p class="pull-right"><small>5 dias atrás</small></p>
-                                            <a class="media-left" href="#">
-                                                <img src="http://lorempixel.com/40/40/people/1/"/>
-                                            </a>
-                                            <div class="media-body">
-
-                                                <p><a href="#">Baltej Singh</a></p>
-                                                Wow! this is really great.
-
-                                                {#                                                <p><a href="#"><i style="color: #d9230f" class="fa fa-thumbs-o-up fa-lg"></i></a></p>#}
-                                            </div>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_default_1">
+                            <div class="col-lg-6">
+                                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item">
+                                            <img src="http://www.internovias.com.br/site2013/wp-content/uploads/2015/06/31.jpg" data-holder-rendered="true">
                                         </div>
-                                        <div class="media">
-                                            <p class="pull-right"><small>5 dias atrás</small></p>
-                                            <a class="media-left" href="#">
-                                                <img src="http://lorempixel.com/40/40/people/2/"/>
-                                            </a>
-                                            <div class="media-body">
-
-                                                <p><a href="#">Baltej Singh</a></p>
-                                                Wow! this is really great.                                                
-                                            </div>
+                                        <div class="item">
+                                            <img src="http://www.muitochique.com/wp-content/uploads/2013/04/Buffet-de-casamento.13.jpg" data-holder-rendered="true">
+                                        </div>
+                                        <div class="item active">
+                                            <img src="http://www.publiqueideias.com/wp-content/uploads/2013/04/buffet-casamento-em-curitiba.jpg" data-holder-rendered="true">
                                         </div>
                                     </div>
+                                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
                                 </div>
+                                <br/><br/>
+                                <br/>
                             </div>
-                            <div class="clearfix"></div>
-
-                            <hr>
-                            <form>
-                                <div class="input-group">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Add a comment..">
-                                </div>
-                            </form>
+                            <div class="col-lg-6">
+                                <h4 class="text-primary">Sobre</h4>
+                                <br>
+                                <p class="text-justify">Com 20 anos no mercado, nos comprometemos a entregar uma comida maravilhosa para os paladares mais exigentes. Estamos iniciando no ramo vegetariano e vegano para casamento ecofree, venha conhecer nossas propostas!</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_default_2">
 
                         </div>
                     </div>
                 </div>
-            {% endblock timeline %}
-            {% block control_timeline %}
-                <div class="col-sm-1">
-                    <div class="bs-callout bs-callout-default">
-                        <p><a href="#">2014</a></p>
-                    </div>
-                    <div class="bs-callout bs-callout-default">
-                        <p><a href="#">Jan</a></p>
-                    </div>
-                    <div class="bs-callout bs-callout-danger">
-                        <p><a href="#">Fev</a></p>
-                    </div>
-                </div>
-            {% endblock control_timeline %}
-
-            <div class="col-sm-5">
-                {% block comments %}
-                    <div class="panel panel-default widget">
-                        <div class="panel-heading">
-                            <span class="glyphicon glyphicon-comment text-primary"></span>
-                            <a href="">Comentários</a>
-                            <span class="label label-primary pull-right c-controls">22</span>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-md-3">
-                                            <img src="//placehold.it/600x600" class="img-responsive pull-left"><br/>
-                                        </div>
-                                        <div class="col-xs-10 col-md-9">
-                                            <div> <span class="label label-success"><i class="fa fa-plus"></i></span>
-                                                <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                                    Google Style Login Page Design Using Bootstrap</a>
-                                                <div class="mic-info">
-                                                    By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                                </div>
-                                            </div>
-                                            <div class="comment-text">
-                                                Awesome design
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-md-3 text-center">
-                                            <img src="//placehold.it/600x600" class="img-responsive pull-left"><br/>
-                                        </div>
-                                        <div class="col-xs-10 col-md-9">
-                                            <div><span class="label label-primary"><i class="fa fa-minus"></i></span>
-                                                <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                                    Google Style Login Page Design Using Bootstrap</a>
-                                                <div class="mic-info">
-                                                    By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                                </div>
-                                            </div>
-                                            <div class="comment-text">
-                                                Awesome design
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-md-3">
-                                            <img src="//placehold.it/600x600" class="img-responsive pull-left"><br/>
-                                        </div>
-                                        <div class="col-xs-10 col-md-9">
-                                            <div><span class="label label-success"><i class="fa fa-plus"></i></span>
-                                                <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                                    Google Style Login Page Design Using Bootstrap</a>
-                                                <div class="mic-info">
-                                                    By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                                </div>
-                                            </div>
-                                            <div class="comment-text">
-                                                Awesome design
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                {% endblock comments %}
-                {% block rate %}
-                    <div class="panel panel-default">
-                        <div class="panel-heading c-list">
-                            <span class="title"><a href="#"> <i class="fa fa-star"></i>&nbsp; Avaliaçao</a></span> 
-                            <ul class="pull-right c-controls" style="margin-right: 10px">
-                                <li><button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button></li>
-                            </ul>
-                        </div>
-                        <div class="panel-body">
-                            <p class="text-center text-primary" {#style="color: yellow"#}>
-                                <i class="fa fa-star fa-3x"></i>
-                                <i class="fa fa-star fa-3x"></i>
-                                <i class="fa fa-star fa-3x"></i>
-                                <i class="fa fa-star-o fa-3x"></i>
-                                <i class="fa fa-star-o fa-3x"></i>
-                            </p>
-                            <p class="text-center">
-                                <span class="text-primary">Gormand Buffet: </span>
-                                <span class="text-muted"> 3 estrelas</span>
-                            </p>
-                            <hr/>
-                            <p class="text-center">
-                            <table class="col-xs-12">
-
-                                <tr>
-                                    <td class="text-muted text-center">
-                                        <p style="padding: 5px;">
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star-o fa-1x"></i>
-                                        </p>
-                                    </td>
-                                    <td class="text-muted text-center">
-                                        <p style="padding: 5px;">
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star-o fa-1x"></i>
-                                        </p>
-                                    </td>
-                                    <td class="text-muted text-center">
-                                        <p style="padding: 5px;">
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star-o fa-1x"></i>
-                                        </p>
-                                    </td>
-                                    <td class="text-muted text-center">
-                                        <p style="padding: 5px;">
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star fa-1x"></i>
-                                            <i class="fa fa-star-o fa-1x"></i>
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center text-muted">
-                                        <p style="margin-top: -20px"><small>Atendimento</small></p>
-                                    </td>
-                               
-                                    <td class="text-center text-muted">
-                                        <p style="margin-top: -20px">
-                                            <small>Confiabilidade</small>
-                                        </p>
-                                    </td>
-                                
-                                
-                                    <td class="text-center text-muted">
-                                        <p style="margin-top: -20px">
-                                            <small>Preço</small>
-                                        </p>
-                                    </td>
-                               
-                                    <td class="text-center text-muted">
-                                        <p style="margin-top: -20px">
-                                            <small>Qualidade</small>
-                                        </p>
-                                    </td>
-                                </tr>
-                            </table>
-                            </p>
-                        </div>
-                    </div>
-                {% endblock rate %}
-                {% block products %}
-                    <div class="panel panel-default">
-                        <div class="panel-heading c-list">
-                            <span class="title"><a href="#"> <i class="fa fa-picture-o fa-fw"></i>&nbsp; Produtos/Serviços</a></span>
-                        </div>
-                        <ul class="list-group" id="contact-list" style="margin: 1px">
-                            <li class="list-group-item" >
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/cats/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/city/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/sports/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="list-group-item" >
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/cats/5/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/city/3/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/sports/2/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                {% endblock products %}
             </div>
         </div>
+        <br/>
+        <div class="row" style="background: #fff; padding: 10px">
+            <h3 class="page-header text-primary">Recomendados</h3>
+            {% for r in recomendations %}
+                <div class="col-sm-3 col-md-3">
+                    <div class="thumbnail">
+                        <img data-src="holder.js/100%x100" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
+                        <div class="caption">
+                            <small>
+                                <a href="#"><p>{{r.name}}</a>
+                                <p>
+                                    <i class="glyphicon glyphicon-map-marker"></i> {{r.city.uf}}, {{r.city.name}} <br>
+                                    {% for c in r.category %}
+                                        <i class="glyphicon glyphicon-tags"></i>&nbsp; {{c.name}} <br/>
+                                    {% endfor %}
+
+                                </p>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <br/>
     </div>
 {% endblock container %}
 {% block javascripts %}

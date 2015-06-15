@@ -18,7 +18,7 @@ class IndexController extends Controller {
     public function indexAction() {
         $post = new Post();
         $form = $this->createForm(new PostType(), $post, array(
-            'action' => $this->generateUrl('_new_comment'),
+            'action' => $this->generateUrl('_new_post'),
             'method' => 'post'));
         $user = $this->get('security.context')->getToken()->getUser();
         
@@ -46,7 +46,6 @@ class IndexController extends Controller {
             if ($form->isValid()) {
                 $post->setUser($this->get('security.context')->getToken()->getUser());
                 $post->setDate(new \DateTime("now"));
-
                 $this->getDoctrine()->getRepository('SocialBundle:Post')->insert($post);
 
                 return $this->redirect($this->generateUrl('_index'));

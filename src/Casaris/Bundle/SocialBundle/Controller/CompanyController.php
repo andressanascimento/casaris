@@ -5,7 +5,6 @@ namespace Casaris\Bundle\SocialBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 
 class CompanyController extends Controller {
@@ -18,6 +17,13 @@ class CompanyController extends Controller {
         
         $this->get('recomendation_common')->prepareData();
         $company = $this->getDoctrine()->getRepository('SocialBundle:Company')->find($id);
+        $roles = $company->getRoles();
+        
+        if ($roles == 'ROLE_COMPANY') {
+            $role = 'company';
+        } else {
+            $role = 'user';
+        }
         
         $recomendation = $this->get('collaborative_filter')->getData();
         $recomendations = array();
@@ -31,7 +37,7 @@ class CompanyController extends Controller {
             );
         }
 
-        return array('company' => $company, 'recomendations' => $recomendations);
+        return array('company' => $company, 'recomendations' => $recomendations, 'role' => $role);
     }
 
 }

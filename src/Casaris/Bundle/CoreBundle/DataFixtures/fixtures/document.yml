@@ -1,0 +1,221 @@
+Document:
+    picture_buffet1:
+        path: buffet_1.jpg
+    picture_buffet2:
+        path: buffet_2.jpg
+    picture_buffet3:
+        path: buffet_3.jpg
+    picture_buffet4:
+        path: buffet_4.jpg
+    picture_buffet5:
+        path: buffet_5.jpg
+    picture_buffet6:
+        path: buffet_6.jpg
+    picture_buffet7:
+        path: buffet_7.jpg
+    picture_buffet8:
+        path: buffet_8.jpg
+    picture_buffet9:
+        path: buffet_9.jpg
+    picture_buffet10:
+        path: buffet_10.jpg
+    picture_buffet11:
+        path: buffet_11.jpg
+    picture_buffet12:
+        path: buffet_12.jpg
+    picture_buffet13:
+        path: buffet_13.jpg
+    picture_buffet14:
+        path: buffet_14.jpg
+    picture_buffet15:
+        path: buffet_15.jpg
+    picture_buffet16:
+        path: buffet_16.jpg
+    picture_buffet17:
+        path: buffet_17.jpg
+    picture_buffet18:
+        path: buffet_18.jpg
+    picture_buffet19:
+        path: buffet_19.jpg
+    picture_buffet20:
+        path: buffet_20.jpg
+    picture_buffet21:
+        path: buffet_21.jpg
+    picture_buffet22:
+        path: buffet_22.jpg
+    picture_buffet23:
+        path: buffet_23.jpg
+    picture_buffet24:
+        path: buffet_24.jpg
+    picture_buffet25:
+        path: buffet_25.jpg
+    picture_buffet26:
+        path: buffet_26.jpg
+    picture_buffet27:
+        path: buffet_27.jpg
+    picture_buffet28:
+        path: buffet_28.jpg
+    picture_buffet29:
+        path: buffet_29.jpg
+    picture_buffet30:
+        path: buffet_30.jpg
+    picture_buffet31:
+        path: buffet_31.jpg
+    picture_buffet32:
+        path: buffet_32.jpg
+    picture_buffet33:
+        path: buffet_33.jpg
+    picture_buffet34:
+        path: buffet_34.jpg
+    picture_buffet35:
+        path: buffet_35.jpg
+    picture_buffet36:
+        path: buffet_36.jpg
+    picture_buffet37:
+        path: buffet_37.jpg
+    picture_buffet38:
+        path: buffet_38.jpg
+    picture_buffet39:
+        path: buffet_39.jpg
+    picture_buffet40:
+        path: buffet_40.jpg
+    picture_buffet41:
+        path: buffet_41.jpg
+    picture_buffet42:
+        path: buffet_42.jpg
+    picture_buffet43:
+        path: buffet_43.jpg
+    picture_buffet44:
+        path: buffet_44.jpg
+    picture_buffet45:
+        path: buffet_45.jpg
+    picture_buffet46:
+        path: buffet_46.jpg
+    picture_buffet47:
+        path: buffet_47.jpg
+    picture_buffet48:
+        path: buffet_48.jpg
+    picture_buffet49:
+        path: buffet_49.jpg
+    picture_buffet50:
+        path: buffet_50.jpg
+    picture_buffet51:
+        path: buffet_51.jpg
+    picture_buffet52:
+        path: buffet_52.jpg
+    picture_buffet53:
+        path: buffet_53.jpg
+    picture_buffet54:
+        path: buffet_54.jpg
+    picture_buffet55:
+        path: buffet_55.jpg
+    picture_buffet56:
+        path: buffet_56.jpg
+    picture_buffet57:
+        path: buffet_57.jpg
+    picture_buffet58:
+        path: buffet_58.jpg
+    picture_buffet59:
+        path: buffet_59.jpg
+    picture_buffet60:
+        path: buffet_60.jpg
+    picture_buffet61:
+        path: buffet_61.jpg
+    picture_buffet62:
+        path: buffet_62.jpg
+    picture_buffet63:
+        path: buffet_63.jpg
+    picture_buffet64:
+        path: buffet_64.jpg
+    picture_buffet65:
+        path: buffet_65.jpg
+    picture_buffet66:
+        path: buffet_66.jpg
+    picture_buffet67:
+        path: buffet_67.jpg
+    picture_buffet68:
+        path: buffet_68.jpg
+    picture_buffet69:
+        path: buffet_69.jpg
+    picture_buffet70:
+        path: buffet_70.jpg
+    picture_salao1:
+        path: salao_1.jpg
+    picture_salao2:
+        path: salao_2.jpg
+    picture_salao3:
+        path: salao_3.jpg
+    picture_salao4:
+        path: salao_4.jpg
+    picture_salao5:
+        path: salao_5.jpg
+    picture_salao6:
+        path: salao_6.jpg
+    picture_salao7:
+        path: salao_7.jpg
+    picture_salao8:
+        path: salao_8.jpg
+    picture_salao9:
+        path: salao_9.jpg
+    picture_salao10:
+        path: salao_10.jpg
+    picture_musica1:
+        path: musica_1.jpg
+    picture_musica2:
+        path: musica_2.jpg
+    picture_musica3:
+        path: musica_3.jpg
+    picture_musica4:
+        path: musica_4.jpg
+    picture_musica5:
+        path: musica_5.jpg
+    picture_musica6:
+        path: musica_6.jpg
+    picture_musica7:
+        path: musica_7.jpg
+    picture_musica8:
+        path: musica_8.jpg
+    picture_musica9:
+        path: musica_9.jpg
+    picture_musica10:
+        path: musica_10.jpg
+    picture_decoracao1:
+        path: decoracao_1.jpg
+    picture_decoracao2:
+        path: decoracao_2.jpg
+    picture_decoracao3:
+        path: decoracao_3.jpg
+    picture_decoracao4:
+        path: decoracao_4.jpg
+    picture_decoracao5:
+        path: decoracao_5.jpg
+    picture_decoracao6:
+        path: decoracao_6.jpg
+    picture_decoracao7:
+        path: decoracao_7.jpg
+    picture_decoracao8:
+        path: decoracao_8.jpg
+    picture_decoracao9:
+        path: decoracao_9.jpg
+    picture_decoracao10:
+        path: decoracao_10.jpg
+    picture_fotografia1:
+        path: fotografia_1.jpg
+    picture_fotografia2:
+        path: fotografia_2.jpg
+    picture_fotografia3:
+        path: fotografia_3.jpg
+    picture_fotografia4:
+        path: fotografia_4.jpg
+    picture_fotografia5:
+        path: fotografia_5.jpg
+    picture_fotografia6:
+        path: fotografia_6.jpg
+    picture_fotografia7:
+        path: fotografia_7.jpg
+    picture_fotografia8:
+        path: fotografia_8.jpg
+    picture_fotografia9:
+        path: fotografia_9.jpg
+    picture_fotografia10:
+        path: fotografia_10.jpg

@@ -9,73 +9,108 @@
     <p id="name" data-pk="1" data-type="text" data-url="/name" data-title="Nome">{{ app.user.name }}</p>
 {% endblock name_user %}
 
-{% block profession %} 
-    {% if app.user.profession is not empty %}
-        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
-        {% else %}
-        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
+{% block profession %}
+    {% if app.user.roles[0] == 'ROLE_USER'%}
+        {% if app.user.profession is not empty %}
+            <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
+            {% else %}
+            <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
+        {% endif %}
     {% endif %}
 {% endblock %}
 
 {% block description %}
-    {% if app.user.phrase is not empty %}
-        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
-    {% else %}
-        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
+    {% if app.user.roles[0] == 'ROLE_USER'%}
+        {% if app.user.phrase is not empty %}
+            <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
+        {% else %}
+            <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
+        {% endif %}
     {% endif %}
+    {% if app.user.roles[0] == 'ROLE_COMPANY' %}
+                <small style="padding: 10px">
+                    <i class="fa fa-thumbs-o-up"> 3</i><br/>
+                </small>
+                <small style="padding: 10px">
+                    {% if app.user.city is not empty %}
+                    <i class="glyphicon glyphicon-map-marker"></i> &nbsp; {{app.user.city.uf}}, {{app.user.city.name}} <br/>
+                    {% endif %}
+                </small>
+                <small style="padding: 10px">
+                    {% for category in app.user.category %}
+                        <i class="glyphicon glyphicon-tags"></i> &nbsp;{{category.name}}<br/>
 
+                    {% endfor %}
+                </small>
+                <small style="padding: 10px">
+                    <i class="fa fa-envelope-o"></i> &nbsp; {{app.user.email}} <br/>
+                </small>
+                <small style="padding: 10px">
+                    <i class="fa fa-phone"></i> &nbsp; {{app.user.phone}}<br/>
+                </small>
+                <small style="padding: 10px">
+                    <i class="fa fa-globe"></i> &nbsp; {{app.user.site}}
+                </small>
+
+            {% endif %}
 {% endblock description %}
 
 {% block container %}
     {{ parent() }}
     <div class="container">
-        <div class="row" style="padding: 20px;">
-            <div class="alert alert-info" role="alert">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        {% if filter is not empty %}
+            <div class="row" style="padding: 20px;">
+                <div class="alert alert-info" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 
-                70 empresas foram encontradas
+                    {{companies|length}} empresas foram encontradas
+                </div>
             </div>
-        </div>
+        {% endif %}
 
 
         <div class="row">
-                     <div class="col-sm-3 col-md-3 sidebar">
+            <div class="col-sm-3 col-md-3 sidebar">
 
                 <div class="mini-submenu">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </div>
-                <div class="list-group">
-                    <span href="#" class="list-group-item active">
-                        Busca
-                        <span class="pull-right" id="slide-submenu">
-                            <i class="fa fa-search"></i>
+                <form method="post" action="/supplier" id="form_filter">
+                    <div class="list-group">
+                        <span href="#" class="list-group-item active">
+                            Busca
+                            <span class="pull-right" id="slide-submenu">
+                                <i class="fa fa-search"></i>
+                            </span>
                         </span>
-                    </span>
-                    <div class="list-group-item">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="palavra-chave" style="width: 230px">
+
+                        <div class="list-group-item">
+                            <div class="input-group">
+                                <input type="text" name="search" value="{% if filter is not empty %} {{filter['search']}} {% endif %}" class="form-control" placeholder="palavra-chave" style="width: 230px">
+                                <input type="hidden" name="page" value="1" id="page"/>
+                            </div>
                         </div>
-                    </div>
 
-                    <span href="#" class="list-group-item">
-                        <span class="text-primary">
-                            Categoria
+                        <span href="#" class="list-group-item">
+                            <span class="text-primary">
+                                Categoria
+                            </span>
+                            <ul style="list-style-type: none; margin-left: -40px">
+                                {% for category in categories %}
+                                    <li class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="category[]" value="{{category.id}}" {% if filter is not empty %}{% if category.id in filter['category'] %} checked {% endif %}{% endif %}> {{category.name}}
+                                        </label>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                            <input type="submit" class="btn btn-primary" value="Pesquisar"/>
                         </span>
-                        <ul style="list-style-type: none; margin-left: -40px">
-                            {% for category in categories %}
-                                <li class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> {{category.name}}
-                                    </label>
-                                </li>
-                            {% endfor %}
-
-                        </ul>
-                    </span>
-
-                </div>        
+                    </div>
+                </form>
             </div>
             <div class="col-sm-9 col-md-9">
                 <div class="panel panel-default">
@@ -89,7 +124,7 @@
                                 <img data-src="holder.js/100%x100" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
                                 <div class="caption">
                                     <small>
-                                        <a href="#"><p>{{r[0].name}}</a>
+                                        <a href="/company/{{r[0].id}}"><p>{{r[0].name}}</a>
                                         <p>
                                             <i class="fa fa-thumbs-o-up"> {{r[1]}}</i><br/>
                                             <i class="glyphicon glyphicon-map-marker"></i> {{r[0].city.uf}}, {{r[0].city.name}} <br>
@@ -114,7 +149,7 @@
                                     <img data-src="holder.js/100%x100" alt="100%x200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDI0MiAyMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjQyIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjkzIiB5PSIxMDAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTFwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNDJ4MjAwPC90ZXh0PjwvZz48L3N2Zz4=" data-holder-rendered="true" style="height: 150px; width: 100%; display: block;">
                                     <div class="caption">
                                         <small>
-                                            <a href="#"><p>{{company.name}}</a>
+                                            <a href="/company/{{company.id}}"><p>{{company.name}}</a>
                                             <p>
                                                 {#                                                <i class="fa fa-thumbs-o-up"> {{r[1]}}</i><br/>#}
                                                 <i class="glyphicon glyphicon-map-marker"></i> {{company.city.uf}}, {{company.city.name}} <br>
@@ -134,21 +169,21 @@
                         {% endif %}
                     {% endfor %}
                     {#                    </div>#}
-                    <div class="col-xs-12 text-center">
-                        <ul class="pagination pagination-sm ">
-                            <li class="disabled"><a href="#">«</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">»</a></li>
-                        </ul>
-                    </div>
+                    {#                    <div class="col-xs-12 text-center">
+                                            <ul class="pagination pagination-sm ">
+                                                <li class="disabled"><a href="#">«</a></li>
+                                                <li><a href="javascript:void(0);" onclick="function(){$('#page').val(1);$('#form_filter').submit();}">1</a></li>
+                                                <li><a href="javascript:void(0);" onclick="function(){$('#page').val(2);$('#form_filter').submit();}">2</a></li>
+                                                <li><a href="javascript:void(0);" onclick="function(){$('#page').val(3);$('#form_filter').submit();}">3</a></li>
+                                                <li><a href="javascript:void(0);" onclick="function(){$('#page').val(4);$('#form_filter').submit();}">4</a></li>
+                                                <li><a href="#" >»</a></li>
+                                            </ul>
+                                        </div>#}
                 </div>
 
             </div>
         </div>
+
     {% endblock container %}
     {% block javascripts %}
         {{ parent() }}

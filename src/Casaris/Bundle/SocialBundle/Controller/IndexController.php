@@ -16,18 +16,27 @@ class IndexController extends Controller {
      * @Template()
      */
     public function indexAction() {
-        $post = new Post();
-        $form = $this->createForm(new PostType(), $post, array(
-            'action' => $this->generateUrl('_new_post'),
-            'method' => 'post'));
         $user = $this->get('security.context')->getToken()->getUser();
-        
-        $activities = $this->getDoctrine()->getRepository('SocialBundle:Activity')->getActivities(0,20,$user);
+        $role = $user->getRoles();
+        if ($role[0] == 'ROLE_COMPANY') {
+            return $this->render('SocialBundle:Company:index.html.twig',array('company'=> $user, 'role' =>'company'));
+            
+        } else {
+            $post = new Post();
+            $form = $this->createForm(new PostType(), $post, array(
+                'action' => $this->generateUrl('_new_post'),
+                'method' => 'post'));
+            $user = $this->get('security.context')->getToken()->getUser();
 
-        return array(
-            'form_comment' => $form->createView(),
-            'activities' => $activities
-        );
+
+            $activities = $this->getDoctrine()->getRepository('SocialBundle:Activity')->getActivities(0, 20, $user);
+
+            return array(
+                'form_comment' => $form->createView(),
+                'activities' => $activities,
+                'role' => 'user'
+            );
+        }
     }
 
     /**

@@ -28,53 +28,23 @@ class Category
      * @ORM\Column(name="name", type="string", length=30)
      */
     private $name;
-
-
-    /**
-     * Set idCategory
-     *
-     * @param integer $idCategory
-     * @return Category
-     */
-    public function setIdCategory($idCategory)
-    {
-        $this->idCategory = $idCategory;
-
-        return $this;
+    
+    public function getId() {
+        return $this->id;
     }
 
-    /**
-     * Get idCategory
-     *
-     * @return integer 
-     */
-    public function getIdCategory()
-    {
-        return $this->idCategory;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Category
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
     
     public function __toString() {
         return $this->name;

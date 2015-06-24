@@ -111,5 +111,14 @@
             <script src="{{ asset('/js/bootstrap-file.js') }}"></script>
             <script src="{{ asset('/js/bootstrap-editable.js') }}"></script>
         {% endblock %}
+        <script>
+            $( document ).ready(function() {
+            function filter(page) {
+                alert('oi');
+                $("#page").val(page);
+                $("#form_filter").submit();
+            }
+        });
+        </script>
     </body>
 </html>

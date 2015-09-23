@@ -20,6 +20,8 @@ class LoadCompanyData extends LoadDataFromYml implements OrderedFixtureInterface
 
             $company->setName($columns['name']);
             $company->setEmail($columns['email']);
+//            $company->setPhone($columns['phone']);
+            $company->setSite($columns['site']);
             $company->setCity($this->getReference($columns['city']));
             $company->setPassword($encoder->encodePassword($columns['password'], $company->getSalt()));
             $company->addCategory($this->getReference($columns['category']));

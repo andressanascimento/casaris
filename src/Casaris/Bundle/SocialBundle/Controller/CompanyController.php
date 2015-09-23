@@ -17,6 +17,7 @@ class CompanyController extends Controller {
         
         $this->get('recomendation_common')->prepareData();
         $company = $this->getDoctrine()->getRepository('SocialBundle:Company')->find($id);
+        $gallery = $this->getDoctrine()->getRepository('SocialBundle:Gallery')->findBy(array('user'=>$id));
         $roles = $company->getRoles();
         
         if ($roles == 'ROLE_COMPANY') {
@@ -37,7 +38,7 @@ class CompanyController extends Controller {
             );
         }
 
-        return array('company' => $company, 'recomendations' => $recomendations, 'role' => $role);
+        return array('company' => $company, 'recomendations' => $recomendations, 'role' => $role, 'gallery' => $gallery);
     }
 
 }

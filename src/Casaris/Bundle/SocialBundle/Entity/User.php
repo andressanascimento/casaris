@@ -52,7 +52,7 @@ abstract class User implements UserInterface, \Serializable {
 
     /**
      * @var Document $photo
-     * @ManyToOne(targetEntity="Document")
+     * @ManyToOne(targetEntity="Document", cascade={"all"})
      * @JoinColumn(name="photo_id", referencedColumnName="id"))
      * */
     protected $photo;

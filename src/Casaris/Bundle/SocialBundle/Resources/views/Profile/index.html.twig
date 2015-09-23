@@ -2,23 +2,52 @@
 {% block name_user %}
     <p id="name" data-pk="1" data-type="text" data-url="/name" data-title="Nome">{{ app.user.name }}</p>
 {% endblock name_user %}
-
 {% block profession %} 
-    {% if app.user.profession is not empty %}
-        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
-        {% else %}
-        <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
+    {% if app.user.roles[0] == 'ROLE_USER'%}
+        {% if app.user.profession is not empty %}
+            <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">{{ app.user.profession }}</p></h3>
+            {% else %}
+            <h3><p class="text-primary" id="profession" data-type="text" data-pk="1" data-url="/profession" data-title="Sua profissão">Adicione sua profissão</p></h3>
+        {% endif %}
     {% endif %}
 {% endblock %}
 
 {% block description %}
-    {% if app.user.phrase is not empty %}
-        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
-    {% else %}
-        <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
+    {% if app.user.roles[0] == 'ROLE_USER'%}
+        {% if app.user.phrase is not empty %}
+            <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">{{ app.user.phrase }}</p>
+        {% else %}
+            <p class="text-muted text-justify" id="phrase" data-pk="1" data-type="textarea" data-url="/phrase" data-title="Descrição">Conte mais sobre você!</p>
+        {% endif %}
     {% endif %}
+    {% if app.user.roles[0] == 'ROLE_COMPANY' %}
+        <small style="padding: 10px">
+            <i class="fa fa-thumbs-o-up"> 3</i><br/>
+        </small>
+        <small style="padding: 10px">
+            {% if app.user.city is not empty %}
+                <i class="glyphicon glyphicon-map-marker"></i> &nbsp; {{app.user.city.uf}}, {{app.user.city.name}} <br/>
+            {% endif %}
+        </small>
+        <small style="padding: 10px">
+            {% for category in app.user.category %}
+                <i class="glyphicon glyphicon-tags"></i> &nbsp;{{category.name}}<br/>
 
+            {% endfor %}
+        </small>
+        <small style="padding: 10px">
+            <i class="fa fa-envelope-o"></i> &nbsp; {{app.user.email}} <br/>
+        </small>
+        <small style="padding: 10px">
+            <i class="fa fa-phone"></i> &nbsp; {{app.user.phone}}<br/>
+        </small>
+        <small style="padding: 10px">
+            <i class="fa fa-globe"></i> &nbsp; {{app.user.site}}
+        </small>
+
+    {% endif %}
 {% endblock description %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('bundles/social/css/tabs.css') }}" rel="stylesheet" />
@@ -65,6 +94,12 @@
                                 <a href="#password" data-toggle="tab">
                                     Senha </a>
                             </li>
+                            {% if app.user.roles[0] == 'ROLE_COMPANY' %}
+                                <li>
+                                    <a href="#products" data-toggle="tab">
+                                        Produtos </a>
+                                </li>
+                            {% endif %}
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="profile">
@@ -118,6 +153,17 @@
                                     </form>
                                 </div>
                             </div>
+                            {% if app.user.roles[0] == 'ROLE_COMPANY' %}
+                                <div class="tab-pane active" id="products">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {{ form_start(form_product) }}
+                                            {{ form_widget(form_product) }}
+                                            {{ form_end(form_product) }}  
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -127,6 +173,6 @@
 {% endblock container %}
 {% block javascripts %}
     {{ parent() }}
-{#    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>#}
+    {#    <script src="{{ asset('bundles/social/js/friends.js') }}"></script>#}
     <script src="{{ asset('bundles/social/js/global.js') }}"></script>
 {% endblock javascripts %}

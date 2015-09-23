@@ -17,9 +17,12 @@ class IndexController extends Controller {
      */
     public function indexAction() {
         $user = $this->get('security.context')->getToken()->getUser();
+        $gallery = $this->getDoctrine()->getRepository('SocialBundle:Gallery')->findBy(array('user'=>$user->getId()));
         $role = $user->getRoles();
         if ($role[0] == 'ROLE_COMPANY') {
-            return $this->render('SocialBundle:Company:index.html.twig',array('company'=> $user, 'role' =>'company'));
+            return $this->render('SocialBundle:Company:index.html.twig',
+                    array('company'=> $user, 'role' =>'company','gallery' => $gallery)
+                    );
             
         } else {
             $post = new Post();
@@ -34,7 +37,8 @@ class IndexController extends Controller {
             return array(
                 'form_comment' => $form->createView(),
                 'activities' => $activities,
-                'role' => 'user'
+                'role' => 'user',
+                'gallery' => $gallery
             );
         }
     }

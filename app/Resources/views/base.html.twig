@@ -80,7 +80,11 @@
                     <div class="col-md-8  col-xs-12">
                         <div class="row">
                             {% block profile_photo %}
-                                <img src="//placehold.it/150x150" class="img-thumbnail picture hidden-xs" />
+                                {% if app.user.photo is empty %}
+                                    <img src="{{ asset('bundles/social/images/default_avatar.jpg') }}" id="change_photo" class="img-thumbnail picture hidden-xs" width="150px" height="150px" />
+                                {% else %}
+                                    <img src="{{ asset('/uploads/images/') ~ app.user.photo.path}}" id="change_photo" class="img-thumbnail picture hidden-xs" width="150px" height="150px"/>    
+                                {% endif %}
                             {% endblock profile_photo %}
                             {% block profile %}
                                 <div class="header" style="padding-left: 10px">
@@ -112,13 +116,13 @@
             <script src="{{ asset('/js/bootstrap-editable.js') }}"></script>
         {% endblock %}
         <script>
-            $( document ).ready(function() {
-            function filter(page) {
-                alert('oi');
-                $("#page").val(page);
-                $("#form_filter").submit();
-            }
-        });
+            $(document).ready(function () {
+                function filter(page) {
+                    alert('oi');
+                    $("#page").val(page);
+                    $("#form_filter").submit();
+                }
+            });
         </script>
     </body>
 </html>

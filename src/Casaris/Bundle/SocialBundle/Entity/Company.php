@@ -15,8 +15,8 @@ use Doctrine\ORM\Mapping\JoinColumn;
  * @ORM\Table(name="company")
  * @ORM\Entity(repositoryClass="Casaris\Bundle\SocialBundle\Repository\CompanyRepository")
  */
-class Company extends User
-{
+class Company extends User {
+
     protected $type = 'company';
 
     /**
@@ -36,6 +36,13 @@ class Company extends User
     /**
      * @var string
      *
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="cellphone", type="string", length=12, nullable=true)
      */
     private $cellphone;
@@ -46,24 +53,29 @@ class Company extends User
      * @ORM\Column(name="date_opening", type="datetime", nullable=true)
      */
     private $dateOpening;
-    
-     /**
+
+    /**
      * @OneToMany(targetEntity="CompanyComment", mappedBy="company")
-     **/
+     * */
     private $comments;
-    
+
+    /**
+     * @OneToMany(targetEntity="Product", mappedBy="idCompany")
+     * */
+    private $products;
+
     /**
      * @ManyToMany(targetEntity="Client", mappedBy="companies")
-     **/
+     * */
     private $followers;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="site", type="string", length=35, nullable=true)
      */
     private $site;
-    
+
     /**
      * @ManyToMany(targetEntity="Category")
      * @JoinTable(name="company_category",
@@ -72,17 +84,16 @@ class Company extends User
      *      )
      * */
     private $category;
-    
-    public function __construct()
-    {
+
+    public function __construct() {
         $this->followers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     public function addCategory(Category $category) {
         $this->category[] = $category;
     }
-    
+
     public function getType() {
         return $this->type;
     }
@@ -139,6 +150,21 @@ class Company extends User
         $this->site = $site;
     }
 
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    public function getProducts() {
+        return $this->products;
+    }
+
+    public function setProducts($products) {
+        $this->products = $products;
+    }
 
 
 }

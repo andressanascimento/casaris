@@ -13,7 +13,7 @@ class GalleryRepository extends GenericDAO {
         $type = $activity_type->findOneBy(array('name'=>'gallery'));
         
         $activity = new Activity();
-        $activity->setUser($gallery->getClient());
+        $activity->setUser($gallery->getUser());
         $activity->setDatetime(new \Datetime("now"));
         $activity->setActivityType($type);
         $activity->setDocument($gallery->getDocument());

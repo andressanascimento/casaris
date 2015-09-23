@@ -3,6 +3,8 @@
 namespace Casaris\Bundle\SocialBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * Product
@@ -29,17 +31,15 @@ class Product
     private $idCompany;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="thumbnail", type="blob")
-     */
+     * @ManyToOne(targetEntity="Document", cascade={"all"})
+     * @JoinColumn(name="document_id", referencedColumnName="id")
+     * */
     private $thumbnail;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="blob")
-     */
+     * @ManyToOne(targetEntity="Document", cascade={"all"})
+     * @JoinColumn(name="document_id", referencedColumnName="id")
+     * */
     private $photo;
 
     /**
@@ -66,21 +66,21 @@ class Product
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_category", type="integer")
+     * @ORM\Column(name="id_category", type="integer", nullable=true)
      */
     private $idCategory;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dimensions", type="string", length=30)
+     * @ORM\Column(name="dimensions", type="string", length=30, nullable=true)
      */
     private $dimensions;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="available", type="string", length=1)
+     * @ORM\Column(name="available", type="string", length=1, nullable=true)
      */
     private $available;
 

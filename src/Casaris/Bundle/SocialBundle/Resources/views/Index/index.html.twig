@@ -4,7 +4,6 @@
     <link href="{{ asset('bundles/social/css/timeline.css') }}" rel="stylesheet" />
     <link href="{{ asset('bundles/social/css/friends.css') }}" rel="stylesheet" />
 {% endblock stylesheets %}
-
 {% block name_user %}
     <p id="name" data-pk="1" data-type="text" data-url="/name" data-title="Nome">{{ app.user.name }}</p>
 {% endblock name_user %}
@@ -88,7 +87,7 @@
                                         {% if users.photo is empty %}
                                             <img src="{{ asset('bundles/social/images/default_avatar.jpg') }}" alt="{{users.name}}" class="img-responsive img-responsive" />
                                         {% else %}
-                                            <img src="{{ asset('/uploads/images/') ~ users.photo.name}}" alt="{{users.name}}" class="img-responsive img-responsive" />    
+                                            <img src="{{ asset('/uploads/images/') ~ users.photo.path}}" alt="{{users.name}}" class="img-responsive img-responsive" />    
                                         {% endif %}
                                         <p class="text-center"><a href="#" class="text-muted"><span class="name">{{users.name}}</span></a></p>
                                     </div>
@@ -106,33 +105,14 @@
                         <div class="panel-heading c-list">
                             <span class="title"><a href="{{ path('_gallery') }}"> <i class="fa fa-picture-o fa-fw"></i>&nbsp; Galeria</a></span>
                         </div>
-                        <ul class="list-group" id="contact-list" style="margin: 1px">
-                            <li class="list-group-item" >
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/cats/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/city/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/sports/1/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
+                        <ul class="list-group" id="contact-list" style="margin: 5px">
+                            <div class="row">
+                            {% for gal in gallery %}
+                                <div class="col-xs-12 col-sm-3">
+                                    <img src="{{ asset('/uploads/images/') ~ gal.document.path}}"  class="img-thumbnail img-responsive" />    
                                 </div>
-                            </li>
-                            <li class="list-group-item" >
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/cats/5/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/city/3/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4" style="padding: 4px">
-                                        <img src="http://lorempixel.com/800/800/sports/2/" alt="Scott Stevens" class="img-responsive img-thumbnail" />
-                                    </div>
-                                </div>
-                            </li>
+                            {% endfor %}
+                            </div>
                         </ul>
                     </div>
                 {% endblock gallery %}

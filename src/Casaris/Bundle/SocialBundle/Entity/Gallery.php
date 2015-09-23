@@ -24,10 +24,10 @@ class Gallery {
     private $id;
     
     /**
-     * @ManyToOne(targetEntity="Client")
-     * @JoinColumn(name="client_id", referencedColumnName="id")
+     * @ManyToOne(targetEntity="User")
+     * @JoinColumn(name="user_id", referencedColumnName="id")
      * */
-    private $client;
+    private $user;
 
     /**
      * @ManyToOne(targetEntity="Document", cascade={"remove"})
@@ -41,13 +41,12 @@ class Gallery {
      * @ORM\Column(type="datetime")
      */
     private $date;
-
     public function getId() {
         return $this->id;
     }
 
-    public function getClient() {
-        return $this->client;
+    public function getUser() {
+        return $this->user;
     }
 
     public function getDocument() {
@@ -62,8 +61,8 @@ class Gallery {
         $this->id = $id;
     }
 
-    public function setClient($client) {
-        $this->client = $client;
+    public function setUser($user) {
+        $this->user = $user;
     }
 
     public function setDocument($document) {
@@ -75,4 +74,5 @@ class Gallery {
     }
 
 
+ 
 }

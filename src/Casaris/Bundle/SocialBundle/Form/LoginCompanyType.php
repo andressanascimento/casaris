@@ -24,6 +24,12 @@ class LoginCompanyType extends AbstractType {
                     'label' => 'Email'
                         )
                 )
+                ->add('phone', 'text', array(
+                    'required' => false,
+                    'label' => 'Telefone'))
+                ->add('site', 'text', array(
+                    'required' => false,
+                    'label' => 'Site'))
                 ->add('password', 'repeated', array(
                     'type' => 'password',
                     'invalid_message' => 'As senhas não correspondem',
@@ -32,8 +38,9 @@ class LoginCompanyType extends AbstractType {
                     'first_options' => array('label' => 'Senha'),
                     'second_options' => array('label' => 'Repita a senha'),
                 ))
-                ->add('category')
-                ->add('cnpj')
+                ->add('category','text', array(
+                    'required' => false,
+                    'label' => 'Categoria'))
                 ->add('save', 'submit', array(
                     'label' => 'Enviar',
                     'attr' => array('class' => 'btn btn-primary')
